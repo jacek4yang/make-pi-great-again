@@ -1,0 +1,18 @@
+# Local clones used as read-only references — not part of the meta repository
+/pi-agent-profile/
+/pi-mono/
+/pi-codebuffer/
+/pi-context-prune/
+/pi-codex-native-compaction/
+/pi-generation-recovery/
+/fff/
+/pi-codex-account/
+/pi-context-usage/
+/pi-extensions/
+/pi-web-search/
+/rpiv-mono/
+/references/
+
+node_modules/
+dist/
+*.log

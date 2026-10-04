@@ -1,0 +1,13 @@
+{
+  "v": 1,
+  "contextWindow": 272000,
+  "usedTokens": { "value": 212000, "source": "provider-reported" },
+  "breakdown": [
+    { "label": "workingSet", "tokens": 112000, "source": "estimated" },
+    { "label": "recent", "tokens": 39000, "source": "estimated" },
+    { "label": "protected", "tokens": 21000, "source": "estimated" },
+    { "label": "recoverable", "tokens": 14000, "source": "estimated" },
+    { "label": "reclaimable", "tokens": 26000, "source": "estimated" }
+  ],
+  "activeEngine": "generic-verified"
+}

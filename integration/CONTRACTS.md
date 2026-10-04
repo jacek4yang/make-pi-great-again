@@ -1,0 +1,173 @@
+# Cross-repository contracts
+
+Status: normative. Implementation repositories define their own types matching
+these shapes; fixtures in `../fixtures/` validate producer output and consumer
+tolerance. No runtime import coupling.
+
+## Namespacing
+
+All identifiers owned by this stack use the `pinx` prefix:
+
+| Kind | Pattern | Example |
+|---|---|---|
+| Event bus channel | `pinx.<domain>.<event>` | `pinx.context.changed` |
+| Custom entry `customType` | `pinx.<domain>.<kind>` | `pinx.context.checkpoint` |
+| Tool result `details.shape` marker | `pinx.<domain>` | `details.shape = "pinx.exec"` |
+| State directory | `<pi-agent-dir>/pinx/<repo>/…` | `pinx/context-manager/evidence/` |
+
+`pinx` is reserved by this stack; the stable stack's identifiers are documented
+in `docs/REFERENCE-PROJECTS.md` and are never reused.
+
+Consumer rule: unknown `pinx.*` versions and unknown producers are skipped, not
+errors. Producers increment `v` when a shape changes additively; breaking shape
+changes change the kind name.
+
+## 1. Activity events (producers → UI, event bus `pinx.activity`)
+
+Emitted by context-manager, code-runtime, recovery for high-level operations
+the UI must render without parsing prose:
+
+```ts
+interface PinxActivityEvent {
+  v: 1;
+  kind:
+    | "context.archived"        // { chars, ref, preview? }
+    | "context.hygiene"         // { candidates, replaced, protectedCount }
+    | "context.compactionPlanned" | "context.compactionApplied"
+    | "context.checkpoint"      // { checkpointId, summaryLine }
+    | "recovery.replayedPrefix" // { boundary: "text"|"reasoning", entries: number }
+    | "recovery.fallback"       // { reason }
+    | "exec.revisionRepaired"   // { sourceId, fromRev, toRev }
+    | "exec.jobCompleted"       // { jobId, status }
+    | "exec.jobFailed";         // { jobId, status, reason }
+  operationId?: string;         // correlates with tool_execution_start toolCallId when applicable
+  summary: string;              // one human line, ≤ 100 chars
+  detail?: Record<string, unknown>; // typed per kind, rendered at Level 2+
+  ts: number;                   // epoch ms
+}
+```
+
+UI renders `summary` verbatim and `detail` per kind tables. Unknown kinds render
+as generic notices.
+
+## 2. Context status snapshot (context-manager → UI, bus `pinx.context.status`)
+
+```ts
+interface PinxContextStatus {
+  v: 1;
+  contextWindow: number | null;   // provider-reported when known
+  usedTokens: { value: number; source: "provider-reported" | "estimated" };
+  breakdown: Array<{
+    label: "workingSet" | "recent" | "protected" | "recoverable" | "reclaimable";
+    tokens: number; source: "estimated" | "provider-reported";
+  }>;
+  activeEngine?: string;          // engine id, e.g. "generic-verified"
+}
+```
+
+UI never invents subtotals; when this event is absent it falls back to Pi's own
+context meter.
+
+## 3. Evidence reference (persisted; referenced from context_edit markers,
+   batch summaries, checkpoints)
+
+```ts
+interface PinxEvidenceRef {
+  v: 1;
+  id: string;            // store-relative id, e.g. "ev_01H…"
+  sessionId: string;     // owning session
+  entryId: string;       // owning session entry (provenance)
+  sha256: string;        // of archived content
+  bytes: number;
+  mime?: "text/plain" | "text/x-diff" | "application/json";
+  preview?: string;      // ≤ 240 chars head
+  createdAt: string;     // ISO 8601
+}
+```
+
+Inline marker format used inside replacement content:
+
+```text
+[Archived bash output · 18k chars · ref ev_01H…]
+```
+
+Retrieval contract: `pinx.evidence.read` (tool, context-manager) takes
+`{ ref: PinxEvidenceRef | id, offset?, limit? }`; fails closed on any
+provenance/hash/branch mismatch.
+
+## 4. Checkpoint (persisted as `custom` entry, customType `pinx.context.checkpoint`)
+
+```ts
+interface PinxCheckpointData {
+  v: 1;
+  checkpointId: string;
+  atEntryId: string;
+  goal: string[];
+  constraints: string[];
+  decisions: Array<{ decision: string; rationale?: string }>;
+  completed: string[];
+  pending: string[];
+  blockers: string[];
+  files: Array<{ path: string; state: "read" | "modified" | "created" }>;
+  tests?: Array<{ name: string; status: "pass" | "fail"; note?: string }>;
+  evidenceRefs: PinxEvidenceRef[];
+}
+```
+
+## 5. Execution metadata (code-runtime tool `details`, shape `pinx.exec`)
+
+```ts
+interface PinxExecDetails {
+  v: 1;
+  shape: "pinx.exec";
+  sourceId?: string;      // retained source handle
+  revision?: number;
+  runtime?: "node" | "python" | "bash" | "quickjs";
+  calls?: number;         // nested tool calls made
+  durationMs?: number;
+  jobId?: string;         // when backgrounded
+  repairedFrom?: number;  // revision this run repaired
+  replay?: boolean;       // true only for explicitly authorized replays
+}
+```
+
+UI uses these fields for the compact `✓ code · revision 7 · 8 calls · 3.4s`
+line; unknown fields are ignored.
+
+## 6. Recovery state (recovery → UI, bus `pinx.recovery`; journal internal)
+
+```ts
+interface PinxRecoveryStatus {
+  v: 1;
+  state: "idle" | "observing" | "recovering" | "fallback" | "exhausted";
+  attempt?: number;
+  maxAttempts?: number;
+  boundary?: "text" | "reasoning" | "none";
+  reason?: string;        // bounded, human-readable
+}
+```
+
+## 7. Telemetry (any producer → UI, bus `pinx.telemetry`)
+
+```ts
+interface PinxTelemetrySample {
+  v: 1;
+  metric: "ttft" | "tps" | "toolDuration" | "generationDuration" | "streamStall"
+        | "cacheRead" | "cacheWrite";
+  value: number;
+  source: "provider-reported" | "measured" | "estimated";
+  unit: "ms" | "tok/s" | "tokens" | "count";
+  scope?: string;         // e.g. toolCallId
+  ts: number;
+}
+```
+
+UI labels every figure with `source` (U6). Unknown metrics are ignored.
+
+## Channel mechanics
+
+Producers publish via `pi.events.emit(channel, payload)`; the UI subscribes on
+`session_start` and unsubscribes on `session_shutdown`. Payloads are plain
+JSON-serializable objects validated defensively by the consumer (size caps,
+unknown-field tolerance). Bus events are not persisted; durable state uses the
+custom entries / refs above.

@@ -1,0 +1,110 @@
+{
+  "$schema": "./scripts/manifest.schema.json",
+  "stack": "pi-enhancement-next",
+  "updated": "2026-10-04",
+  "pi": {
+    "pinnedVersion": "1.0.2",
+    "verifiedLatestStable": "1.0.2",
+    "verifiedAt": "2026-10-04",
+    "tagCommit": "cd32f7725fdbddbaecdff5b1e68491563394e0ca",
+    "npmPackage": "@earendil-works/pi-coding-agent@1.0.2",
+    "upstreamRepo": "https://github.com/earendil-works/pi",
+    "notes": "Old npm scope @mariozechner/pi-coding-agent is stale (0.73.1); do not use."
+  },
+  "repositories": [
+    {
+      "repo": "make-pi-great-again",
+      "purpose": "Control/meta repository: architecture, contracts, compatibility, migration",
+      "localPath": "D:\\Workspace\\make-pi-great-again",
+      "remoteUrl": "https://github.com/jacek4yang/make-pi-great-again",
+      "currentExperimentalVersion": "0.0.0",
+      "testedPiVersion": "n/a",
+      "requiredPublicPiApis": [],
+      "status": "active"
+    },
+    {
+      "repo": "pi-ui-next",
+      "purpose": "Human-facing TUI enhancement layer: activity timeline, tool renderers, theme system, telemetry presentation",
+      "localPath": "D:\\Workspace\\pi-ui-next",
+      "remoteUrl": "https://github.com/jacek4yang/pi-ui-next",
+      "currentExperimentalVersion": "0.0.0",
+      "testedPiVersion": "1.0.2",
+      "requiredPublicPiApis": [
+        "@earendil-works/pi-coding-agent: ExtensionAPI.registerToolRenderer",
+        "@earendil-works/pi-coding-agent: ExtensionAPI.on(tool_execution_start|update|end)",
+        "@earendil-works/pi-coding-agent: ExtensionAPI.registerCommand/registerMessageRenderer/registerEntryRenderer",
+        "@earendil-works/pi-coding-agent: ctx.ui (widget/status/custom)",
+        "@earendil-works/pi-coding-agent: ToolRenderContext/renderCall/renderResult",
+        "@earendil-works/pi-tui: Component, Text, visibleWidth, truncateToWidth, wrapTextWithAnsi",
+        "@earendil-works/pi-coding-agent: Theme semantic tokens"
+      ],
+      "status": "bootstrap"
+    },
+    {
+      "repo": "pi-context-manager",
+      "purpose": "Context management and session continuity: observability, hygiene, evidence, semantic reduction, checkpoints, compaction engines, recall",
+      "localPath": "D:\\Workspace\\pi-context-manager",
+      "remoteUrl": "https://github.com/jacek4yang/pi-context-manager",
+      "currentExperimentalVersion": "0.0.0",
+      "testedPiVersion": "1.0.2",
+      "requiredPublicPiApis": [
+        "@earendil-works/pi-coding-agent: ExtensionAPI.on(session_before_compact) -> custom compaction",
+        "@earendil-works/pi-coding-agent: turn_end/agent_before_settle BoundaryResult drafts (context_edit, compaction, custom, custom_message)",
+        "@earendil-works/pi-coding-agent: ReadonlySessionManager.getBranch/buildSessionProjection/buildContextEntries/getEntry",
+        "@earendil-works/pi-coding-agent: pi.appendEntry/pi.sendMessage",
+        "@earendil-works/pi-coding-agent: convertToLlm + serializeConversation",
+        "@earendil-works/pi-coding-agent: ctx.modelRegistry.streamSimple (provider-neutral auxiliary calls)",
+        "@earendil-works/pi-coding-agent: ctx.getContextUsage",
+        "@earendil-works/pi-coding-agent: registerTool (recall/inspect tools)"
+      ],
+      "status": "bootstrap"
+    },
+    {
+      "repo": "pi-code-runtime-next",
+      "purpose": "LLM-first compositional code execution: source retention, repair, Edit IR, bounded execution, background jobs",
+      "localPath": "D:\\Workspace\\pi-code-runtime-next",
+      "remoteUrl": "https://github.com/jacek4yang/pi-code-runtime-next",
+      "currentExperimentalVersion": "0.0.0",
+      "testedPiVersion": "1.0.2",
+      "requiredPublicPiApis": [
+        "@earendil-works/pi-coding-agent: ExtensionAPI.registerTool",
+        "@earendil-works/pi-coding-agent: ExtensionToolContext.executeTool (nested calls)",
+        "@earendil-works/pi-coding-agent: withFileMutationQueue",
+        "@earendil-works/pi-coding-agent: pi.appendEntry (source/journal persistence)"
+      ],
+      "status": "bootstrap"
+    },
+    {
+      "repo": "pi-generation-recovery-next",
+      "purpose": "Provider-neutral generation-interruption recovery with narrowly scoped provider replay adapters",
+      "localPath": "D:\\Workspace\\pi-generation-recovery-next",
+      "remoteUrl": "https://github.com/jacek4yang/pi-generation-recovery-next",
+      "currentExperimentalVersion": "0.0.0",
+      "testedPiVersion": "1.0.2",
+      "requiredPublicPiApis": [
+        "@earendil-works/pi-coding-agent: ExtensionAPI.on(provider_stream_event)",
+        "@earendil-works/pi-coding-agent: ExtensionAPI.on(message_end/message_update)",
+        "@earendil-works/pi-coding-agent: ExtensionAPI.on(turn_end/agent_before_settle) BoundaryResult drafts",
+        "@earendil-works/pi-coding-agent: ReadonlySessionManager.getBranch/getEntry",
+        "@earendil-works/pi-coding-agent: pi.appendEntry (recovery journal)"
+      ],
+      "status": "bootstrap"
+    }
+  ],
+  "stableBaselinesReadOnly": [
+    { "repo": "jacek4yang/pi-codebuffer", "localClone": "D:\\Workspace\\make-pi-great-again\\pi-codebuffer" },
+    { "repo": "jacek4yang/pi-context-prune", "localClone": "D:\\Workspace\\make-pi-great-again\\pi-context-prune" },
+    { "repo": "jacek4yang/pi-codex-native-compaction", "localClone": "D:\\Workspace\\make-pi-great-again\\pi-codex-native-compaction" },
+    { "repo": "jacek4yang/pi-generation-recovery", "localClone": "D:\\Workspace\\make-pi-great-again\\pi-generation-recovery" },
+    { "repo": "jacek4yang/pi-agent-profile", "localClone": "D:\\Workspace\\make-pi-great-again\\pi-agent-profile" }
+  ],
+  "branchPlan": {
+    "firstFive": [
+      { "repo": "pi-ui-next", "branch": "feat/activity-timeline" },
+      { "repo": "pi-ui-next", "branch": "feat/nested-code-renderer" },
+      { "repo": "pi-context-manager", "branch": "feat/core-contract" },
+      { "repo": "pi-context-manager", "branch": "feat/hygiene-recall" },
+      { "repo": "pi-context-manager", "branch": "feat/provider-native-engine" }
+    ]
+  }
+}

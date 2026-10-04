@@ -1,0 +1,8 @@
+{
+  "v": 1,
+  "metric": "ttft",
+  "value": 812,
+  "source": "measured",
+  "unit": "ms",
+  "ts": 1759580001000
+}

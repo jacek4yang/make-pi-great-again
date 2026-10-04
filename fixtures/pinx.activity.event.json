@@ -1,0 +1,8 @@
+{
+  "v": 1,
+  "kind": "context.archived",
+  "operationId": "call_01H9",
+  "summary": "Context archived 18k chars",
+  "detail": { "chars": 18432, "ref": "ev_01HXYZ", "preview": "$ npm test\nPASS 143" },
+  "ts": 1759580000000
+}

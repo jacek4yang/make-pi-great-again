@@ -1,0 +1,14 @@
+{
+  "v": 1,
+  "checkpointId": "ck_01HXZZ",
+  "atEntryId": "f6g7h8i9",
+  "goal": ["Refactor context store"],
+  "constraints": ["Do not break golden tests"],
+  "decisions": [{ "decision": "Use append-only context_edit", "rationale": "keeps canonical history intact" }],
+  "completed": ["Evidence store skeleton"],
+  "pending": ["Recall tool"],
+  "blockers": [],
+  "files": [{ "path": "src/evidence/store.ts", "state": "created" }],
+  "tests": [{ "name": "evidence roundtrip", "status": "pass" }],
+  "evidenceRefs": []
+}

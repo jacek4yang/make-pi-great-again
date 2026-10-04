@@ -1,0 +1,8 @@
+{
+  "v": 1,
+  "state": "recovering",
+  "attempt": 1,
+  "maxAttempts": 3,
+  "boundary": "text",
+  "reason": "stream interrupted after completed tool batch"
+}
