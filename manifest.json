@@ -5,11 +5,12 @@
   "pi": {
     "pinnedVersion": "1.0.2",
     "verifiedLatestStable": "1.0.2",
-    "verifiedAt": "2026-10-04",
+    "verifiedAt": "2026-10-05",
     "tagCommit": "cd32f7725fdbddbaecdff5b1e68491563394e0ca",
     "npmPackage": "@earendil-works/pi-coding-agent@1.0.2",
     "upstreamRepo": "https://github.com/earendil-works/pi",
-    "notes": "Old npm scope @mariozechner/pi-coding-agent is stale (0.73.1); do not use."
+    "notes": "Old npm scope @mariozechner/pi-coding-agent is stale (0.73.1); do not use.",
+    "agentInstall": "Owner agent upgraded to Pi 1.0.2 on 2026-10-05; experimental stack installed as local packages"
   },
   "repositories": [
     {
@@ -17,7 +18,7 @@
       "purpose": "Control/meta repository: architecture, contracts, compatibility, migration",
       "localPath": "D:\\Workspace\\make-pi-great-again",
       "remoteUrl": "https://github.com/jacek4yang/make-pi-great-again",
-      "currentExperimentalVersion": "0.0.1",
+      "currentExperimentalVersion": "0.0.2",
       "testedPiVersion": "n/a",
       "requiredPublicPiApis": [],
       "status": "active"
@@ -39,8 +40,18 @@
         "@earendil-works/pi-coding-agent: Theme semantic tokens (unused until theme branch)"
       ],
       "branches": [
-        { "branch": "feat/activity-timeline", "commit": "64b7d93", "checks": "37 tests + pi-load-smoke OK", "status": "review-ready" },
-        { "branch": "feat/nested-code-renderer", "commit": "634dadc", "checks": "48 tests + pi-load-smoke OK", "status": "review-ready" }
+        {
+          "branch": "feat/activity-timeline",
+          "commit": "64b7d93",
+          "checks": "37 tests + pi-load-smoke OK",
+          "status": "review-ready"
+        },
+        {
+          "branch": "feat/nested-code-renderer",
+          "commit": "4f3db2a",
+          "checks": "48 tests + pi-load-smoke OK + live widget/bus wiring",
+          "status": "review-ready"
+        }
       ],
       "status": "experimental"
     },
@@ -60,9 +71,24 @@
         "@earendil-works/pi-coding-agent: getAgentDir"
       ],
       "branches": [
-        { "branch": "feat/core-contract", "commit": "512cc7a", "checks": "15 tests + pi-load-smoke OK", "status": "review-ready" },
-        { "branch": "feat/hygiene-recall", "commit": "d4c47b8", "checks": "27 tests + pi-load-smoke OK (incl. pinx_recall)", "status": "review-ready" },
-        { "branch": "feat/provider-native-engine", "commit": "82e1335", "checks": "35 tests + pi-load-smoke OK", "status": "review-ready" }
+        {
+          "branch": "feat/core-contract",
+          "commit": "512cc7a",
+          "checks": "15 tests + pi-load-smoke OK",
+          "status": "review-ready"
+        },
+        {
+          "branch": "feat/hygiene-recall",
+          "commit": "d4c47b8",
+          "checks": "27 tests + pi-load-smoke OK (incl. pinx_recall)",
+          "status": "review-ready"
+        },
+        {
+          "branch": "feat/provider-native-engine",
+          "commit": "3c5098b",
+          "checks": "35 tests + pi-load-smoke OK + live archive/compaction verification (EVAL-LIVE-20261005.md)",
+          "status": "review-ready"
+        }
       ],
       "status": "experimental"
     },
@@ -101,19 +127,72 @@
     }
   ],
   "stableBaselinesReadOnly": [
-    { "repo": "jacek4yang/pi-codebuffer", "localClone": "D:\\Workspace\\make-pi-great-again\\pi-codebuffer" },
-    { "repo": "jacek4yang/pi-context-prune", "localClone": "D:\\Workspace\\make-pi-great-again\\pi-context-prune" },
-    { "repo": "jacek4yang/pi-codex-native-compaction", "localClone": "D:\\Workspace\\make-pi-great-again\\pi-codex-native-compaction" },
-    { "repo": "jacek4yang/pi-generation-recovery", "localClone": "D:\\Workspace\\make-pi-great-again\\pi-generation-recovery" },
-    { "repo": "jacek4yang/pi-agent-profile", "localClone": "D:\\Workspace\\make-pi-great-again\\pi-agent-profile" }
+    {
+      "repo": "jacek4yang/pi-codebuffer",
+      "localClone": "D:\\Workspace\\make-pi-great-again\\pi-codebuffer"
+    },
+    {
+      "repo": "jacek4yang/pi-context-prune",
+      "localClone": "D:\\Workspace\\make-pi-great-again\\pi-context-prune"
+    },
+    {
+      "repo": "jacek4yang/pi-codex-native-compaction",
+      "localClone": "D:\\Workspace\\make-pi-great-again\\pi-codex-native-compaction"
+    },
+    {
+      "repo": "jacek4yang/pi-generation-recovery",
+      "localClone": "D:\\Workspace\\make-pi-great-again\\pi-generation-recovery"
+    },
+    {
+      "repo": "jacek4yang/pi-agent-profile",
+      "localClone": "D:\\Workspace\\make-pi-great-again\\pi-agent-profile"
+    }
   ],
   "branchPlan": {
     "firstFive": [
-      { "repo": "pi-ui-next", "branch": "feat/activity-timeline" },
-      { "repo": "pi-ui-next", "branch": "feat/nested-code-renderer" },
-      { "repo": "pi-context-manager", "branch": "feat/core-contract" },
-      { "repo": "pi-context-manager", "branch": "feat/hygiene-recall" },
-      { "repo": "pi-context-manager", "branch": "feat/provider-native-engine" }
+      {
+        "repo": "pi-ui-next",
+        "branch": "feat/activity-timeline"
+      },
+      {
+        "repo": "pi-ui-next",
+        "branch": "feat/nested-code-renderer"
+      },
+      {
+        "repo": "pi-context-manager",
+        "branch": "feat/core-contract"
+      },
+      {
+        "repo": "pi-context-manager",
+        "branch": "feat/hygiene-recall"
+      },
+      {
+        "repo": "pi-context-manager",
+        "branch": "feat/provider-native-engine"
+      }
     ]
+  },
+  "agentConfiguration": {
+    "updated": "2026-10-05",
+    "piVersion": "1.0.2",
+    "providersLive": [
+      "intern (direct, glm-5.3)"
+    ],
+    "providersBlocked": [
+      "kimi-coding (403 subscription lacks Kimi Code)"
+    ],
+    "providersOptionalProxy": [
+      "sensenova",
+      "lobsterai-proxy-deespeek"
+    ],
+    "optionalRestoreFiles": [
+      "~/.pi/agent/models.optional-proxies.json",
+      "~/.pi/agent/packages.optional.json"
+    ],
+    "backups": [
+      "models.json.20261005-before-cleanup.bak",
+      "settings.json.20261005-before-pinx.bak"
+    ],
+    "evaluation": "docs/EVAL-LIVE-20261005.md"
   }
 }
