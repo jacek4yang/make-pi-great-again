@@ -1,0 +1,61 @@
+{
+  "arm": "ours-hygiene-off",
+  "run": 1,
+  "model": "intern/glm-5.3",
+  "testsPassed": true,
+  "retentionCorrect": true,
+  "retentionReply": "BT-1007",
+  "totalInputTokens": 1089,
+  "totalOutputTokens": 1260,
+  "totalCacheReadTokens": 65280,
+  "inputByTurn": [
+    106,
+    227,
+    104,
+    21,
+    80,
+    18,
+    205,
+    230,
+    98
+  ],
+  "assistantTurns": 9,
+  "contextEdits": 0,
+  "evidenceRefs": 0,
+  "compactions": 0,
+  "wallClockMs": 95844,
+  "turnLog": [
+    {
+      "turn": 1,
+      "ms": 12126,
+      "ok": true,
+      "tail": "The grep revealed hundreds of recurring \"BUG-TRACE\" scheduler retry warnings in the debug log, and reading src/utils/format.js exposed a planted bug in `formatPercent`, which uses `toFixed(0)` instead of one decimal place."
+    },
+    {
+      "turn": 2,
+      "ms": 81553,
+      "ok": true,
+      "tail": "Fixed — `formatPercent` in src/utils/format.js now rounds to one decimal place and normalizes floating-point noise (via `toPrecision(15)`) so `0.2875` correctly formats as `\"28.8%\"`; `node test/run-tests.js` prints **ALL TESTS PASSED**."
+    },
+    {
+      "turn": 3,
+      "ms": 2165,
+      "ok": true,
+      "tail": "BT-1007"
+    }
+  ],
+  "contextByAssistantTurnTok": [
+    54,
+    5121,
+    5180,
+    5201,
+    5246,
+    5260,
+    5280,
+    5292,
+    5354
+  ],
+  "estimatedMaxContextChars": 21417,
+  "estimatedContextK": 5.4,
+  "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-ksHrWp\\session.jsonl"
+}

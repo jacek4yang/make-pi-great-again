@@ -1,0 +1,59 @@
+{
+  "arm": "baseline",
+  "run": 1,
+  "model": "intern/glm-5.3",
+  "testsPassed": true,
+  "retentionCorrect": true,
+  "retentionReply": "BT-1007",
+  "totalInputTokens": 1291,
+  "totalOutputTokens": 617,
+  "totalCacheReadTokens": 59648,
+  "inputByTurn": [
+    235,
+    100,
+    223,
+    111,
+    170,
+    178,
+    203,
+    71
+  ],
+  "assistantTurns": 8,
+  "contextEdits": 0,
+  "evidenceRefs": 0,
+  "compactions": 0,
+  "wallClockMs": 43381,
+  "turnLog": [
+    {
+      "turn": 1,
+      "ms": 24920,
+      "ok": true,
+      "tail": "I found that the debug log is filled with hundreds of \"BUG-TRACE\" scheduler retry warnings, and `src/utils/format.js` contains a planted bug in `formatPercent` where `toFixed(0)` rounds 0.2875 to \"29%\" instead of the contractually required one decimal place \"28.8%\"."
+    },
+    {
+      "turn": 2,
+      "ms": 16441,
+      "ok": true,
+      "tail": "Fixed: `formatPercent` in `src/utils/format.js` now rounds explicitly to one decimal place (handling the `0.2875 * 100 === 28.749999...` floating-point pitfall), and `node test/run-tests.js` prints ALL TESTS PASSED."
+    },
+    {
+      "turn": 3,
+      "ms": 2020,
+      "ok": true,
+      "tail": "BT-1007"
+    }
+  ],
+  "contextByAssistantTurnTok": [
+    54,
+    5121,
+    5180,
+    5201,
+    5246,
+    5267,
+    5278,
+    5341
+  ],
+  "estimatedMaxContextChars": 21364,
+  "estimatedContextK": 5.3,
+  "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-tTu8xU\\session.jsonl"
+}

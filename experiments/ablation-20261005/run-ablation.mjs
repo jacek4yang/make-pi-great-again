@@ -147,6 +147,11 @@ const arms = onlyArms.length > 0 ? ARMS.filter((a) => onlyArms.includes(a.id)) :
 const summary = [];
 for (const arm of arms) {
   for (let run = 1; run <= RUNS; run++) {
+    console.log(`[${arm.id} run${run}] probing provider health...`);
+    if (!probeUntilHealthy()) {
+      console.error(`[${arm.id} run${run}] provider still over quota; aborting study`);
+      process.exit(2);
+    }
     const ws = mkdtempSync(join(tmpdir(), `pinx-abl-ws-`));
     execFileSync(process.execPath, [join(OUT_DIR, "gen-workspace.mjs", ), ws], { encoding: "utf8" });
     const groundTruth = JSON.parse(readFileSync(join(ws, "ground-truth.json"), "utf8"));
@@ -154,10 +159,13 @@ for (const arm of arms) {
     const sessionFile = join(ws, "session.jsonl");
 
     const turnLog = [];
+    let quotaDead = false;
     for (let t = 0; t < TURNS.length; t++) {
       const r = runTurn(ws, home, sessionFile, TURNS[t], arm);
-      turnLog.push({ turn: t + 1, ms: r.ms, ok: r.ok, tail: (r.stdout || r.stderr).trim().split("\n").pop() });
-      if (t < TURNS.length - 1) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, t === 0 ? 2500 : 1500);
+      const tail = (r.stdout || r.stderr).trim().split("\n").pop() ?? "";
+      turnLog.push({ turn: t + 1, ms: r.ms, ok: r.ok && !tail.includes("quota exceeded"), tail });
+      if (tail.includes("quota exceeded")) { quotaDead = true; break; }
+      if (t < TURNS.length - 1) sleep(t === 0 ? 2500 : 1500);
     }
 
     // Grade: run the test suite the agent was supposed to fix.

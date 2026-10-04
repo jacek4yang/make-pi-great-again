@@ -1,0 +1,65 @@
+{
+  "arm": "ours-hygiene-off",
+  "run": 2,
+  "model": "intern/glm-5.3",
+  "testsPassed": true,
+  "retentionCorrect": false,
+  "retentionReply": "",
+  "totalInputTokens": 857,
+  "totalOutputTokens": 1270,
+  "totalCacheReadTokens": 44544,
+  "inputByTurn": [
+    105,
+    246,
+    115,
+    33,
+    92,
+    31,
+    88,
+    109,
+    38,
+    0,
+    0
+  ],
+  "assistantTurns": 11,
+  "contextEdits": 0,
+  "evidenceRefs": 0,
+  "compactions": 0,
+  "wallClockMs": 315378,
+  "turnLog": [
+    {
+      "turn": 1,
+      "ms": 13989,
+      "ok": true,
+      "tail": "The debug log shows hundreds of recurring `BUG-TRACE` scheduler retry warnings tied to `module=queue`, and `src/utils/format.js` contains a deliberately planted bug where `formatPercent` uses `toFixed(0)` instead of one decimal place, rounding 0.2875 to \"29%\" instead of \"28.8%\"."
+    },
+    {
+      "turn": 2,
+      "ms": 299992,
+      "ok": false,
+      "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"a934c585b19913ac656791b039facc43\"}"
+    },
+    {
+      "turn": 3,
+      "ms": 1397,
+      "ok": false,
+      "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"367d7626ea9cbe69b7929d3687db4c35\"}"
+    }
+  ],
+  "contextByAssistantTurnTok": [
+    54,
+    5121,
+    5180,
+    5201,
+    5246,
+    5259,
+    5475,
+    5488,
+    5508,
+    5520,
+    5582
+  ],
+  "estimatedMaxContextChars": 22329,
+  "estimatedContextK": 5.6,
+  "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-PzrWHt\\session.jsonl"
+}

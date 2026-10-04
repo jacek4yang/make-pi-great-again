@@ -1,0 +1,505 @@
+[
+  {
+    "arm": "baseline",
+    "run": 1,
+    "model": "intern/glm-5.3",
+    "testsPassed": true,
+    "retentionCorrect": true,
+    "retentionReply": "BT-1007",
+    "totalInputTokens": 1291,
+    "totalOutputTokens": 617,
+    "totalCacheReadTokens": 59648,
+    "inputByTurn": [
+      235,
+      100,
+      223,
+      111,
+      170,
+      178,
+      203,
+      71
+    ],
+    "assistantTurns": 8,
+    "contextEdits": 0,
+    "evidenceRefs": 0,
+    "compactions": 0,
+    "wallClockMs": 43381,
+    "turnLog": [
+      {
+        "turn": 1,
+        "ms": 24920,
+        "ok": true,
+        "tail": "I found that the debug log is filled with hundreds of \"BUG-TRACE\" scheduler retry warnings, and `src/utils/format.js` contains a planted bug in `formatPercent` where `toFixed(0)` rounds 0.2875 to \"29%\" instead of the contractually required one decimal place \"28.8%\"."
+      },
+      {
+        "turn": 2,
+        "ms": 16441,
+        "ok": true,
+        "tail": "Fixed: `formatPercent` in `src/utils/format.js` now rounds explicitly to one decimal place (handling the `0.2875 * 100 === 28.749999...` floating-point pitfall), and `node test/run-tests.js` prints ALL TESTS PASSED."
+      },
+      {
+        "turn": 3,
+        "ms": 2020,
+        "ok": true,
+        "tail": "BT-1007"
+      }
+    ],
+    "contextByAssistantTurnTok": [
+      54,
+      5121,
+      5180,
+      5201,
+      5246,
+      5267,
+      5278,
+      5341
+    ],
+    "estimatedMaxContextChars": 21364,
+    "estimatedContextK": 5.3,
+    "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-tTu8xU\\session.jsonl"
+  },
+  {
+    "arm": "baseline",
+    "run": 2,
+    "model": "intern/glm-5.3",
+    "testsPassed": true,
+    "retentionCorrect": true,
+    "retentionReply": "BT-1007",
+    "totalInputTokens": 1515,
+    "totalOutputTokens": 661,
+    "totalCacheReadTokens": 65024,
+    "inputByTurn": [
+      236,
+      101,
+      227,
+      150,
+      209,
+      216,
+      241,
+      135
+    ],
+    "assistantTurns": 8,
+    "contextEdits": 0,
+    "evidenceRefs": 0,
+    "compactions": 0,
+    "wallClockMs": 282004,
+    "turnLog": [
+      {
+        "turn": 1,
+        "ms": 11394,
+        "ok": true,
+        "tail": "The grep revealed hundreds of recurring \"BUG-TRACE\" scheduler retry warnings in logs/debug.log, and reading src/utils/format.js exposed the culprit: `formatPercent` uses `.toFixed(0)` instead of one decimal place, so it rounds 0.2875 to \"29%\" instead of \"28.8%\"."
+      },
+      {
+        "turn": 2,
+        "ms": 268410,
+        "ok": true,
+        "tail": "Fixed: `formatPercent` in `src/utils/format.js` now rounds to one decimal place using explicit round-half-up (`Math.round(x * 1000) / 10`) before formatting, which handles the floating-point edge case where 0.2875 × 100 = 28.75 would otherwise round down to \"28.7\" — and `node test/run-tests.js` now prints **ALL TESTS PASSED**."
+      },
+      {
+        "turn": 3,
+        "ms": 2200,
+        "ok": true,
+        "tail": "BT-1007"
+      }
+    ],
+    "contextByAssistantTurnTok": [
+      54,
+      5121,
+      5180,
+      5201,
+      5246,
+      5267,
+      5278,
+      5341
+    ],
+    "estimatedMaxContextChars": 21364,
+    "estimatedContextK": 5.3,
+    "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-I7xK4K\\session.jsonl"
+  },
+  {
+    "arm": "baseline",
+    "run": 3,
+    "model": "intern/glm-5.3",
+    "testsPassed": true,
+    "retentionCorrect": true,
+    "retentionReply": "BT-1007",
+    "totalInputTokens": 1311,
+    "totalOutputTokens": 1205,
+    "totalCacheReadTokens": 62976,
+    "inputByTurn": [
+      234,
+      127,
+      8,
+      202,
+      5,
+      232,
+      188,
+      213,
+      102
+    ],
+    "assistantTurns": 9,
+    "contextEdits": 0,
+    "evidenceRefs": 0,
+    "compactions": 0,
+    "wallClockMs": 144832,
+    "turnLog": [
+      {
+        "turn": 1,
+        "ms": 15878,
+        "ok": true,
+        "tail": "The debug log is full of recurring `BUG-TRACE BT-1007…BT-1206` scheduler retry warnings (module=queue), and the related planted bug appears to be in `src/utils/format.js`, where `formatPercent` uses `toFixed(0)` instead of one decimal place (e.g. 0.2875 → \"29%\" instead of \"28.8%\")."
+      },
+      {
+        "turn": 2,
+        "ms": 17594,
+        "ok": true,
+        "tail": "Fixed: `formatPercent` in `src/utils/format.js` now rounds to one decimal place (using `Math.round(x * 1000) / 10` to avoid floating-point artifacts like `0.2875 * 100 → 28.749999…`), and `node test/run-tests.js` prints **ALL TESTS PASSED**. No files under `logs/` were touched."
+      },
+      {
+        "turn": 3,
+        "ms": 111360,
+        "ok": true,
+        "tail": "BT-1007"
+      }
+    ],
+    "contextByAssistantTurnTok": [
+      54,
+      5121,
+      5180,
+      5201,
+      5246,
+      5462,
+      5482,
+      5494,
+      5556
+    ],
+    "estimatedMaxContextChars": 22225,
+    "estimatedContextK": 5.6,
+    "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-VICGkj\\session.jsonl"
+  },
+  {
+    "arm": "ours-hygiene-off",
+    "run": 1,
+    "model": "intern/glm-5.3",
+    "testsPassed": true,
+    "retentionCorrect": true,
+    "retentionReply": "BT-1007",
+    "totalInputTokens": 1089,
+    "totalOutputTokens": 1260,
+    "totalCacheReadTokens": 65280,
+    "inputByTurn": [
+      106,
+      227,
+      104,
+      21,
+      80,
+      18,
+      205,
+      230,
+      98
+    ],
+    "assistantTurns": 9,
+    "contextEdits": 0,
+    "evidenceRefs": 0,
+    "compactions": 0,
+    "wallClockMs": 95844,
+    "turnLog": [
+      {
+        "turn": 1,
+        "ms": 12126,
+        "ok": true,
+        "tail": "The grep revealed hundreds of recurring \"BUG-TRACE\" scheduler retry warnings in the debug log, and reading src/utils/format.js exposed a planted bug in `formatPercent`, which uses `toFixed(0)` instead of one decimal place."
+      },
+      {
+        "turn": 2,
+        "ms": 81553,
+        "ok": true,
+        "tail": "Fixed — `formatPercent` in src/utils/format.js now rounds to one decimal place and normalizes floating-point noise (via `toPrecision(15)`) so `0.2875` correctly formats as `\"28.8%\"`; `node test/run-tests.js` prints **ALL TESTS PASSED**."
+      },
+      {
+        "turn": 3,
+        "ms": 2165,
+        "ok": true,
+        "tail": "BT-1007"
+      }
+    ],
+    "contextByAssistantTurnTok": [
+      54,
+      5121,
+      5180,
+      5201,
+      5246,
+      5260,
+      5280,
+      5292,
+      5354
+    ],
+    "estimatedMaxContextChars": 21417,
+    "estimatedContextK": 5.4,
+    "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-ksHrWp\\session.jsonl"
+  },
+  {
+    "arm": "ours-hygiene-off",
+    "run": 2,
+    "model": "intern/glm-5.3",
+    "testsPassed": true,
+    "retentionCorrect": false,
+    "retentionReply": "",
+    "totalInputTokens": 857,
+    "totalOutputTokens": 1270,
+    "totalCacheReadTokens": 44544,
+    "inputByTurn": [
+      105,
+      246,
+      115,
+      33,
+      92,
+      31,
+      88,
+      109,
+      38,
+      0,
+      0
+    ],
+    "assistantTurns": 11,
+    "contextEdits": 0,
+    "evidenceRefs": 0,
+    "compactions": 0,
+    "wallClockMs": 315378,
+    "turnLog": [
+      {
+        "turn": 1,
+        "ms": 13989,
+        "ok": true,
+        "tail": "The debug log shows hundreds of recurring `BUG-TRACE` scheduler retry warnings tied to `module=queue`, and `src/utils/format.js` contains a deliberately planted bug where `formatPercent` uses `toFixed(0)` instead of one decimal place, rounding 0.2875 to \"29%\" instead of \"28.8%\"."
+      },
+      {
+        "turn": 2,
+        "ms": 299992,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"a934c585b19913ac656791b039facc43\"}"
+      },
+      {
+        "turn": 3,
+        "ms": 1397,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"367d7626ea9cbe69b7929d3687db4c35\"}"
+      }
+    ],
+    "contextByAssistantTurnTok": [
+      54,
+      5121,
+      5180,
+      5201,
+      5246,
+      5259,
+      5475,
+      5488,
+      5508,
+      5520,
+      5582
+    ],
+    "estimatedMaxContextChars": 22329,
+    "estimatedContextK": 5.6,
+    "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-PzrWHt\\session.jsonl"
+  },
+  {
+    "arm": "ours-hygiene-off",
+    "run": 3,
+    "model": "intern/glm-5.3",
+    "testsPassed": false,
+    "retentionCorrect": false,
+    "retentionReply": "",
+    "totalInputTokens": 104,
+    "totalOutputTokens": 34,
+    "totalCacheReadTokens": 2816,
+    "inputByTurn": [
+      104,
+      0,
+      0,
+      0
+    ],
+    "assistantTurns": 4,
+    "contextEdits": 0,
+    "evidenceRefs": 0,
+    "compactions": 0,
+    "wallClockMs": 14133,
+    "turnLog": [
+      {
+        "turn": 1,
+        "ms": 11304,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"6f0542fb6fb8c61cb3e183a6a4f5a6e8\"}"
+      },
+      {
+        "turn": 2,
+        "ms": 1392,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"d3c2a88c1309b9d082e8d78c742c2ba0\"}"
+      },
+      {
+        "turn": 3,
+        "ms": 1437,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"2ff9545f100b56d98d0f89a374dd95a3\"}"
+      }
+    ],
+    "contextByAssistantTurnTok": [
+      54,
+      5121,
+      5180,
+      5243
+    ],
+    "estimatedMaxContextChars": 20971,
+    "estimatedContextK": 5.2,
+    "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-FBSUMw\\session.jsonl"
+  },
+  {
+    "arm": "ours-full",
+    "run": 1,
+    "model": "intern/glm-5.3",
+    "testsPassed": false,
+    "retentionCorrect": false,
+    "retentionReply": "",
+    "totalInputTokens": 0,
+    "totalOutputTokens": 0,
+    "totalCacheReadTokens": 0,
+    "inputByTurn": [
+      0,
+      0,
+      0
+    ],
+    "assistantTurns": 3,
+    "contextEdits": 0,
+    "evidenceRefs": 0,
+    "compactions": 0,
+    "wallClockMs": 11120,
+    "turnLog": [
+      {
+        "turn": 1,
+        "ms": 8361,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"72fb34c86093db548ccc0bd48e6ab557\"}"
+      },
+      {
+        "turn": 2,
+        "ms": 1382,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"052bd7b1f122a65d4331016cb2f1cf2d\"}"
+      },
+      {
+        "turn": 3,
+        "ms": 1377,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"9325dc33ff0e4f6f3ba4a12bce37a525\"}"
+      }
+    ],
+    "contextByAssistantTurnTok": [
+      54,
+      113,
+      176
+    ],
+    "estimatedMaxContextChars": 704,
+    "estimatedContextK": 0.2,
+    "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-Gvp07k\\session.jsonl"
+  },
+  {
+    "arm": "ours-full",
+    "run": 2,
+    "model": "intern/glm-5.3",
+    "testsPassed": false,
+    "retentionCorrect": false,
+    "retentionReply": "",
+    "totalInputTokens": 0,
+    "totalOutputTokens": 0,
+    "totalCacheReadTokens": 0,
+    "inputByTurn": [
+      0,
+      0,
+      0
+    ],
+    "assistantTurns": 3,
+    "contextEdits": 0,
+    "evidenceRefs": 0,
+    "compactions": 0,
+    "wallClockMs": 11106,
+    "turnLog": [
+      {
+        "turn": 1,
+        "ms": 8422,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"3a5865f3618914815f3d8770f6670321\"}"
+      },
+      {
+        "turn": 2,
+        "ms": 1349,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"48a5805992d6724b34ec9a8bbec85212\"}"
+      },
+      {
+        "turn": 3,
+        "ms": 1335,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"30f48c2f3c2086372bf970b66b7b1b17\"}"
+      }
+    ],
+    "contextByAssistantTurnTok": [
+      54,
+      113,
+      176
+    ],
+    "estimatedMaxContextChars": 704,
+    "estimatedContextK": 0.2,
+    "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-EGTfzf\\session.jsonl"
+  },
+  {
+    "arm": "ours-full",
+    "run": 3,
+    "model": "intern/glm-5.3",
+    "testsPassed": false,
+    "retentionCorrect": false,
+    "retentionReply": "",
+    "totalInputTokens": 0,
+    "totalOutputTokens": 0,
+    "totalCacheReadTokens": 0,
+    "inputByTurn": [
+      0,
+      0,
+      0
+    ],
+    "assistantTurns": 3,
+    "contextEdits": 0,
+    "evidenceRefs": 0,
+    "compactions": 0,
+    "wallClockMs": 11124,
+    "turnLog": [
+      {
+        "turn": 1,
+        "ms": 8418,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"95bb762094070e40592ae405ea3882ae\"}"
+      },
+      {
+        "turn": 2,
+        "ms": 1360,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"bbb53e0f2168a1d08c5e1d86756f6d32\"}"
+      },
+      {
+        "turn": 3,
+        "ms": 1346,
+        "ok": false,
+        "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"1144096a5fda463538b5a14c707739b3\"}"
+      }
+    ],
+    "contextByAssistantTurnTok": [
+      54,
+      113,
+      176
+    ],
+    "estimatedMaxContextChars": 704,
+    "estimatedContextK": 0.2,
+    "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-QwcAWy\\session.jsonl"
+  }
+]

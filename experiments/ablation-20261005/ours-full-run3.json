@@ -1,0 +1,49 @@
+{
+  "arm": "ours-full",
+  "run": 3,
+  "model": "intern/glm-5.3",
+  "testsPassed": false,
+  "retentionCorrect": false,
+  "retentionReply": "",
+  "totalInputTokens": 0,
+  "totalOutputTokens": 0,
+  "totalCacheReadTokens": 0,
+  "inputByTurn": [
+    0,
+    0,
+    0
+  ],
+  "assistantTurns": 3,
+  "contextEdits": 0,
+  "evidenceRefs": 0,
+  "compactions": 0,
+  "wallClockMs": 11124,
+  "turnLog": [
+    {
+      "turn": 1,
+      "ms": 8418,
+      "ok": false,
+      "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"95bb762094070e40592ae405ea3882ae\"}"
+    },
+    {
+      "turn": 2,
+      "ms": 1360,
+      "ok": false,
+      "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"bbb53e0f2168a1d08c5e1d86756f6d32\"}"
+    },
+    {
+      "turn": 3,
+      "ms": 1346,
+      "ok": false,
+      "tail": "intern API error (429): {\"message\":\"quota exceeded\",\"type\":\"quota_exceeded\",\"param\":null,\"code\":\"quota_exceeded\",\"trace_id\":\"1144096a5fda463538b5a14c707739b3\"}"
+    }
+  ],
+  "contextByAssistantTurnTok": [
+    54,
+    113,
+    176
+  ],
+  "estimatedMaxContextChars": 704,
+  "estimatedContextK": 0.2,
+  "sessionFile": "C:\\Users\\20220\\AppData\\Local\\Temp\\pinx-abl-ws-QwcAWy\\session.jsonl"
+}

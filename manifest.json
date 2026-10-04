@@ -193,6 +193,7 @@
       "models.json.20261005-before-cleanup.bak",
       "settings.json.20261005-before-pinx.bak"
     ],
-    "evaluation": "docs/EVAL-LIVE-20261005.md"
+    "evaluation": "docs/EVAL-LIVE-20261005.md + docs/EVAL-ABLATION-20261005.md",
+    "providerNote": "intern gateway quota exhausted mid-study (429); long-session phase pending quota reset"
   }
 }
