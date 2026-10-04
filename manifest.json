@@ -17,7 +17,7 @@
       "purpose": "Control/meta repository: architecture, contracts, compatibility, migration",
       "localPath": "D:\\Workspace\\make-pi-great-again",
       "remoteUrl": "https://github.com/jacek4yang/make-pi-great-again",
-      "currentExperimentalVersion": "0.0.0",
+      "currentExperimentalVersion": "0.0.1",
       "testedPiVersion": "n/a",
       "requiredPublicPiApis": [],
       "status": "active"
@@ -27,44 +27,51 @@
       "purpose": "Human-facing TUI enhancement layer: activity timeline, tool renderers, theme system, telemetry presentation",
       "localPath": "D:\\Workspace\\pi-ui-next",
       "remoteUrl": "https://github.com/jacek4yang/pi-ui-next",
-      "currentExperimentalVersion": "0.0.0",
+      "currentExperimentalVersion": "0.1.0",
       "testedPiVersion": "1.0.2",
       "requiredPublicPiApis": [
         "@earendil-works/pi-coding-agent: ExtensionAPI.registerToolRenderer",
         "@earendil-works/pi-coding-agent: ExtensionAPI.on(tool_execution_start|update|end)",
-        "@earendil-works/pi-coding-agent: ExtensionAPI.registerCommand/registerMessageRenderer/registerEntryRenderer",
-        "@earendil-works/pi-coding-agent: ctx.ui (widget/status/custom)",
+        "@earendil-works/pi-coding-agent: ExtensionAPI.on(turn_start|session_start)",
+        "@earendil-works/pi-coding-agent: ctx.ui.notify",
         "@earendil-works/pi-coding-agent: ToolRenderContext/renderCall/renderResult",
-        "@earendil-works/pi-tui: Component, Text, visibleWidth, truncateToWidth, wrapTextWithAnsi",
-        "@earendil-works/pi-coding-agent: Theme semantic tokens"
+        "@earendil-works/pi-tui: Text component",
+        "@earendil-works/pi-coding-agent: Theme semantic tokens (unused until theme branch)"
       ],
-      "status": "bootstrap"
+      "branches": [
+        { "branch": "feat/activity-timeline", "commit": "64b7d93", "checks": "37 tests + pi-load-smoke OK", "status": "review-ready" },
+        { "branch": "feat/nested-code-renderer", "commit": "634dadc", "checks": "48 tests + pi-load-smoke OK", "status": "review-ready" }
+      ],
+      "status": "experimental"
     },
     {
       "repo": "pi-context-manager",
       "purpose": "Context management and session continuity: observability, hygiene, evidence, semantic reduction, checkpoints, compaction engines, recall",
       "localPath": "D:\\Workspace\\pi-context-manager",
       "remoteUrl": "https://github.com/jacek4yang/pi-context-manager",
-      "currentExperimentalVersion": "0.0.0",
+      "currentExperimentalVersion": "0.1.0",
       "testedPiVersion": "1.0.2",
       "requiredPublicPiApis": [
         "@earendil-works/pi-coding-agent: ExtensionAPI.on(session_before_compact) -> custom compaction",
-        "@earendil-works/pi-coding-agent: turn_end/agent_before_settle BoundaryResult drafts (context_edit, compaction, custom, custom_message)",
-        "@earendil-works/pi-coding-agent: ReadonlySessionManager.getBranch/buildSessionProjection/buildContextEntries/getEntry",
-        "@earendil-works/pi-coding-agent: pi.appendEntry/pi.sendMessage",
-        "@earendil-works/pi-coding-agent: convertToLlm + serializeConversation",
-        "@earendil-works/pi-coding-agent: ctx.modelRegistry.streamSimple (provider-neutral auxiliary calls)",
+        "@earendil-works/pi-coding-agent: turn_end BoundaryResult drafts (context_edit)",
+        "@earendil-works/pi-coding-agent: ReadonlySessionManager.getBranch/buildSessionProjection/getSessionId/getLeafId",
+        "@earendil-works/pi-coding-agent: pi.appendEntry/pi.registerTool",
         "@earendil-works/pi-coding-agent: ctx.getContextUsage",
-        "@earendil-works/pi-coding-agent: registerTool (recall/inspect tools)"
+        "@earendil-works/pi-coding-agent: getAgentDir"
       ],
-      "status": "bootstrap"
+      "branches": [
+        { "branch": "feat/core-contract", "commit": "512cc7a", "checks": "15 tests + pi-load-smoke OK", "status": "review-ready" },
+        { "branch": "feat/hygiene-recall", "commit": "d4c47b8", "checks": "27 tests + pi-load-smoke OK (incl. pinx_recall)", "status": "review-ready" },
+        { "branch": "feat/provider-native-engine", "commit": "82e1335", "checks": "35 tests + pi-load-smoke OK", "status": "review-ready" }
+      ],
+      "status": "experimental"
     },
     {
       "repo": "pi-code-runtime-next",
       "purpose": "LLM-first compositional code execution: source retention, repair, Edit IR, bounded execution, background jobs",
       "localPath": "D:\\Workspace\\pi-code-runtime-next",
       "remoteUrl": "https://github.com/jacek4yang/pi-code-runtime-next",
-      "currentExperimentalVersion": "0.0.0",
+      "currentExperimentalVersion": "0.1.0",
       "testedPiVersion": "1.0.2",
       "requiredPublicPiApis": [
         "@earendil-works/pi-coding-agent: ExtensionAPI.registerTool",
@@ -72,6 +79,7 @@
         "@earendil-works/pi-coding-agent: withFileMutationQueue",
         "@earendil-works/pi-coding-agent: pi.appendEntry (source/journal persistence)"
       ],
+      "branches": [],
       "status": "bootstrap"
     },
     {
@@ -79,15 +87,16 @@
       "purpose": "Provider-neutral generation-interruption recovery with narrowly scoped provider replay adapters",
       "localPath": "D:\\Workspace\\pi-generation-recovery-next",
       "remoteUrl": "https://github.com/jacek4yang/pi-generation-recovery-next",
-      "currentExperimentalVersion": "0.0.0",
+      "currentExperimentalVersion": "0.1.0",
       "testedPiVersion": "1.0.2",
       "requiredPublicPiApis": [
         "@earendil-works/pi-coding-agent: ExtensionAPI.on(provider_stream_event)",
         "@earendil-works/pi-coding-agent: ExtensionAPI.on(message_end/message_update)",
-        "@earendil-works/pi-coding-agent: ExtensionAPI.on(turn_end/agent_before_settle) BoundaryResult drafts",
+        "@earendil-works/pi-coding-agent: turn_end/agent_before_settle BoundaryResult drafts",
         "@earendil-works/pi-coding-agent: ReadonlySessionManager.getBranch/getEntry",
         "@earendil-works/pi-coding-agent: pi.appendEntry (recovery journal)"
       ],
+      "branches": [],
       "status": "bootstrap"
     }
   ],
