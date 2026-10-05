@@ -249,12 +249,8 @@
     "loadVerification": "7 extensions, 0 errors, 0 warnings (pi-ui-next/scripts/verify-agent-load.mjs)"
   },
   "sync": {
-    "verifiedAt": "2026-10-05",
-    "state": "all local branches pushed; remotes complete for all 5 repositories",
-    "notes": [
-      "pi-ui-next: feat/theme-deep-polish (Gemini-executed polish, 11 commits, 91 tests green) pushed",
-      "pi-code-runtime-next: edit-ir/source-retention/job-runtime/utf8-runtime-env/job-notification-backpressure/pure-output-guidance pushed",
-      "pi-generation-recovery-next: GitHub remote created, main pushed"
-    ]
-  }
+    "verifiedAt": "2026-10-05 (phase 2)",
+    "state": "integration/2026-10-05 pushed in all 4 implementation repos; conformance 49 PASS / 1 documented MISSING (C16); suite-red and strict exit behavior verified"
+  },
+  "integrationManifest": "integration/manifest.json"
 }

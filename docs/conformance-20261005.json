@@ -1,402 +1,1351 @@
 {
+  "generatedAt": "2026-10-05T11:31:56.221Z",
+  "workspace": "D:\\Workspace",
   "results": {
-    "C1": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "evidence markers round-trip",
-        "C12: auxiliary model failure preserves the original context",
-        "C13: already-summarized content is protected from re-reduction"
-      ]
-    },
-    "C2": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "put/get roundtrip preserves content and records provenance"
-      ]
-    },
-    "C3": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "cross-session retrieval is refused",
-        "entryId provenance mismatch fails closed"
-      ]
-    },
-    "C4": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "hash mismatch fails closed",
-        "entryId provenance mismatch fails closed",
-        "malformed refs fail closed before touching the filesystem"
-      ]
-    },
-    "C5": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "recent work stays protected"
-      ]
-    },
-    "C6": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "error tool results are never eligible"
-      ]
-    },
-    "C7": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "evidence write failure aborts the whole batch"
-      ]
-    },
-    "C8": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "an engine error falls through to the next engine"
-      ]
-    },
-    "C9": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "cancellation never commits a partial result"
-      ]
-    },
-    "C10": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "staged compaction is invalidated by a model switch"
-      ]
-    },
-    "C11": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "probe-unsupported engines are skipped and the next engine applies",
-        "a native engine that returns an empty summary is refused, never faked",
-        "protected and small items are skipped with reasons"
-      ]
-    },
-    "C12": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "C12: auxiliary model failure preserves the original context"
-      ]
-    },
-    "C13": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "C13: already-summarized content is protected from re-reduction"
-      ]
-    },
-    "C14": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "hash mismatch fails closed"
-      ]
-    },
-    "C15": {
-      "status": "PASS",
-      "repo": "pi-context-manager",
-      "via": [
-        "oversize content is refused, not truncated",
-        "per-turn edit budget bounds the plan"
-      ]
-    },
     "C16": {
       "status": "MISSING",
       "repo": "pi-context-manager",
-      "note": "no executable test mapped yet"
-    },
-    "R1": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "stale baseRevision is rejected and nothing changes",
-        "code_buffer tool: stale patch is rejected with actionable error"
-      ]
-    },
-    "R2": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "syntax gate: invalid JS is rejected, valid passes",
-        "syntax gate: python compile check works",
-        "code_buffer tool: syntax-invalid draft never executes"
-      ]
-    },
-    "R3": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "failing program marks isError with exit code",
-        "repair marks the revision with the failed run",
-        "code_buffer tool: repair flow marks and requires explicit run"
-      ]
-    },
-    "R4": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "code_buffer tool: repair flow marks and requires explicit run"
-      ]
-    },
-    "R5": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "R5: patch/repair never executes anything implicitly"
-      ]
-    },
-    "R6": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "code_buffer tool: repair flow marks and requires explicit run"
-      ]
-    },
-    "R7": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "runBounded captures output and exit code",
-        "runBounded enforces timeout with tree-kill",
-        "runBounded caps output with UTF-8-safe truncation"
-      ]
-    },
-    "R8": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "runBounded enforces timeout with tree-kill"
-      ]
-    },
-    "R9": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "cancellation propagates and kills the child",
-        "cancel stops a running job",
-        "code_job tool: start from buffer, status, cancel"
-      ]
-    },
-    "R10": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "persisted completion records still flow for every job",
-        "job completes and persists a completion record"
-      ]
-    },
-    "R11": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "runBounded caps output with UTF-8-safe truncation",
-        "decodeBounded never splits multibyte sequences",
-        "python CJK output is UTF-8 clean via forced child env"
-      ]
-    },
-    "R12": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "CRLF text passes through byte-exact"
-      ]
-    },
-    "R13": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "windows cwd with drive letter works"
-      ]
-    },
-    "R14": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "multiple non-overlapping edits apply atomically",
-        "overlapping splices are rejected before any commit",
-        "hash chain binds revisions to their parents"
-      ]
-    },
-    "R15": {
-      "status": "PASS",
-      "repo": "pi-code-runtime-next",
-      "via": [
-        "REGRESSION pi-codebuffer\\#9: a completion backlog never blocks job admission"
-      ]
-    },
-    "V1": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V1: safe completed text prefix is proven and reconstructible"
-      ]
-    },
-    "V2": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V2: thinking blocks are excluded unless the provider adapter verifies them"
-      ]
-    },
-    "V3": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V3/V4/V5: any tool-call block is a hard barrier — fail closed"
-      ]
-    },
-    "V4": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V3/V4/V5: any tool-call block is a hard barrier — fail closed"
-      ]
-    },
-    "V5": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V3/V4/V5: any tool-call block is a hard barrier — fail closed"
-      ]
-    },
-    "V6": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V6: consecutive interruptions are bounded by the attempt budget"
-      ]
-    },
-    "V7": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V7: provider/model/session/branch change invalidates the attempt"
-      ]
-    },
-    "V8": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V8: journal survives reopen"
-      ]
-    },
-    "V9": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V9: corrupt records fail closed to verified prefix"
-      ]
-    },
-    "V10": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V10: truncated final line is tolerated — earlier records survive"
-      ]
-    },
-    "V11": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V11: journal quota triggers deterministic GC"
-      ]
-    },
-    "V12": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V12: cancellation falls back immediately"
-      ]
-    },
-    "V13": {
-      "status": "PASS",
-      "repo": "pi-generation-recovery-next",
-      "via": [
-        "V13: budget exhaustion fails closed with a precise reason"
-      ]
-    },
-    "U1": {
-      "status": "PASS",
-      "repo": "pi-ui-next",
-      "via": [
-        "collapsed projection renders Level 0",
-        "expanded projection renders Level 1 for the expanded node",
-        "a nested failure is visible at Level 0 through the parent row"
-      ]
-    },
-    "U2": {
-      "status": "PASS",
-      "repo": "pi-ui-next",
-      "via": [
-        "a nested failure is visible at Level 0 through the parent row"
-      ]
-    },
-    "U3": {
-      "status": "PASS",
-      "repo": "pi-ui-next",
-      "via": [
-        "all icon sets define non-empty strings for all semantic roles",
-        "nerd icon mode renders harmonized Nerd Font icons in projection",
-        "nerd icon mode renders running icon for active turn"
-      ]
-    },
-    "U4": {
-      "status": "PASS",
-      "repo": "pi-ui-next",
-      "via": [
-        "golden: cjk-long @ 80 cols, unicode",
-        "golden: cjk-long @ 160 cols, unicode",
-        "renderOverviewCard creates framed card with exact requested width"
-      ]
-    },
-    "U5": {
-      "status": "PASS",
-      "repo": "pi-ui-next",
-      "via": [
-        "golden: nested-code-success @ 80 cols, unicode",
-        "golden: nested-code-success @ 120 cols, unicode",
-        "golden: nested-code-success @ 80 cols, ascii"
-      ]
-    },
-    "U6": {
-      "status": "MISSING",
-      "repo": "pi-ui-next",
-      "note": "no executable test mapped yet"
+      "sha": "1f17604",
+      "note": "no test carries this exact invariant tag"
     }
   },
   "perRepo": {
     "pi-context-manager": {
-      "tests": 39,
+      "tests": [
+        {
+          "ok": true,
+          "name": "user/system/assistant content is always protected",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[C6] error tool results are never eligible (C6)",
+          "tags": [
+            "C6"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "mutating tools are never eligible",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "unknown tool output is unsafe by default (protect)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "old successful read-only output is eligible",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[C5] recent work stays protected (C5)",
+          "tags": [
+            "C5"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "items without timestamps fail safe to protected",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "unknown roles fail safe to protected",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "allEligible requires every item to pass",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "estimates are labeled estimated and never claim provider numbers",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "pressure is undefined without a window and clamped otherwise",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[C1] evidence markers round-trip",
+          "tags": [
+            "C1"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "operator-declared extra archivable tools extend the allowlist explicitly",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "deterministic engine records tool evidence and errors without a model (C6)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[C11] probe-unsupported engines are skipped and the next engine applies (C11)",
+          "tags": [
+            "C11"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C8] an engine error falls through to the next engine (C8)",
+          "tags": [
+            "C8"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C9] cancellation never commits a partial result (C9)",
+          "tags": [
+            "C9"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C11] a native engine that returns an empty summary is refused, never faked",
+          "tags": [
+            "C11"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "when every engine fails the selector refuses and state is preserved",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[C10] staged compaction is invalidated by a model switch (C10)",
+          "tags": [
+            "C10"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "native request honors the injected timeout bound",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[C12] C12: auxiliary model failure preserves the original context",
+          "tags": [
+            "C12"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C13] C13: already-summarized content is protected from re-reduction",
+          "tags": [
+            "C13"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C2] put/get roundtrip preserves content and records provenance (C2)",
+          "tags": [
+            "C2"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C14][C4] hash mismatch fails closed (C4/C14)",
+          "tags": [
+            "C14",
+            "C4"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C3] cross-session retrieval is refused (C3)",
+          "tags": [
+            "C3"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C3] entryId provenance mismatch fails closed (C3)",
+          "tags": [
+            "C3"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C15] oversize content is refused, not truncated (C15)",
+          "tags": [
+            "C15"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C4] malformed refs fail closed before touching the filesystem",
+          "tags": [
+            "C4"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "paginated retrieval honors offset/limit",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "dropSession removes evidence without touching other sessions",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[C15] eligible old large outputs produce bounded marker drafts with refs",
+          "tags": [
+            "C15"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C11] protected and small items are skipped with reasons (C5/C6)",
+          "tags": [
+            "C11"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C15] per-turn edit budget bounds the plan",
+          "tags": [
+            "C15"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C7] evidence write failure aborts the whole batch (C7)",
+          "tags": [
+            "C7"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "customTypes live in the pinx namespace",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "the core invariant is recorded verbatim",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "state root is isolated from the stable stack",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "integration: hygiene archive, retained source, and recovery journal agree on one session",
+          "tags": []
+        }
+      ],
       "failed": 0,
-      "suiteOk": true
+      "total": 39,
+      "sha": "1f17604"
     },
     "pi-code-runtime-next": {
-      "tests": 50,
+      "tests": [
+        {
+          "ok": true,
+          "name": "[R7] runBounded captures output and exit code",
+          "tags": [
+            "R7"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R8] runBounded enforces timeout with tree-kill (R8)",
+          "tags": [
+            "R8"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R11][R7] runBounded caps output with UTF-8-safe truncation (R7/R11)",
+          "tags": [
+            "R11",
+            "R7"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R11] decodeBounded never splits multibyte sequences",
+          "tags": [
+            "R11"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R9] cancellation propagates and kills the child (R9)",
+          "tags": [
+            "R9"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "nonzero exit codes are reported, not thrown",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "resolveRuntime finds node and python and bash on this machine (R13)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "executeRuntime returns pinx.exec details and bounded content",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R3] failing program marks isError with exit code (R3)",
+          "tags": [
+            "R3"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R13] windows cwd with drive letter works (R13)",
+          "tags": [
+            "R13"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R11] python CJK output is UTF-8 clean via forced child env",
+          "tags": [
+            "R11"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "utf8ChildEnv forces the decisive variables",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "single exact replace applies (R1 happy path)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "count mismatch is ambiguous, never guessed (R14)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "NOT_FOUND and EMPTY_OLD are explicit errors",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R14] multiple non-overlapping edits apply atomically",
+          "tags": [
+            "R14"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R14] overlapping splices are rejected before any commit",
+          "tags": [
+            "R14"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "range edits respect boundaries and reject bad ranges",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "surrogate-pair splitting is refused (R11)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "adjacent splices (end == next start) are allowed and order-stable",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R12] CRLF text passes through byte-exact",
+          "tags": [
+            "R12"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "empty edit set and oversized sets are rejected",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "details shape marker matches the contract",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "customTypes live in the pinx namespace",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R15] REGRESSION pi-codebuffer\\#9: a completion backlog never blocks job admission",
+          "tags": [
+            "R15"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "status acks the completions it shows (the missing drain path)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "drain returns bounded records and resets counters (settle delivery shape)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R10] persisted completion records still flow for every job (R10)",
+          "tags": [
+            "R10"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R10] job completes and persists a completion record (R10)",
+          "tags": [
+            "R10"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "failing job is marked failed with bounded tail",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R9] cancel stops a running job (R9)",
+          "tags": [
+            "R9"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "concurrent job quota is enforced",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "job history is bounded (R7 policy)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R9] code_job tool: start from buffer, status, cancel",
+          "tags": [
+            "R9"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "save creates revision 1; second save chains revision 2",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R1] stale baseRevision is rejected and nothing changes (R1)",
+          "tags": [
+            "R1"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "patch requires exact match (ambiguity is an error, R14)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R3] repair marks the revision with the failed run (R3/R4)",
+          "tags": [
+            "R3"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "revision quota prunes oldest; partial history replays via verified anchor",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "retired buffers refuse patches and runs",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "rebuildStore replays persisted records and detects corruption",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R2] syntax gate: invalid JS is rejected, valid passes (R2)",
+          "tags": [
+            "R2"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R2] syntax gate: python compile check works",
+          "tags": [
+            "R2"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "code_buffer tool: save → patch → run happy path",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R2] code_buffer tool: syntax-invalid draft never executes (R2)",
+          "tags": [
+            "R2"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R1] code_buffer tool: stale patch is rejected with actionable error (R1)",
+          "tags": [
+            "R1"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R4][R6] code_buffer tool: repair flow marks and requires explicit run (R3/R4/R6)",
+          "tags": [
+            "R4",
+            "R6"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "code_buffer tool: bash buffer with -n gate",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[R14] hash chain binds revisions to their parents (R14)",
+          "tags": [
+            "R14"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[R5] R5: patch/repair never executes anything implicitly",
+          "tags": [
+            "R5"
+          ]
+        }
+      ],
       "failed": 0,
-      "suiteOk": true
+      "total": 50,
+      "sha": "6497d91"
     },
     "pi-generation-recovery-next": {
-      "tests": 15,
+      "tests": [
+        {
+          "ok": true,
+          "name": "EVENT FLOW: interrupted → captured → context injection → completion → recovered",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: normal completed generation does nothing (zero-cost path)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: thinking block only → fallback, no injection (V2)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: tool call in interrupted content → barrier, no injection (V3/V4/V5)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: model change invalidates pending attempt (V7)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: thinking-level change invalidates pending attempt",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: session-tree change invalidates pending attempt",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: tool-loadout change invalidates pending attempt",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: attempt budget exhausts after two recoveries (V6/V13)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: successful recovery then a second interruption recovers again",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: shadow mode journals but never injects",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: disabled mode does nothing at all",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: no partial-text capture without message_end (documented API limitation)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "EVENT FLOW: injection content contains the continuation instruction once",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "customTypes live in the pinx namespace",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "state root is isolated from the stable stack",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "valid hash chain verifies cleanly",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "tampered data with syntactically valid JSON is detected (V9)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "tampered hash is detected",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "tampered prev is detected",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "record deletion (sequence break) is detected",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "record insertion (duplicate n) is detected",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "record reorder is detected",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "middle corruption keeps the verified prefix",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "truncated final line degrades but keeps earlier records (V10)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "append to a degraded journal throws (fail closed)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "truncateToVerified repairs the chain and renumbers from 1",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "GC then reopen verifies the rebuilt chain (renumbered from 1)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "GC then append keeps sequence semantics",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "repeated GC cycles stay verifiable",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "empty journal verifies as empty and is not degraded",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "single-record journal verifies",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "restart after GC verifies (open/verify/append/close/reopen/verify/append)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "maxBytes boundary triggers GC instead of unbounded growth (V11)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "maxRecords boundary triggers GC (V11)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[V1] V1: safe completed text prefix is proven and reconstructible",
+          "tags": [
+            "V1"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V2] V2: thinking blocks are excluded unless the provider adapter verifies them",
+          "tags": [
+            "V2"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V3][V4][V5] V3/V4/V5: any tool-call block is a hard barrier — fail closed",
+          "tags": [
+            "V3",
+            "V4",
+            "V5"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V6] V6: consecutive interruptions are bounded by the attempt budget",
+          "tags": [
+            "V6"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V7] V7: provider/model/session/branch change invalidates the attempt",
+          "tags": [
+            "V7"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V8] V8: journal survives reopen (read back equals written)",
+          "tags": [
+            "V8"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V9] V9: corrupt records fail closed to verified prefix (V9 journal)",
+          "tags": [
+            "V9"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V10] V10: truncated final line is tolerated — earlier records survive",
+          "tags": [
+            "V10"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V11] V11: journal quota triggers deterministic GC",
+          "tags": [
+            "V11"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V12] V12: cancellation falls back immediately",
+          "tags": [
+            "V12"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V13] V13: budget exhaustion fails closed with a precise reason",
+          "tags": [
+            "V13"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "journal hash chain binds every record to its parent",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "continuation instruction is explicit about non-repetition",
+          "tags": []
+        }
+      ],
       "failed": 0,
-      "suiteOk": true
+      "total": 48,
+      "sha": "bbaf4c3"
     },
     "pi-ui-next": {
-      "tests": 91,
+      "tests": [
+        {
+          "ok": true,
+          "name": "[U6] provider-reported context usage is labeled as such",
+          "tags": [
+            "U6"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[U6] estimated figures are labeled estimated, never provider-reported",
+          "tags": [
+            "U6"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[U6] an unknown source can never masquerade as provider-reported",
+          "tags": [
+            "U6"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "golden: nested-code-success @ 80 cols, unicode",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "golden: nested-code-success @ 120 cols, unicode",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "golden: nested-code-success @ 80 cols, ascii",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "golden: failure-visible @ 80 cols, unicode",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "golden: running-state @ 80 cols, unicode",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "golden: cjk-long @ 80 cols, unicode",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "golden: cjk-long @ 160 cols, unicode",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "golden set covers the required scenario matrix",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "UPDATE_GOLDENS is not set in normal runs",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[U3] all icon sets define non-empty strings for all semantic roles",
+          "tags": [
+            "U3"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[U3] nerd icon mode renders harmonized Nerd Font icons in projection (U3, U5)",
+          "tags": [
+            "U3"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[U3] nerd icon mode renders running icon for active turn",
+          "tags": [
+            "U3"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "stack info exposes the pinx namespace and contract version",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "consumed channels are namespaced",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderOverviewCard creates framed card with exact requested width (U4)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderOverviewCard displays failures in dedicated section",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderOverviewCard displays evidence references when present",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[U4] renderOverviewCard aligns CJK content safely to width",
+          "tags": [
+            "U4"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "createOverviewComponent returns a renderable Component",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[U1] collapsed projection renders Level 0",
+          "tags": [
+            "U1"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[U1] expanded projection renders Level 1 for the expanded node",
+          "tags": [
+            "U1"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[U1][U2] a nested failure is visible at Level 0 through the parent row (U2)",
+          "tags": [
+            "U1",
+            "U2"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "running calls show their title and live duration",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "a running call without a title falls back to an ellipsis",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[U5] ascii mode keeps the same layout with different icons",
+          "tags": [
+            "U5"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[U4] lines never exceed the requested width with CJK paths",
+          "tags": [
+            "U4"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "formatDuration covers ms/s/m ranges",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "read results summarize as line counts",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "grep/find results summarize as match counts",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "edit/write summarize without leaking content",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "error results never get a success summary",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "generic fallback keeps unknown tools readable and bounded",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "pinx.exec details produce the compact execution line",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "pinx.exec repair and job metadata render explicitly",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "pinx.exec authorized replay is always labeled",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "isPinxExecDetails rejects foreign or malformed details",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "resultPreview bounds expanded output",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "formatMs covers ranges",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderStatusIcon colors according to semantic roles (U3)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "basic text emphasis helpers apply correct semantic tokens",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderDiffStat colors additions and deletions",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderDiffLine differentiates +, -, @@ and normal text",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderProgressBar renders 10 blocks with 50%/80% threshold tiers",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[U4] truncateMiddlePath keeps endpoints and bounds visible width",
+          "tags": [
+            "U4"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "collapseCommand single-lines and bounds commands to 48 cols",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "formatFooterBadge handles success and non-zero exit codes truthfully (U6)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "calls preserve start order even when completed out of order",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "nested calls attach via parentToolCallId",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "failures remain failures even when the parent succeeds (U2)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "unknown end events are ignored and duplicate starts collapse",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "cancelRunning marks only running calls cancelled",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "partial previews are bounded",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "turn cap drops extra calls and flags it",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "turn pruning keeps the timeline bounded",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "reset clears everything",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderCallLine formats tool name with toolTitle and args with muted",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "read result renders path, line count, preview and proper tokens",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "grep and find render match count and matched preview lines",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "edit renders diff stats and colors diff preview lines with diff tokens",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "write renders path and written indicator",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "bash renders command, output, and footer badge with exit code",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "code/node/python with pinx.exec details renders compact execution line and footer",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "partial result renders running icon with accent token",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "preview line count respects expanded vs inline bounds",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "createToolRendererResolver yields to inherited but intercepts pinx.exec",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "isCodeExecutionTool identifies code/shell tools and args with source/command",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderCallBlock collapses multi-line code to single line badge by default and expands on demand",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderCallBlock formats single-line and multi-line bash calls",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderCallBlock single-line python renders inline",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderResultLines strips embedded runtime exit trailer preventing duplicate footers",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderResultLines formats python traceback with styled frames and error name",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "createToolRendererResolver intercepts python tool calls and results even when inherited has no renderCall",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "splitOutputLines normalizes CRLF and trims trailing exit trailers without adding ghost blank lines",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "splitOutputLines preserves intentional empty print line",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "splitOutputLines collapses multiple consecutive empty lines to at most one",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "renderResultLines outputs compact adjacent lines without phantom spacing on Windows CRLF",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "formatK formats numbers into compact k-suffixes",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "buildWidgetLines returns empty when timeline has no turns",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "Line 1 renders running status, duration, call count and warnings for failures",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[U4] Line 2 renders context pressure bar and truthful token figures",
+          "tags": [
+            "U4"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "Line 3 renders latest activity with accent token",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[U4] widget lines are safely bounded to terminal width (U4 CJK safe)",
+          "tags": [
+            "U4"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[U5] ascii text measures as length",
+          "tags": [
+            "U5"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[U4] CJK characters count as two columns",
+          "tags": [
+            "U4"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "combining and zero-width characters count as zero",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "ANSI escapes are ignored",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[U4] truncateToWidth keeps wide characters whole",
+          "tags": [
+            "U4"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "truncateToWidth preserves escapes within the kept region",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "truncateToWidth never splits surrogate pairs",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "padEndToWidth aligns by visible columns",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "charWidth basic classification",
+          "tags": []
+        }
+      ],
       "failed": 0,
-      "suiteOk": true
+      "total": 94,
+      "sha": "f270dca"
     }
   }
 }
