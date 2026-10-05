@@ -249,8 +249,17 @@
     "loadVerification": "7 extensions, 0 errors, 0 warnings (pi-ui-next/scripts/verify-agent-load.mjs)"
   },
   "sync": {
-    "verifiedAt": "2026-10-05 (phase 2)",
-    "state": "integration/2026-10-05 pushed in all 4 implementation repos; conformance 49 PASS / 1 documented MISSING (C16); suite-red and strict exit behavior verified"
+    "verifiedAt": "2026-10-05 (RC-hardening phase)",
+    "state": "integration/2026-10-05 pushed in all repos at final SHAs; strict conformance 50/50; exact-SHA worktree integration gate green; 30s deterministic soak green",
+    "ciTriggers": "all-branch push + pull_request in all 4 implementation repos"
   },
-  "integrationManifest": "integration/manifest.json"
+  "integrationManifest": "integration/manifest.json",
+  "rcGates": {
+    "standaloneCi": "green locally in isolated exact-revision checkouts; remote Actions evidence pending/in-progress",
+    "strictConformance": "50 PASS / 0 FAIL / 0 MISSING (C16 implemented; C16+U6 real)",
+    "integrationGate": "worktrees materialized at pinned SHAs; cross-layer suite green; self-test wrong-SHA fails",
+    "soak": "30s deterministic event-path soak: 18,623 cycles, 100% recovered, 0 storms, journal bounded (134 KB)",
+    "liveProvider": "intern quota 429; kimi-coding 403 subscription — deterministic adapter coverage only, live validation pending quota",
+    "syntheticBenchmark": "projected-context microbenchmark only — chars/4 estimates, never provider billing tokens"
+  }
 }

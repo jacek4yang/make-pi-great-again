@@ -1,17 +1,521 @@
 {
-  "generatedAt": "2026-10-05T11:31:56.221Z",
+  "generatedAt": "2026-10-05T13:27:25.898Z",
   "workspace": "D:\\Workspace",
   "results": {
-    "C16": {
-      "status": "MISSING",
+    "C1": {
+      "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "1f17604",
-      "note": "no test carries this exact invariant tag"
+      "sha": "b990dc9",
+      "via": [
+        "[C1] checkpoint carries references, not canonical evidence content",
+        "[C1] evidence markers round-trip"
+      ]
+    },
+    "C2": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C2] put/get roundtrip preserves content and records provenance (C2)"
+      ]
+    },
+    "C3": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C3] cross-session retrieval is refused (C3)",
+        "[C3] entryId provenance mismatch fails closed (C3)"
+      ]
+    },
+    "C4": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C4] session provenance mismatch is rejected (fail closed)",
+        "[C14][C4] hash mismatch fails closed (C4/C14)",
+        "[C4] malformed refs fail closed before touching the filesystem"
+      ]
+    },
+    "C5": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C5] recent work stays protected (C5)"
+      ]
+    },
+    "C6": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C6] error tool results are never eligible (C6)"
+      ]
+    },
+    "C7": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C7] evidence write failure aborts the whole batch (C7)"
+      ]
+    },
+    "C8": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C8] an engine error falls through to the next engine (C8)"
+      ]
+    },
+    "C9": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C9] cancellation never commits a partial result (C9)"
+      ]
+    },
+    "C10": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C10] staged compaction is invalidated by a model switch (C10)"
+      ]
+    },
+    "C11": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C11] probe-unsupported engines are skipped and the next engine applies (C11)",
+        "[C11] a native engine that returns an empty summary is refused, never faked",
+        "[C11] protected and small items are skipped with reasons (C5/C6)"
+      ]
+    },
+    "C12": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C12] C12: auxiliary model failure preserves the original context"
+      ]
+    },
+    "C13": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C13] C13: already-summarized content is protected from re-reduction"
+      ]
+    },
+    "C14": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C14][C4] hash mismatch fails closed (C4/C14)"
+      ]
+    },
+    "C15": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C15] checkpoint storage remains bounded (history cap)",
+        "[C15] oversize content is refused, not truncated (C15)",
+        "[C15] eligible old large outputs produce bounded marker drafts with refs"
+      ]
+    },
+    "C16": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "sha": "b990dc9",
+      "via": [
+        "[C16] latest valid checkpoint wins (repeated reopen is idempotent)",
+        "[C16] corrupt newest checkpoint falls back to the next-newest valid one",
+        "[C16] model/provider mismatch invalidates restored state (stale staged work)"
+      ]
+    },
+    "R1": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R1] stale baseRevision is rejected and nothing changes (R1)",
+        "[R1] code_buffer tool: stale patch is rejected with actionable error (R1)"
+      ]
+    },
+    "R2": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R2] syntax gate: invalid JS is rejected, valid passes (R2)",
+        "[R2] syntax gate: python compile check works",
+        "[R2] code_buffer tool: syntax-invalid draft never executes (R2)"
+      ]
+    },
+    "R3": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R3] failing program marks isError with exit code (R3)",
+        "[R3] repair marks the revision with the failed run (R3/R4)"
+      ]
+    },
+    "R4": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R4][R6] code_buffer tool: repair flow marks and requires explicit run (R3/R4/R6)"
+      ]
+    },
+    "R5": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R5] R5: patch/repair never executes anything implicitly"
+      ]
+    },
+    "R6": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R4][R6] code_buffer tool: repair flow marks and requires explicit run (R3/R4/R6)"
+      ]
+    },
+    "R7": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R7] runBounded captures output and exit code",
+        "[R11][R7] runBounded caps output with UTF-8-safe truncation (R7/R11)"
+      ]
+    },
+    "R8": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R8] runBounded enforces timeout with tree-kill (R8)"
+      ]
+    },
+    "R9": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R9] cancellation propagates and kills the child (R9)",
+        "[R9] cancel stops a running job (R9)",
+        "[R9] code_job tool: start from buffer, status, cancel"
+      ]
+    },
+    "R10": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R10] persisted completion records still flow for every job (R10)",
+        "[R10] job completes and persists a completion record (R10)"
+      ]
+    },
+    "R11": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R11][R7] runBounded caps output with UTF-8-safe truncation (R7/R11)",
+        "[R11] decodeBounded never splits multibyte sequences",
+        "[R11] python CJK output is UTF-8 clean via forced child env"
+      ]
+    },
+    "R12": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R12] CRLF text passes through byte-exact"
+      ]
+    },
+    "R13": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R13] windows cwd with drive letter works (R13)"
+      ]
+    },
+    "R14": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R14] multiple non-overlapping edits apply atomically",
+        "[R14] overlapping splices are rejected before any commit",
+        "[R14] hash chain binds revisions to their parents (R14)"
+      ]
+    },
+    "R15": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "sha": "66f96de",
+      "via": [
+        "[R15] REGRESSION pi-codebuffer\\#9: a completion backlog never blocks job admission"
+      ]
+    },
+    "V1": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V1] V1: safe completed text prefix is proven and reconstructible"
+      ]
+    },
+    "V2": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V2] V2: thinking blocks are excluded unless the provider adapter verifies them"
+      ]
+    },
+    "V3": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V3][V4][V5] V3/V4/V5: any tool-call block is a hard barrier — fail closed"
+      ]
+    },
+    "V4": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V3][V4][V5] V3/V4/V5: any tool-call block is a hard barrier — fail closed"
+      ]
+    },
+    "V5": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V3][V4][V5] V3/V4/V5: any tool-call block is a hard barrier — fail closed"
+      ]
+    },
+    "V6": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V6] V6: consecutive interruptions are bounded by the attempt budget"
+      ]
+    },
+    "V7": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V7] V7: provider/model/session/branch change invalidates the attempt"
+      ]
+    },
+    "V8": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V8] V8: journal survives reopen (read back equals written)"
+      ]
+    },
+    "V9": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V9] V9: corrupt records fail closed to verified prefix (V9 journal)"
+      ]
+    },
+    "V10": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V10] truncated final line on reopen auto-recovers safely (no degraded state)",
+        "[V10] truncated final line followed by append continues normally",
+        "[V10] truncated tail then reopen and append again (multi-cycle)"
+      ]
+    },
+    "V11": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V11] V11: journal quota triggers deterministic GC"
+      ]
+    },
+    "V12": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V12] V12: cancellation falls back immediately"
+      ]
+    },
+    "V13": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "sha": "1cc1af4",
+      "via": [
+        "[V13] V13: budget exhaustion fails closed with a precise reason"
+      ]
+    },
+    "U1": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "sha": "6eaf790",
+      "via": [
+        "[U1] collapsed projection renders Level 0",
+        "[U1] expanded projection renders Level 1 for the expanded node",
+        "[U1][U2] a nested failure is visible at Level 0 through the parent row (U2)"
+      ]
+    },
+    "U2": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "sha": "6eaf790",
+      "via": [
+        "[U1][U2] a nested failure is visible at Level 0 through the parent row (U2)"
+      ]
+    },
+    "U3": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "sha": "6eaf790",
+      "via": [
+        "[U3] all icon sets define non-empty strings for all semantic roles",
+        "[U3] nerd icon mode renders harmonized Nerd Font icons in projection (U3, U5)",
+        "[U3] nerd icon mode renders running icon for active turn"
+      ]
+    },
+    "U4": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "sha": "6eaf790",
+      "via": [
+        "[U4] renderOverviewCard aligns CJK content safely to width",
+        "[U4] lines never exceed the requested width with CJK paths",
+        "[U4] truncateMiddlePath keeps endpoints and bounds visible width"
+      ]
+    },
+    "U5": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "sha": "6eaf790",
+      "via": [
+        "[U5] ascii mode keeps the same layout with different icons",
+        "[U5] ascii text measures as length"
+      ]
+    },
+    "U6": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "sha": "6eaf790",
+      "via": [
+        "[U6] provider-reported context usage is labeled as such",
+        "[U6] estimated figures are labeled estimated, never provider-reported",
+        "[U6] an unknown source can never masquerade as provider-reported"
+      ]
     }
   },
   "perRepo": {
     "pi-context-manager": {
       "tests": [
+        {
+          "ok": true,
+          "name": "[C16] latest valid checkpoint wins (repeated reopen is idempotent)",
+          "tags": [
+            "C16"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C16] corrupt newest checkpoint falls back to the next-newest valid one",
+          "tags": [
+            "C16"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C4] session provenance mismatch is rejected (fail closed)",
+          "tags": [
+            "C4"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C16] model/provider mismatch invalidates restored state (stale staged work)",
+          "tags": [
+            "C16"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C15] checkpoint storage remains bounded (history cap)",
+          "tags": [
+            "C15"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C16] empty/new session has no checkpoint and restores nothing",
+          "tags": [
+            "C16"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C1] checkpoint carries references, not canonical evidence content",
+          "tags": [
+            "C1"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C16] reopen: hygiene commit persists checkpoint → new instance restores generation + evidence refs",
+          "tags": [
+            "C16"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C16] provider/model mismatch on reopen leaves generation unset (stale staged state not reused)",
+          "tags": [
+            "C16"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C16] empty/new session restores nothing (generation stays 0)",
+          "tags": [
+            "C16"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[C16] checkpoint is not persisted without a hygiene commit",
+          "tags": [
+            "C16"
+          ]
+        },
         {
           "ok": true,
           "name": "user/system/assistant content is always protected",
@@ -242,16 +746,11 @@
           "ok": true,
           "name": "state root is isolated from the stable stack",
           "tags": []
-        },
-        {
-          "ok": true,
-          "name": "integration: hygiene archive, retained source, and recovery journal agree on one session",
-          "tags": []
         }
       ],
       "failed": 0,
-      "total": 39,
-      "sha": "1f17604"
+      "total": 49,
+      "sha": "b990dc9"
     },
     "pi-code-runtime-next": {
       "tests": [
@@ -560,7 +1059,7 @@
       ],
       "failed": 0,
       "total": 50,
-      "sha": "6497d91"
+      "sha": "66f96de"
     },
     "pi-generation-recovery-next": {
       "tests": [
@@ -686,7 +1185,7 @@
         },
         {
           "ok": true,
-          "name": "truncated final line degrades but keeps earlier records (V10)",
+          "name": "V10: truncated final line is classified as recoverable tail truncation",
           "tags": []
         },
         {
@@ -737,6 +1236,47 @@
         {
           "ok": true,
           "name": "maxRecords boundary triggers GC (V11)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "[V10] truncated final line on reopen auto-recovers safely (no degraded state)",
+          "tags": [
+            "V10"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V10] truncated final line followed by append continues normally",
+          "tags": [
+            "V10"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "[V10] truncated tail then reopen and append again (multi-cycle)",
+          "tags": [
+            "V10"
+          ]
+        },
+        {
+          "ok": true,
+          "name": "valid prefix remains semantically equivalent after tail repair",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "middle invalid JSON remains HARD corruption (not tail-truncation)",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "valid-JSON tampering remains HARD corruption even in the final line",
+          "tags": []
+        },
+        {
+          "ok": true,
+          "name": "GC followed by crash-tail truncation followed by reopen remains valid",
           "tags": []
         },
         {
@@ -830,8 +1370,8 @@
         }
       ],
       "failed": 0,
-      "total": 48,
-      "sha": "bbaf4c3"
+      "total": 55,
+      "sha": "1cc1af4"
     },
     "pi-ui-next": {
       "tests": [
@@ -1345,7 +1885,7 @@
       ],
       "failed": 0,
       "total": 94,
-      "sha": "f270dca"
+      "sha": "6eaf790"
     }
   }
 }

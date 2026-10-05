@@ -9,6 +9,7 @@ import { spawnSync } from "node:child_process";
 import { existsSync, mkdtempSync, rmSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const metaRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");

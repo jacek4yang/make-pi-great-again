@@ -1,0 +1,6 @@
+{
+  "name": "make-pi-great-again",
+  "private": true,
+  "type": "module",
+  "description": "Control/meta repository for the experimental Pi enhancement stack (pinx)"
+}
