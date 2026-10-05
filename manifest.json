@@ -194,6 +194,21 @@
       "settings.json.20261005-before-pinx.bak"
     ],
     "evaluation": "docs/EVAL-LIVE-20261005.md + docs/EVAL-ABLATION-20261005.md",
-    "providerNote": "intern gateway quota exhausted mid-study (429); long-session phase pending quota reset"
+    "providerNote": "intern gateway quota exhausted mid-study (429); long-session phase pending quota reset",
+    "replacement": "2026-10-05: old-generation plugins fully replaced by the pinx stack in the live agent",
+    "livePackages": [
+      "npm:@ff-labs/pi-fff",
+      "npm:@narumitw/pi-lsp",
+      "D:\\Workspace\\pi-ui-next",
+      "D:\\Workspace\\pi-context-manager",
+      "D:\\Workspace\\pi-code-runtime-next",
+      "D:\\Workspace\\pi-generation-recovery-next"
+    ],
+    "replacedOldPackages": [
+      "npm:pi-context-prune",
+      "git:github.com/championswimmer/pi-context-usage",
+      "git:github.com/jacek4yang/pi-engineering-kit@v0.2.0"
+    ],
+    "loadVerification": "7 extensions, 0 errors, 0 warnings (pi-ui-next/scripts/verify-agent-load.mjs)"
   }
 }
