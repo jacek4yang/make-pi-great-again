@@ -14,7 +14,45 @@ import { fileURLToPath } from "node:url";
 
 const metaRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const workspace = process.env.PINX_WORKSPACE ?? resolve(metaRoot, "..");
+const KNOWN_REPOS = ["pi-context-manager", "pi-code-runtime-next", "pi-generation-recovery-next", "pi-ui-next"];
+
+function validateManifest(manifest) {
+  const errors = [];
+  if (manifest.integrationLine !== "integration/2026-10-05") errors.push(`integrationLine mismatch: ${manifest.integrationLine}`);
+  if (manifest.contractVersion !== 1) errors.push(`contractVersion must be 1, got ${manifest.contractVersion}`);
+  if (!/^\d+\.\d+\.\d+$/.test(manifest.pi?.version ?? "")) errors.push("pi.version missing or invalid");
+  const seen = new Set();
+  for (const r of manifest.repositories ?? []) {
+    if (!KNOWN_REPOS.includes(r.repo)) errors.push(`unknown repository: ${r.repo}`);
+    if (seen.has(r.repo)) errors.push(`duplicate repository entry: ${r.repo}`);
+    seen.add(r.repo);
+    if (!/^[0-9a-f]{40}$/.test(r.sha ?? "")) errors.push(`${r.repo}: invalid sha format`);
+    if (!r.integrationBranch) errors.push(`${r.repo}: missing integrationBranch`);
+  }
+  for (const repo of KNOWN_REPOS) {
+    if (!seen.has(repo)) errors.push(`missing repository entry: ${repo}`);
+  }
+  return errors;
+}
+
+// Integration branch ref must resolve AND equal the manifest SHA. An old
+// valid manifest commit must NOT pass when the branch has advanced.
+function verifyIntegrationRef(root, repo, manifestSha, integrationBranch) {
+  const ref = spawnSync("git", ["-C", root, "rev-parse", "--verify", `refs/heads/${integrationBranch}`], { encoding: "utf8" });
+  if (ref.status !== 0) return `FAIL ${repo}: integration branch ${integrationBranch} does not resolve locally`;
+  const branchHead = ref.stdout.trim();
+  if (branchHead !== manifestSha) {
+    return `FAIL ${repo}: integration branch HEAD ${branchHead.slice(0, 12)} != manifest SHA ${manifestSha.slice(0, 12)} (manifest stale or branch advanced)`;
+  }
+  return null;
+}
+
 const manifest = JSON.parse(readFileSync(join(metaRoot, "integration", "manifest.json"), "utf8"));
+const manifestErrors = validateManifest(manifest);
+if (manifestErrors.length > 0) {
+  console.error("FATAL: manifest validation failed:", manifestErrors.join("; "));
+  process.exit(3);
+}
 const workRoot = mkdtempSync(join(tmpdir(), "pinx-integration-wt-"));
 const worktrees = [];
 
@@ -40,6 +78,13 @@ try {
     const cat = spawnSync("git", ["-C", root, "cat-file", "-e", `${entry.sha}^{commit}`], { encoding: "utf8" });
     if (cat.status !== 0) {
       console.error(`FAIL ${entry.repo}: pinned commit ${entry.sha.slice(0, 12)} does not exist`);
+      failed = true;
+      continue;
+    }
+    // integration branch ref must resolve and equal the manifest SHA
+    const refProblem = verifyIntegrationRef(root, entry.repo, entry.sha, entry.integrationBranch ?? "integration/2026-10-05");
+    if (refProblem) {
+      console.error(refProblem);
       failed = true;
       continue;
     }

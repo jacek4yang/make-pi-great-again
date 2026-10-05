@@ -3,16 +3,16 @@
   "created": "2026-10-05",
   "contractVersion": 1,
   "pi": {
-    "version": "1.0.2",
-    "npmPackage": "@earendil-works/pi-coding-agent@1.0.2"
+    "version": "1.0.3",
+    "npmPackage": "@earendil-works/pi-coding-agent@1.0.3"
   },
-  "requiredInvariantSet": "C1-C15, R1-R15, V1-V13, U1-U6 (C16/U6 intentionally MISSING)",
+  "requiredInvariantSet": "C1-C16, R1-R15, V1-V13, U1-U6 (all 50 executable, all PASS)",
   "repositories": [
     {
       "repo": "pi-context-manager",
       "branch": "feat/provider-native-engine",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "94ae422619d3536739f6372d988effb38037ec32",
+      "sha": "f00aeb451fa23bc0d0d1b5399bf7690b821750b9",
       "contractVersion": 1
     },
     {
@@ -26,8 +26,10 @@
       "repo": "pi-generation-recovery-next",
       "branch": "feat/recovery-core",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "c3f820b3d379ef9a3fe51e871c893edffc3e77b0",
-      "contractVersion": 1
+      "sha": "f29d04c2702c400025413d768d7d86abbd17d741",
+      "contractVersion": 1,
+      "sourceBranch": "feat/integrity-hardening",
+      "sourceBranchNote": "informational only; integrationBranch + sha are authoritative"
     },
     {
       "repo": "pi-ui-next",

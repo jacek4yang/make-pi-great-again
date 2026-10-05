@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["integrationLine", "pi", "contractVersion", "repositories"],
+  "properties": {
+    "integrationLine": { "type": "string", "pattern": "^integration/\d{4}-\d{2}-\d{2}$" },
+    "pi": {
+      "type": "object",
+      "required": ["version"],
+      "properties": { "version": { "type": "string", "pattern": "^\d+\.\d+\.\d+$" } }
+    },
+    "contractVersion": { "type": "integer", "const": 1 },
+    "repositories": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["repo", "integrationBranch", "sha", "contractVersion"],
+        "properties": {
+          "repo": { "enum": ["pi-context-manager", "pi-code-runtime-next", "pi-generation-recovery-next", "pi-ui-next"] },
+          "integrationBranch": { "type": "string" },
+          "sha": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+          "contractVersion": { "type": "integer", "const": 1 },
+          "sourceBranch": { "type": "string" }
+        }
+      }
+    }
+  }
+}

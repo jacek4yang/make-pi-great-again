@@ -200,7 +200,11 @@
     },
     "U6": {
       "repo": "pi-ui-next",
-      "test": "MISSING-PLACEHOLDER"
+      "test": "exact [U6] tag"
+    },
+    "R16": {
+      "repo": "pi-code-runtime-next",
+      "test": "exact [R16] tag"
     }
   }
 }

@@ -6,12 +6,12 @@ Status: normative. Verified 2026-10-04.
 
 | Field | Value |
 |---|---|
-| Latest stable release | **v1.0.2** (non-prerelease) |
-| Released | 2026-10-04 |
+| Latest stable release | **v1.0.3** (non-prerelease; supersedes v1.0.2 published 2026-10-04) |
+| Released | 2026-10-05 |
 | Upstream repository | https://github.com/earendil-works/pi |
-| Tag commit | `cd32f7725fdbddbaecdff5b1e68491563394e0ca` |
-| npm package | `@earendil-works/pi-coding-agent@1.0.2` |
-| TUI package | `@earendil-works/pi-tui` (same tag) |
+| Tag commit | v1.0.3 tag (verified 2026-10-05 against npm `@earendil-works/pi-coding-agent@1.0.3`) |
+| npm package | `@earendil-works/pi-coding-agent@1.0.3` |
+| TUI package | `@earendil-works/pi-tui@1.0.3` (lockstep release) |
 | Node requirement | ≥ 22.19 (per upstream) |
 
 The old npm scope `@mariozechner/pi-coding-agent` is stale at 0.73.1 (last
@@ -132,3 +132,22 @@ without an ADR.
 - Old-Pi shims, version fallback chains, deprecated event emulation.
 - Reading or writing `auth.json`, provider tokens, or cookies (Pi owns auth).
 - Replacing Pi's executor, session store, or provider layer.
+
+
+## v1.0.2 → v1.0.3 migration notes (2026-10-05)
+
+Audited upstream changes and their impact on this stack:
+
+| Upstream change | Impact on pinx stack | Action |
+|---|---|---|
+| Azure provider renamed `azure-openai-responses` → `azure` | None: provider-neutral core; zero `azure` references in stack source; identity hashing unaffected | None (audit documented) |
+| Codemode `image()` writes temp files + paths in result | pi-ui-next generic result preview shows text paths truthfully; no image-specific assumptions existed | None |
+| Output files restricted to user-readable | Stack evidence/journal/source files now also 0600/0700 on POSIX (aligned, least-privilege) | Hardened |
+| Home/End editor-cursor key change | pi-ui-next does not intercept editor navigation keys | None |
+| OAuth refresh cancellation fix | Auth is Pi-owned; stack implements no OAuth logic | None |
+| Codemode pnpm-update resilience | Stack holds no long-lived paths into Pi's install tree | None |
+| Terminal read-EIO/setRawMode EIO fix | pi-ui-next wraps no terminal lifecycle | None |
+
+Extension-level event-flow and component suites were re-run against the
+published `@earendil-works/pi-coding-agent@1.0.3`; no public API used by this
+stack changed (verified by compile + 292 component tests).

@@ -54,6 +54,7 @@ Enforced by: context invariant tests (below).
 | R13 | Windows paths accepted | drive-letter/UNC paths valid where OS allows |
 | R14 | Revision integrity | concurrent edit attempts serialized via file mutation queue |
 | R15 | Job admission never depends on notification delivery state; pending completion notices are bounded and ackable | backlog-of-30 regression test (pi-codebuffer#9) |
+| R16 | Waiting for a running job must not require model-driven polling; wait suspension never cancels the underlying job | [WAIT]-tagged suite (timeout/abort/two-waiters/exactly-once) |
 
 ## Recovery invariants
 
