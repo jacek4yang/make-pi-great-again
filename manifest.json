@@ -18,7 +18,7 @@
       "purpose": "Control/meta repository: architecture, contracts, compatibility, migration",
       "localPath": "D:\\Workspace\\make-pi-great-again",
       "remoteUrl": "https://github.com/jacek4yang/make-pi-great-again",
-      "currentExperimentalVersion": "0.0.2",
+      "currentExperimentalVersion": "0.0.3",
       "testedPiVersion": "n/a",
       "requiredPublicPiApis": [],
       "status": "active"
@@ -97,16 +97,41 @@
       "purpose": "LLM-first compositional code execution: source retention, repair, Edit IR, bounded execution, background jobs",
       "localPath": "D:\\Workspace\\pi-code-runtime-next",
       "remoteUrl": "https://github.com/jacek4yang/pi-code-runtime-next",
-      "currentExperimentalVersion": "0.1.0",
+      "currentExperimentalVersion": "0.2.0",
       "testedPiVersion": "1.0.2",
       "requiredPublicPiApis": [
         "@earendil-works/pi-coding-agent: ExtensionAPI.registerTool",
-        "@earendil-works/pi-coding-agent: ExtensionToolContext.executeTool (nested calls)",
-        "@earendil-works/pi-coding-agent: withFileMutationQueue",
-        "@earendil-works/pi-coding-agent: pi.appendEntry (source/journal persistence)"
+        "@earendil-works/pi-coding-agent: pi.appendEntry (revision/job records)",
+        "@earendil-works/pi-coding-agent: pi.getSettings (shellPath)",
+        "@earendil-works/pi-coding-agent: ReadonlySessionManager.getBranch (rebuild)"
       ],
-      "branches": [],
-      "status": "bootstrap"
+      "branches": [
+        {
+          "branch": "feat/runtime-core",
+          "commit": "HEAD",
+          "checks": "12 tests + smokes",
+          "status": "review-ready"
+        },
+        {
+          "branch": "feat/edit-ir",
+          "commit": "HEAD",
+          "checks": "22 tests (stacked)",
+          "status": "review-ready"
+        },
+        {
+          "branch": "feat/source-retention",
+          "commit": "HEAD",
+          "checks": "37 tests (stacked)",
+          "status": "review-ready"
+        },
+        {
+          "branch": "feat/job-runtime",
+          "commit": "HEAD",
+          "checks": "43 tests (stacked)",
+          "status": "review-ready"
+        }
+      ],
+      "status": "experimental"
     },
     {
       "repo": "pi-generation-recovery-next",
@@ -195,7 +220,7 @@
     ],
     "evaluation": "docs/EVAL-LIVE-20261005.md + docs/EVAL-ABLATION-20261005.md",
     "providerNote": "intern gateway quota exhausted mid-study (429); long-session phase pending quota reset",
-    "replacement": "2026-10-05: old-generation plugins fully replaced by the pinx stack in the live agent",
+    "replacement": "2026-10-05: old stack fully replaced; codebuffer surface now covered by pi-code-runtime-next (bounded runtimes + retained buffers + Edit IR + background jobs)",
     "livePackages": [
       "npm:@ff-labs/pi-fff",
       "npm:@narumitw/pi-lsp",
