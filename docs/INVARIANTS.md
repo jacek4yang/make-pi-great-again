@@ -53,6 +53,7 @@ Enforced by: context invariant tests (below).
 | R12 | CRLF handling explicit | no silent newline rewriting |
 | R13 | Windows paths accepted | drive-letter/UNC paths valid where OS allows |
 | R14 | Revision integrity | concurrent edit attempts serialized via file mutation queue |
+| R15 | Job admission never depends on notification delivery state; pending completion notices are bounded and ackable | backlog-of-30 regression test (pi-codebuffer#9) |
 
 ## Recovery invariants
 

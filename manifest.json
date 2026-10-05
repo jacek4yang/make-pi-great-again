@@ -135,6 +135,12 @@
           "commit": "HEAD",
           "checks": "45 tests (stacked)",
           "status": "review-ready"
+        },
+        {
+          "branch": "feat/job-notification-backpressure",
+          "commit": "HEAD",
+          "checks": "49 tests (stacked), R15 regression encoded",
+          "status": "review-ready"
         }
       ],
       "status": "experimental"
