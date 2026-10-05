@@ -1,0 +1,206 @@
+{
+  "$comment": "Executable invariant map. Each invariant maps to a repo + TAP test-name regex. The runner executes each repo's suite with the tap reporter and reports PASS/FAIL/MISSING per invariant. Add tests until no invariant is MISSING.",
+  "invariants": {
+    "C1": {
+      "repo": "pi-context-manager",
+      "test": "canonical|append-only|session file|C1|evidence.*roundtrip|markers? round"
+    },
+    "C2": {
+      "repo": "pi-context-manager",
+      "test": "roundtrip|retrievable|C2"
+    },
+    "C3": {
+      "repo": "pi-context-manager",
+      "test": "cross-session|sibling|entryId provenance|different session|C3"
+    },
+    "C4": {
+      "repo": "pi-context-manager",
+      "test": "hash mismatch|tampered|malformed|fail.*closed|C4"
+    },
+    "C5": {
+      "repo": "pi-context-manager",
+      "test": "recent work stays protected|C5|recent"
+    },
+    "C6": {
+      "repo": "pi-context-manager",
+      "test": "error.*never|errors are never|C6"
+    },
+    "C7": {
+      "repo": "pi-context-manager",
+      "test": "aborts the (whole )?batch|write failure|C7"
+    },
+    "C8": {
+      "repo": "pi-context-manager",
+      "test": "falls through|engine error|C8"
+    },
+    "C9": {
+      "repo": "pi-context-manager",
+      "test": "[Cc]ancellation never commits|C9"
+    },
+    "C10": {
+      "repo": "pi-context-manager",
+      "test": "model switch|staged|C10"
+    },
+    "C11": {
+      "repo": "pi-context-manager",
+      "test": "probe-unsupported|skipped|refused, never faked|C11"
+    },
+    "C12": {
+      "repo": "pi-context-manager",
+      "test": "auxiliary model failure preserves",
+      "$note": "deterministic engines make no model calls; model-engine failure path covered via selector fallthrough"
+    },
+    "C13": {
+      "repo": "pi-context-manager",
+      "test": "re-reduced|already-summarized|summary.*protected"
+    },
+    "C14": {
+      "repo": "pi-context-manager",
+      "test": "hash mismatch|corruption detected|sidecar|C14"
+    },
+    "C15": {
+      "repo": "pi-context-manager",
+      "test": "oversize|quota|bounds|C15"
+    },
+    "C16": {
+      "repo": "pi-context-manager",
+      "test": "MISSING-PLACEHOLDER"
+    },
+    "R1": {
+      "repo": "pi-code-runtime-next",
+      "test": "STALE_BASE|stale base|stale patch|stale Edit IR|R1"
+    },
+    "R2": {
+      "repo": "pi-code-runtime-next",
+      "test": "SYNTAX_INVALID|never executes|syntax gate|syntax-invalid"
+    },
+    "R3": {
+      "repo": "pi-code-runtime-next",
+      "test": "failing program|isError with exit|failed.*repairable|repair"
+    },
+    "R4": {
+      "repo": "pi-code-runtime-next",
+      "test": "not a resume|repaired from|repair flow"
+    },
+    "R5": {
+      "repo": "pi-code-runtime-next",
+      "test": "never executes anything implicitly|replay requires explicit"
+    },
+    "R6": {
+      "repo": "pi-code-runtime-next",
+      "test": "explicit run|not a resume"
+    },
+    "R7": {
+      "repo": "pi-code-runtime-next",
+      "test": "caps output|bounded|output cap|truncat"
+    },
+    "R8": {
+      "repo": "pi-code-runtime-next",
+      "test": "timeout|TIMED OUT"
+    },
+    "R9": {
+      "repo": "pi-code-runtime-next",
+      "test": "cancel|cancellation|abort"
+    },
+    "R10": {
+      "repo": "pi-code-runtime-next",
+      "test": "persist.*completion|completion record|job state|jobs keep running"
+    },
+    "R11": {
+      "repo": "pi-code-runtime-next",
+      "test": "multibyte|UTF-8|surrogate|CJK"
+    },
+    "R12": {
+      "repo": "pi-code-runtime-next",
+      "test": "CRLF"
+    },
+    "R13": {
+      "repo": "pi-code-runtime-next",
+      "test": "drive letter|Windows|windows cwd"
+    },
+    "R14": {
+      "repo": "pi-code-runtime-next",
+      "test": "hash chain|ambiguity|OVERLAP|integrity|chain verifiable"
+    },
+    "R15": {
+      "repo": "pi-code-runtime-next",
+      "test": "backlog never blocks|backpressure|REGRESSION pi-codebuffer"
+    },
+    "V1": {
+      "repo": "pi-generation-recovery-next",
+      "test": "safe completed text prefix"
+    },
+    "V2": {
+      "repo": "pi-generation-recovery-next",
+      "test": "thinking blocks are excluded"
+    },
+    "V3": {
+      "repo": "pi-generation-recovery-next",
+      "test": "hard barrier"
+    },
+    "V4": {
+      "repo": "pi-generation-recovery-next",
+      "test": "hard barrier"
+    },
+    "V5": {
+      "repo": "pi-generation-recovery-next",
+      "test": "hard barrier"
+    },
+    "V6": {
+      "repo": "pi-generation-recovery-next",
+      "test": "consecutive interruptions are bounded"
+    },
+    "V7": {
+      "repo": "pi-generation-recovery-next",
+      "test": "invalidates the attempt|STALE_IDENTITY"
+    },
+    "V8": {
+      "repo": "pi-generation-recovery-next",
+      "test": "journal survives reopen"
+    },
+    "V9": {
+      "repo": "pi-generation-recovery-next",
+      "test": "corrupt records fail closed"
+    },
+    "V10": {
+      "repo": "pi-generation-recovery-next",
+      "test": "truncated final line is tolerated"
+    },
+    "V11": {
+      "repo": "pi-generation-recovery-next",
+      "test": "journal quota triggers deterministic GC"
+    },
+    "V12": {
+      "repo": "pi-generation-recovery-next",
+      "test": "cancellation falls back immediately"
+    },
+    "V13": {
+      "repo": "pi-generation-recovery-next",
+      "test": "budget exhaustion fails closed"
+    },
+    "U1": {
+      "repo": "pi-ui-next",
+      "test": "Level 0|raw JSON|Level 1|collapsed projection"
+    },
+    "U2": {
+      "repo": "pi-ui-next",
+      "test": "failure is visible|nested failure|failed"
+    },
+    "U3": {
+      "repo": "pi-ui-next",
+      "test": "ascii mode|icon|semantics"
+    },
+    "U4": {
+      "repo": "pi-ui-next",
+      "test": "CJK|wide char|visible width|width"
+    },
+    "U5": {
+      "repo": "pi-ui-next",
+      "test": "ascii|unicode|icon mode"
+    },
+    "U6": {
+      "repo": "pi-ui-next",
+      "test": "MISSING-PLACEHOLDER"
+    }
+  }
+}

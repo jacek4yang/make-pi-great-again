@@ -1,0 +1,402 @@
+{
+  "results": {
+    "C1": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "evidence markers round-trip",
+        "C12: auxiliary model failure preserves the original context",
+        "C13: already-summarized content is protected from re-reduction"
+      ]
+    },
+    "C2": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "put/get roundtrip preserves content and records provenance"
+      ]
+    },
+    "C3": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "cross-session retrieval is refused",
+        "entryId provenance mismatch fails closed"
+      ]
+    },
+    "C4": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "hash mismatch fails closed",
+        "entryId provenance mismatch fails closed",
+        "malformed refs fail closed before touching the filesystem"
+      ]
+    },
+    "C5": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "recent work stays protected"
+      ]
+    },
+    "C6": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "error tool results are never eligible"
+      ]
+    },
+    "C7": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "evidence write failure aborts the whole batch"
+      ]
+    },
+    "C8": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "an engine error falls through to the next engine"
+      ]
+    },
+    "C9": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "cancellation never commits a partial result"
+      ]
+    },
+    "C10": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "staged compaction is invalidated by a model switch"
+      ]
+    },
+    "C11": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "probe-unsupported engines are skipped and the next engine applies",
+        "a native engine that returns an empty summary is refused, never faked",
+        "protected and small items are skipped with reasons"
+      ]
+    },
+    "C12": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "C12: auxiliary model failure preserves the original context"
+      ]
+    },
+    "C13": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "C13: already-summarized content is protected from re-reduction"
+      ]
+    },
+    "C14": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "hash mismatch fails closed"
+      ]
+    },
+    "C15": {
+      "status": "PASS",
+      "repo": "pi-context-manager",
+      "via": [
+        "oversize content is refused, not truncated",
+        "per-turn edit budget bounds the plan"
+      ]
+    },
+    "C16": {
+      "status": "MISSING",
+      "repo": "pi-context-manager",
+      "note": "no executable test mapped yet"
+    },
+    "R1": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "stale baseRevision is rejected and nothing changes",
+        "code_buffer tool: stale patch is rejected with actionable error"
+      ]
+    },
+    "R2": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "syntax gate: invalid JS is rejected, valid passes",
+        "syntax gate: python compile check works",
+        "code_buffer tool: syntax-invalid draft never executes"
+      ]
+    },
+    "R3": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "failing program marks isError with exit code",
+        "repair marks the revision with the failed run",
+        "code_buffer tool: repair flow marks and requires explicit run"
+      ]
+    },
+    "R4": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "code_buffer tool: repair flow marks and requires explicit run"
+      ]
+    },
+    "R5": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "R5: patch/repair never executes anything implicitly"
+      ]
+    },
+    "R6": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "code_buffer tool: repair flow marks and requires explicit run"
+      ]
+    },
+    "R7": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "runBounded captures output and exit code",
+        "runBounded enforces timeout with tree-kill",
+        "runBounded caps output with UTF-8-safe truncation"
+      ]
+    },
+    "R8": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "runBounded enforces timeout with tree-kill"
+      ]
+    },
+    "R9": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "cancellation propagates and kills the child",
+        "cancel stops a running job",
+        "code_job tool: start from buffer, status, cancel"
+      ]
+    },
+    "R10": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "persisted completion records still flow for every job",
+        "job completes and persists a completion record"
+      ]
+    },
+    "R11": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "runBounded caps output with UTF-8-safe truncation",
+        "decodeBounded never splits multibyte sequences",
+        "python CJK output is UTF-8 clean via forced child env"
+      ]
+    },
+    "R12": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "CRLF text passes through byte-exact"
+      ]
+    },
+    "R13": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "windows cwd with drive letter works"
+      ]
+    },
+    "R14": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "multiple non-overlapping edits apply atomically",
+        "overlapping splices are rejected before any commit",
+        "hash chain binds revisions to their parents"
+      ]
+    },
+    "R15": {
+      "status": "PASS",
+      "repo": "pi-code-runtime-next",
+      "via": [
+        "REGRESSION pi-codebuffer\\#9: a completion backlog never blocks job admission"
+      ]
+    },
+    "V1": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V1: safe completed text prefix is proven and reconstructible"
+      ]
+    },
+    "V2": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V2: thinking blocks are excluded unless the provider adapter verifies them"
+      ]
+    },
+    "V3": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V3/V4/V5: any tool-call block is a hard barrier — fail closed"
+      ]
+    },
+    "V4": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V3/V4/V5: any tool-call block is a hard barrier — fail closed"
+      ]
+    },
+    "V5": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V3/V4/V5: any tool-call block is a hard barrier — fail closed"
+      ]
+    },
+    "V6": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V6: consecutive interruptions are bounded by the attempt budget"
+      ]
+    },
+    "V7": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V7: provider/model/session/branch change invalidates the attempt"
+      ]
+    },
+    "V8": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V8: journal survives reopen"
+      ]
+    },
+    "V9": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V9: corrupt records fail closed to verified prefix"
+      ]
+    },
+    "V10": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V10: truncated final line is tolerated — earlier records survive"
+      ]
+    },
+    "V11": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V11: journal quota triggers deterministic GC"
+      ]
+    },
+    "V12": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V12: cancellation falls back immediately"
+      ]
+    },
+    "V13": {
+      "status": "PASS",
+      "repo": "pi-generation-recovery-next",
+      "via": [
+        "V13: budget exhaustion fails closed with a precise reason"
+      ]
+    },
+    "U1": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "via": [
+        "collapsed projection renders Level 0",
+        "expanded projection renders Level 1 for the expanded node",
+        "a nested failure is visible at Level 0 through the parent row"
+      ]
+    },
+    "U2": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "via": [
+        "a nested failure is visible at Level 0 through the parent row"
+      ]
+    },
+    "U3": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "via": [
+        "all icon sets define non-empty strings for all semantic roles",
+        "nerd icon mode renders harmonized Nerd Font icons in projection",
+        "nerd icon mode renders running icon for active turn"
+      ]
+    },
+    "U4": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "via": [
+        "golden: cjk-long @ 80 cols, unicode",
+        "golden: cjk-long @ 160 cols, unicode",
+        "renderOverviewCard creates framed card with exact requested width"
+      ]
+    },
+    "U5": {
+      "status": "PASS",
+      "repo": "pi-ui-next",
+      "via": [
+        "golden: nested-code-success @ 80 cols, unicode",
+        "golden: nested-code-success @ 120 cols, unicode",
+        "golden: nested-code-success @ 80 cols, ascii"
+      ]
+    },
+    "U6": {
+      "status": "MISSING",
+      "repo": "pi-ui-next",
+      "note": "no executable test mapped yet"
+    }
+  },
+  "perRepo": {
+    "pi-context-manager": {
+      "tests": 39,
+      "failed": 0,
+      "suiteOk": true
+    },
+    "pi-code-runtime-next": {
+      "tests": 50,
+      "failed": 0,
+      "suiteOk": true
+    },
+    "pi-generation-recovery-next": {
+      "tests": 15,
+      "failed": 0,
+      "suiteOk": true
+    },
+    "pi-ui-next": {
+      "tests": 91,
+      "failed": 0,
+      "suiteOk": true
+    }
+  }
+}

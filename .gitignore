@@ -17,3 +17,4 @@ node_modules/
 dist/
 *.log
 experiments/ablation-20261005/results*
+conformance/conformance-report.json
