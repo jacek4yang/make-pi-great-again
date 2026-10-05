@@ -12,28 +12,28 @@
       "repo": "pi-context-manager",
       "branch": "feat/provider-native-engine",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "056a6cba058e3a57b8e4f44348adf084e45e7820",
+      "sha": "94ae422619d3536739f6372d988effb38037ec32",
       "contractVersion": 1
     },
     {
       "repo": "pi-code-runtime-next",
       "branch": "feat/job-notification-backpressure",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "eaad85418c1727e2d768de33f5ab4eff7173634e",
+      "sha": "dc7980dae91916a651e83bcd6c7ea2bbc572e82d",
       "contractVersion": 1
     },
     {
       "repo": "pi-generation-recovery-next",
       "branch": "feat/recovery-core",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "afd130200ea3517c818fc21fdc6d5e23c3939e3e",
+      "sha": "c3f820b3d379ef9a3fe51e871c893edffc3e77b0",
       "contractVersion": 1
     },
     {
       "repo": "pi-ui-next",
       "branch": "feat/theme-deep-polish",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "866a7d1ae4b51edf9becc3ae3740e99b87634bfd",
+      "sha": "abbf8e98287db70a518b479932ad19022f06a61f",
       "contractVersion": 1
     }
   ]
