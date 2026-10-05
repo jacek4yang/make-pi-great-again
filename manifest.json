@@ -48,8 +48,8 @@
         },
         {
           "branch": "feat/nested-code-renderer",
-          "commit": "4f3db2a",
-          "checks": "48 tests + pi-load-smoke OK + live widget/bus wiring",
+          "commit": "1d37fd5",
+          "checks": "48 tests + smokes + themed renderers/widget + real-agent verify",
           "status": "review-ready"
         }
       ],
@@ -108,7 +108,7 @@
       "branches": [
         {
           "branch": "feat/runtime-core",
-          "commit": "HEAD",
+          "commit": "45 tests incl. utf8",
           "checks": "12 tests + smokes",
           "status": "review-ready"
         },
@@ -128,6 +128,12 @@
           "branch": "feat/job-runtime",
           "commit": "HEAD",
           "checks": "43 tests (stacked)",
+          "status": "review-ready"
+        },
+        {
+          "branch": "feat/utf8-runtime-env",
+          "commit": "HEAD",
+          "checks": "45 tests (stacked)",
           "status": "review-ready"
         }
       ],
