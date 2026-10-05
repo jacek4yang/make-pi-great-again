@@ -247,5 +247,14 @@
       "git:github.com/jacek4yang/pi-engineering-kit@v0.2.0"
     ],
     "loadVerification": "7 extensions, 0 errors, 0 warnings (pi-ui-next/scripts/verify-agent-load.mjs)"
+  },
+  "sync": {
+    "verifiedAt": "2026-10-05",
+    "state": "all local branches pushed; remotes complete for all 5 repositories",
+    "notes": [
+      "pi-ui-next: feat/theme-deep-polish (Gemini-executed polish, 11 commits, 91 tests green) pushed",
+      "pi-code-runtime-next: edit-ir/source-retention/job-runtime/utf8-runtime-env/job-notification-backpressure/pure-output-guidance pushed",
+      "pi-generation-recovery-next: GitHub remote created, main pushed"
+    ]
   }
 }
