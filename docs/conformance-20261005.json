@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-05T13:27:25.898Z",
+  "generatedAt": "2026-10-05T14:01:59.967Z",
   "workspace": "D:\\Workspace",
   "results": {
     "C1": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C1] checkpoint carries references, not canonical evidence content",
         "[C1] evidence markers round-trip"
@@ -14,7 +14,7 @@
     "C2": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C2] put/get roundtrip preserves content and records provenance (C2)"
       ]
@@ -22,7 +22,7 @@
     "C3": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C3] cross-session retrieval is refused (C3)",
         "[C3] entryId provenance mismatch fails closed (C3)"
@@ -31,7 +31,7 @@
     "C4": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C4] session provenance mismatch is rejected (fail closed)",
         "[C14][C4] hash mismatch fails closed (C4/C14)",
@@ -41,7 +41,7 @@
     "C5": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C5] recent work stays protected (C5)"
       ]
@@ -49,7 +49,7 @@
     "C6": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C6] error tool results are never eligible (C6)"
       ]
@@ -57,7 +57,7 @@
     "C7": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C7] evidence write failure aborts the whole batch (C7)"
       ]
@@ -65,7 +65,7 @@
     "C8": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C8] an engine error falls through to the next engine (C8)"
       ]
@@ -73,7 +73,7 @@
     "C9": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C9] cancellation never commits a partial result (C9)"
       ]
@@ -81,7 +81,7 @@
     "C10": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C10] staged compaction is invalidated by a model switch (C10)"
       ]
@@ -89,7 +89,7 @@
     "C11": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C11] probe-unsupported engines are skipped and the next engine applies (C11)",
         "[C11] a native engine that returns an empty summary is refused, never faked",
@@ -99,7 +99,7 @@
     "C12": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C12] C12: auxiliary model failure preserves the original context"
       ]
@@ -107,7 +107,7 @@
     "C13": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C13] C13: already-summarized content is protected from re-reduction"
       ]
@@ -115,7 +115,7 @@
     "C14": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C14][C4] hash mismatch fails closed (C4/C14)"
       ]
@@ -123,7 +123,7 @@
     "C15": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C15] checkpoint storage remains bounded (history cap)",
         "[C15] oversize content is refused, not truncated (C15)",
@@ -133,7 +133,7 @@
     "C16": {
       "status": "PASS",
       "repo": "pi-context-manager",
-      "sha": "b990dc9",
+      "sha": "94ae422",
       "via": [
         "[C16] latest valid checkpoint wins (repeated reopen is idempotent)",
         "[C16] corrupt newest checkpoint falls back to the next-newest valid one",
@@ -143,7 +143,7 @@
     "R1": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R1] stale baseRevision is rejected and nothing changes (R1)",
         "[R1] code_buffer tool: stale patch is rejected with actionable error (R1)"
@@ -152,7 +152,7 @@
     "R2": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R2] syntax gate: invalid JS is rejected, valid passes (R2)",
         "[R2] syntax gate: python compile check works",
@@ -162,7 +162,7 @@
     "R3": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R3] failing program marks isError with exit code (R3)",
         "[R3] repair marks the revision with the failed run (R3/R4)"
@@ -171,7 +171,7 @@
     "R4": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R4][R6] code_buffer tool: repair flow marks and requires explicit run (R3/R4/R6)"
       ]
@@ -179,7 +179,7 @@
     "R5": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R5] R5: patch/repair never executes anything implicitly"
       ]
@@ -187,7 +187,7 @@
     "R6": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R4][R6] code_buffer tool: repair flow marks and requires explicit run (R3/R4/R6)"
       ]
@@ -195,7 +195,7 @@
     "R7": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R7] runBounded captures output and exit code",
         "[R11][R7] runBounded caps output with UTF-8-safe truncation (R7/R11)"
@@ -204,7 +204,7 @@
     "R8": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R8] runBounded enforces timeout with tree-kill (R8)"
       ]
@@ -212,7 +212,7 @@
     "R9": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R9] cancellation propagates and kills the child (R9)",
         "[R9] cancel stops a running job (R9)",
@@ -222,7 +222,7 @@
     "R10": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R10] persisted completion records still flow for every job (R10)",
         "[R10] job completes and persists a completion record (R10)"
@@ -231,7 +231,7 @@
     "R11": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R11][R7] runBounded caps output with UTF-8-safe truncation (R7/R11)",
         "[R11] decodeBounded never splits multibyte sequences",
@@ -241,7 +241,7 @@
     "R12": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R12] CRLF text passes through byte-exact"
       ]
@@ -249,7 +249,7 @@
     "R13": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R13] windows cwd with drive letter works (R13)"
       ]
@@ -257,7 +257,7 @@
     "R14": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R14] multiple non-overlapping edits apply atomically",
         "[R14] overlapping splices are rejected before any commit",
@@ -267,7 +267,7 @@
     "R15": {
       "status": "PASS",
       "repo": "pi-code-runtime-next",
-      "sha": "66f96de",
+      "sha": "dc7980d",
       "via": [
         "[R15] REGRESSION pi-codebuffer\\#9: a completion backlog never blocks job admission"
       ]
@@ -275,7 +275,7 @@
     "V1": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V1] V1: safe completed text prefix is proven and reconstructible"
       ]
@@ -283,7 +283,7 @@
     "V2": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V2] V2: thinking blocks are excluded unless the provider adapter verifies them"
       ]
@@ -291,7 +291,7 @@
     "V3": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V3][V4][V5] V3/V4/V5: any tool-call block is a hard barrier — fail closed"
       ]
@@ -299,7 +299,7 @@
     "V4": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V3][V4][V5] V3/V4/V5: any tool-call block is a hard barrier — fail closed"
       ]
@@ -307,7 +307,7 @@
     "V5": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V3][V4][V5] V3/V4/V5: any tool-call block is a hard barrier — fail closed"
       ]
@@ -315,7 +315,7 @@
     "V6": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V6] V6: consecutive interruptions are bounded by the attempt budget"
       ]
@@ -323,7 +323,7 @@
     "V7": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V7] V7: provider/model/session/branch change invalidates the attempt"
       ]
@@ -331,7 +331,7 @@
     "V8": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V8] V8: journal survives reopen (read back equals written)"
       ]
@@ -339,7 +339,7 @@
     "V9": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V9] V9: corrupt records fail closed to verified prefix (V9 journal)"
       ]
@@ -347,7 +347,7 @@
     "V10": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V10] truncated final line on reopen auto-recovers safely (no degraded state)",
         "[V10] truncated final line followed by append continues normally",
@@ -357,7 +357,7 @@
     "V11": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V11] V11: journal quota triggers deterministic GC"
       ]
@@ -365,7 +365,7 @@
     "V12": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V12] V12: cancellation falls back immediately"
       ]
@@ -373,7 +373,7 @@
     "V13": {
       "status": "PASS",
       "repo": "pi-generation-recovery-next",
-      "sha": "1cc1af4",
+      "sha": "c3f820b",
       "via": [
         "[V13] V13: budget exhaustion fails closed with a precise reason"
       ]
@@ -381,7 +381,7 @@
     "U1": {
       "status": "PASS",
       "repo": "pi-ui-next",
-      "sha": "6eaf790",
+      "sha": "a9b2830",
       "via": [
         "[U1] collapsed projection renders Level 0",
         "[U1] expanded projection renders Level 1 for the expanded node",
@@ -391,7 +391,7 @@
     "U2": {
       "status": "PASS",
       "repo": "pi-ui-next",
-      "sha": "6eaf790",
+      "sha": "a9b2830",
       "via": [
         "[U1][U2] a nested failure is visible at Level 0 through the parent row (U2)"
       ]
@@ -399,7 +399,7 @@
     "U3": {
       "status": "PASS",
       "repo": "pi-ui-next",
-      "sha": "6eaf790",
+      "sha": "a9b2830",
       "via": [
         "[U3] all icon sets define non-empty strings for all semantic roles",
         "[U3] nerd icon mode renders harmonized Nerd Font icons in projection (U3, U5)",
@@ -409,7 +409,7 @@
     "U4": {
       "status": "PASS",
       "repo": "pi-ui-next",
-      "sha": "6eaf790",
+      "sha": "a9b2830",
       "via": [
         "[U4] renderOverviewCard aligns CJK content safely to width",
         "[U4] lines never exceed the requested width with CJK paths",
@@ -419,7 +419,7 @@
     "U5": {
       "status": "PASS",
       "repo": "pi-ui-next",
-      "sha": "6eaf790",
+      "sha": "a9b2830",
       "via": [
         "[U5] ascii mode keeps the same layout with different icons",
         "[U5] ascii text measures as length"
@@ -428,7 +428,7 @@
     "U6": {
       "status": "PASS",
       "repo": "pi-ui-next",
-      "sha": "6eaf790",
+      "sha": "a9b2830",
       "via": [
         "[U6] provider-reported context usage is labeled as such",
         "[U6] estimated figures are labeled estimated, never provider-reported",
@@ -750,7 +750,7 @@
       ],
       "failed": 0,
       "total": 49,
-      "sha": "b990dc9"
+      "sha": "94ae422"
     },
     "pi-code-runtime-next": {
       "tests": [
@@ -1059,7 +1059,7 @@
       ],
       "failed": 0,
       "total": 50,
-      "sha": "66f96de"
+      "sha": "dc7980d"
     },
     "pi-generation-recovery-next": {
       "tests": [
@@ -1371,7 +1371,7 @@
       ],
       "failed": 0,
       "total": 55,
-      "sha": "1cc1af4"
+      "sha": "c3f820b"
     },
     "pi-ui-next": {
       "tests": [
@@ -1885,7 +1885,13 @@
       ],
       "failed": 0,
       "total": 94,
-      "sha": "6eaf790"
+      "sha": "a9b2830"
     }
+  },
+  "repoHeads": {
+    "pi-context-manager": "94ae422",
+    "pi-code-runtime-next": "dc7980d",
+    "pi-generation-recovery-next": "c3f820b",
+    "pi-ui-next": "a9b2830"
   }
 }
