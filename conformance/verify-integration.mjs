@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Cross-repository integration gate: verifies every sibling repository's
-// integration/2026-10-05 head matches the pinned manifest SHA, then runs the
+// integration/agent-body-v2 head matches the pinned manifest SHA, then runs the
 // cross-layer integration suite in pi-context-manager at those revisions.
 // Fails loudly on any revision mismatch (no blind sibling imports).
 import { spawnSync } from "node:child_process";

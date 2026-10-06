@@ -18,7 +18,7 @@ const KNOWN_REPOS = ["pi-context-manager", "pi-code-runtime-next", "pi-generatio
 
 function validateManifest(manifest) {
   const errors = [];
-  if (manifest.integrationLine !== "integration/2026-10-05") errors.push(`integrationLine mismatch: ${manifest.integrationLine}`);
+  if (manifest.integrationLine !== "integration/agent-body-v2") errors.push(`integrationLine mismatch: ${manifest.integrationLine}`);
   if (manifest.contractVersion !== 1) errors.push(`contractVersion must be 1, got ${manifest.contractVersion}`);
   if (!/^\d+\.\d+\.\d+$/.test(manifest.pi?.version ?? "")) errors.push("pi.version missing or invalid");
   const seen = new Set();
@@ -82,7 +82,7 @@ try {
       continue;
     }
     // integration branch ref must resolve and equal the manifest SHA
-    const refProblem = verifyIntegrationRef(root, entry.repo, entry.sha, entry.integrationBranch ?? "integration/2026-10-05");
+    const refProblem = verifyIntegrationRef(root, entry.repo, entry.sha, entry.integrationBranch ?? "integration/agent-body-v2");
     if (refProblem) {
       console.error(refProblem);
       failed = true;

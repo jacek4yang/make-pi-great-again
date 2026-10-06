@@ -1,5 +1,5 @@
 {
-  "integrationLine": "integration/2026-10-05",
+  "integrationLine": "integration/agent-body-v2",
   "created": "2026-10-05",
   "contractVersion": 1,
   "pi": {
@@ -11,21 +11,21 @@
     {
       "repo": "pi-context-manager",
       "branch": "feat/cacheability-baseline",
-      "integrationBranch": "integration/2026-10-05",
+      "integrationBranch": "integration/agent-body-v2",
       "sha": "a56cf073bb4e343cf7e3c4a31e4f4f7b628329d0",
       "contractVersion": 1
     },
     {
       "repo": "pi-code-runtime-next",
       "branch": "feat/tool-schema-bench",
-      "integrationBranch": "integration/2026-10-05",
+      "integrationBranch": "integration/agent-body-v2",
       "sha": "cacf5860467f8a0d6170b831b06899c64d672ebe",
       "contractVersion": 1
     },
     {
       "repo": "pi-generation-recovery-next",
       "branch": "feat/recovery-core",
-      "integrationBranch": "integration/2026-10-05",
+      "integrationBranch": "integration/agent-body-v2",
       "sha": "f1c3230909423aaca7cc230df2c74364a9d673e5",
       "contractVersion": 1,
       "sourceBranch": "feat/integrity-hardening",
@@ -34,7 +34,7 @@
     {
       "repo": "pi-ui-next",
       "branch": "feat/theme-deep-polish",
-      "integrationBranch": "integration/2026-10-05",
+      "integrationBranch": "integration/agent-body-v2",
       "sha": "c9134b6fa561cdedcd62a07e632d4970fedfed54",
       "contractVersion": 1
     }
