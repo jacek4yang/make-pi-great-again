@@ -19,14 +19,14 @@
       "repo": "pi-code-runtime-next",
       "branch": "feat/job-notification-backpressure",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "dc7980dae91916a651e83bcd6c7ea2bbc572e82d",
+      "sha": "f29f17f38f3f97fa5cc0f72258a14010e2fde4ad",
       "contractVersion": 1
     },
     {
       "repo": "pi-generation-recovery-next",
       "branch": "feat/recovery-core",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "f29d04c2702c400025413d768d7d86abbd17d741",
+      "sha": "610dea4881856c69858ddddd72f8c32ff403b91c",
       "contractVersion": 1,
       "sourceBranch": "feat/integrity-hardening",
       "sourceBranchNote": "informational only; integrationBranch + sha are authoritative"
