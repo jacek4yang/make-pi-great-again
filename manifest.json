@@ -12,21 +12,21 @@
       "repo": "pi-context-manager",
       "branch": "feat/cacheability-baseline",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "a56cf073bb4e343cf7e3c4a31e4f4f7b628329d0",
+      "sha": "5790ab609ce8d87de79c38b944af7888214c4c98",
       "contractVersion": 1
     },
     {
       "repo": "pi-code-runtime-next",
       "branch": "feat/task-job-contract",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "ffd6f83578bbbf2e7ae81e6f5fb9bbade599f1df",
+      "sha": "4f9a13b1730616ed436c636294a954c1734efdf9",
       "contractVersion": 1
     },
     {
       "repo": "pi-generation-recovery-next",
       "branch": "feat/recovery-core",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "f1c3230909423aaca7cc230df2c74364a9d673e5",
+      "sha": "5bc7d95344cbf047a593d3b858b5407363e7b61d",
       "contractVersion": 1,
       "sourceBranch": "feat/integrity-hardening",
       "sourceBranchNote": "informational only; integrationBranch + sha are authoritative"
@@ -35,28 +35,28 @@
       "repo": "pi-ui-next",
       "branch": "feat/theme-deep-polish",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "13a93b344d1330e8c4c9fc1c63fd6a6ae0a8bb87",
+      "sha": "16fc467bcd3a4412499df50f50d84052b0368682",
       "contractVersion": 1
     },
     {
       "repo": "pi-policy-next",
       "branch": "feat/github-intent",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "3fb0953f8367fcfa628284e33a05348281a22886",
+      "sha": "cf56f7052832a708b7893c314764b5c3dd1a2914",
       "contractVersion": 1
     },
     {
       "repo": "pi-task-next",
       "branch": "feat/task-core",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "eca7405e46fa293f0cb7de6cda14bf96ab952b7c",
+      "sha": "93b0654a502e203cf7fee3665f4f3e75921c310c",
       "contractVersion": 1
     },
     {
       "repo": "pi-github-next",
       "branch": "feat/github-core",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "934d89afadac41ce0f654ba2ea5b6cb36c41063c",
+      "sha": "ec406420192de5230a77125b00e0362ef7910d8f",
       "contractVersion": 1
     }
   ]
