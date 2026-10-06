@@ -1,0 +1,528 @@
+{
+  "benchmark": "agent-efficiency",
+  "line": "integration/agent-body-v2",
+  "generatedBy": "benchmark/run-benchmarks.mjs",
+  "repos": {
+    "pi-context-manager": {
+      "sha": "a56cf073bb4e343cf7e3c4a31e4f4f7b628329d0",
+      "scenarios": {},
+      "toolSchema": {},
+      "jobMechanism": {},
+      "result": {
+        "bench": "pi-context-manager agent efficiency",
+        "piCompatibility": "pinned by scripts/check-pi-version.mjs",
+        "serialization": "JSON.stringify(buildSessionProjection().messages), UTF-8 bytes",
+        "tokenFigures": "estimated (chars/4) — never provider-reported",
+        "scenarios": {
+          "A": {
+            "scenario": "A",
+            "description": "six consecutive coding turns; small per-turn outputs below the archive threshold",
+            "turns": 6,
+            "projections": [
+              {
+                "bytes": 4159,
+                "estimatedTokens": 1040
+              },
+              {
+                "bytes": 8123,
+                "estimatedTokens": 2031
+              },
+              {
+                "bytes": 12087,
+                "estimatedTokens": 3022
+              },
+              {
+                "bytes": 16051,
+                "estimatedTokens": 4013
+              },
+              {
+                "bytes": 20015,
+                "estimatedTokens": 5004
+              },
+              {
+                "bytes": 23979,
+                "estimatedTokens": 5995
+              }
+            ],
+            "consecutive": {
+              "comparisons": [
+                {
+                  "commonPrefixBytes": 4158,
+                  "commonPrefixRatio": 0.9997595575859581,
+                  "firstChangedByte": 4158
+                },
+                {
+                  "commonPrefixBytes": 8122,
+                  "commonPrefixRatio": 0.9998768927736058,
+                  "firstChangedByte": 8122
+                },
+                {
+                  "commonPrefixBytes": 12086,
+                  "commonPrefixRatio": 0.999917266484653,
+                  "firstChangedByte": 12086
+                },
+                {
+                  "commonPrefixBytes": 16050,
+                  "commonPrefixRatio": 0.9999376985857579,
+                  "firstChangedByte": 16050
+                },
+                {
+                  "commonPrefixBytes": 20014,
+                  "commonPrefixRatio": 0.999950037471896,
+                  "firstChangedByte": 20014
+                }
+              ],
+              "averageStablePrefixRatio": 0.9998882905803741,
+              "finalCommonPrefixBytes": 20014
+            },
+            "counters": {
+              "modelVisibleToolCalls": 6,
+              "toolResultOriginalBytes": 16680,
+              "archives": 0,
+              "recalls": 0,
+              "compactions": 0,
+              "contextGenerations": 0
+            }
+          },
+          "B": {
+            "scenario": "B",
+            "description": "one 19,123-char read-only grep output archived to evidence and replaced",
+            "turns": 2,
+            "projections": [
+              {
+                "bytes": 21231,
+                "estimatedTokens": 5308
+              },
+              {
+                "bytes": 1507,
+                "estimatedTokens": 377
+              }
+            ],
+            "consecutive": {
+              "comparisons": [
+                {
+                  "commonPrefixBytes": 821,
+                  "commonPrefixRatio": 0.5447909754479098,
+                  "firstChangedByte": 821
+                }
+              ],
+              "averageStablePrefixRatio": 0.5447909754479098,
+              "finalCommonPrefixBytes": 821
+            },
+            "counters": {
+              "modelVisibleToolCalls": 1,
+              "toolResultOriginalBytes": 19189,
+              "toolResultModelVisibleBytes": 220,
+              "archives": 1,
+              "recalls": 1,
+              "compactions": 0,
+              "contextGenerations": 1
+            },
+            "extra": {
+              "evidenceRetainedBytes": 19189,
+              "recallExactMatch": true,
+              "markerParses": true,
+              "markerFormat": "[Archived grep output · 19189 chars · ref ev_00000000000000000000000000000000]",
+              "markerHeadPreviewBytes": 139
+            }
+          },
+          "C": {
+            "scenario": "C",
+            "description": "four turns re-reading identical state; only the new turn should differ (appended)",
+            "turns": 4,
+            "projections": [
+              {
+                "bytes": 5526,
+                "estimatedTokens": 1382
+              },
+              {
+                "bytes": 10857,
+                "estimatedTokens": 2715
+              },
+              {
+                "bytes": 16188,
+                "estimatedTokens": 4047
+              },
+              {
+                "bytes": 21519,
+                "estimatedTokens": 5380
+              }
+            ],
+            "consecutive": {
+              "comparisons": [
+                {
+                  "commonPrefixBytes": 5525,
+                  "commonPrefixRatio": 0.9998190372783207,
+                  "firstChangedByte": 5525
+                },
+                {
+                  "commonPrefixBytes": 10856,
+                  "commonPrefixRatio": 0.9999078935249148,
+                  "firstChangedByte": 10856
+                },
+                {
+                  "commonPrefixBytes": 16187,
+                  "commonPrefixRatio": 0.9999382258463059,
+                  "firstChangedByte": 16187
+                }
+              ],
+              "averageStablePrefixRatio": 0.9998883855498472,
+              "finalCommonPrefixBytes": 16187
+            },
+            "counters": {
+              "modelVisibleToolCalls": 4,
+              "toolResultOriginalBytes": 16560,
+              "archives": 0,
+              "recalls": 0,
+              "compactions": 0,
+              "contextGenerations": 0
+            }
+          }
+        },
+        "toolSchema": {
+          "tools": [
+            {
+              "name": "pinx_recall",
+              "exposure": "direct",
+              "defaultActive": false,
+              "activationCondition": "evidence refs exist (session_start restore or first archive commit)",
+              "schemaBytes": 289,
+              "descriptionBytes": 135,
+              "totalBytes": 424
+            }
+          ],
+          "totalSchemaBytes": 289,
+          "activeToolCount": 0,
+          "activeToolCountWithEvidence": 1
+        },
+        "jobMechanism": {
+          "codeJobStatusPollsRequired": 0,
+          "codeJobWaitCalls": 1,
+          "note": "event-driven wait; status is not needed to await completion (measured in pi-code-runtime-next bench)"
+        }
+      }
+    },
+    "pi-code-runtime-next": {
+      "sha": "cacf5860467f8a0d6170b831b06899c64d672ebe",
+      "result": {
+        "bench": "pi-code-runtime-next tool-schema footprint (Scenario D)",
+        "tools": [
+          {
+            "name": "code",
+            "exposure": "direct",
+            "defaultActive": true,
+            "schemaBytes": 216,
+            "descriptionBytes": 91,
+            "totalBytes": 307
+          },
+          {
+            "name": "node",
+            "exposure": "direct",
+            "defaultActive": true,
+            "schemaBytes": 216,
+            "descriptionBytes": 82,
+            "totalBytes": 298
+          },
+          {
+            "name": "python",
+            "exposure": "direct",
+            "defaultActive": true,
+            "schemaBytes": 216,
+            "descriptionBytes": 81,
+            "totalBytes": 297
+          },
+          {
+            "name": "bash",
+            "exposure": "direct",
+            "defaultActive": true,
+            "schemaBytes": 216,
+            "descriptionBytes": 94,
+            "totalBytes": 310
+          },
+          {
+            "name": "code_job",
+            "exposure": "direct",
+            "defaultActive": true,
+            "schemaBytes": 855,
+            "descriptionBytes": 488,
+            "totalBytes": 1343
+          },
+          {
+            "name": "code_buffer",
+            "exposure": "direct",
+            "defaultActive": true,
+            "schemaBytes": 1408,
+            "descriptionBytes": 463,
+            "totalBytes": 1871
+          }
+        ],
+        "totalSchemaBytes": 3127,
+        "totalDescriptionBytes": 1299,
+        "totalBytes": 4426,
+        "activeToolCount": 6,
+        "jobMechanism": {
+          "statusPollsRequired": 0,
+          "waitCalls": 1,
+          "observedJobState": "completed",
+          "note": "event-driven wait() reaches terminal state without any status polling"
+        }
+      }
+    }
+  },
+  "contextManager": {
+    "bench": "pi-context-manager agent efficiency",
+    "piCompatibility": "pinned by scripts/check-pi-version.mjs",
+    "serialization": "JSON.stringify(buildSessionProjection().messages), UTF-8 bytes",
+    "tokenFigures": "estimated (chars/4) — never provider-reported",
+    "scenarios": {
+      "A": {
+        "scenario": "A",
+        "description": "six consecutive coding turns; small per-turn outputs below the archive threshold",
+        "turns": 6,
+        "projections": [
+          {
+            "bytes": 4159,
+            "estimatedTokens": 1040
+          },
+          {
+            "bytes": 8123,
+            "estimatedTokens": 2031
+          },
+          {
+            "bytes": 12087,
+            "estimatedTokens": 3022
+          },
+          {
+            "bytes": 16051,
+            "estimatedTokens": 4013
+          },
+          {
+            "bytes": 20015,
+            "estimatedTokens": 5004
+          },
+          {
+            "bytes": 23979,
+            "estimatedTokens": 5995
+          }
+        ],
+        "consecutive": {
+          "comparisons": [
+            {
+              "commonPrefixBytes": 4158,
+              "commonPrefixRatio": 0.9997595575859581,
+              "firstChangedByte": 4158
+            },
+            {
+              "commonPrefixBytes": 8122,
+              "commonPrefixRatio": 0.9998768927736058,
+              "firstChangedByte": 8122
+            },
+            {
+              "commonPrefixBytes": 12086,
+              "commonPrefixRatio": 0.999917266484653,
+              "firstChangedByte": 12086
+            },
+            {
+              "commonPrefixBytes": 16050,
+              "commonPrefixRatio": 0.9999376985857579,
+              "firstChangedByte": 16050
+            },
+            {
+              "commonPrefixBytes": 20014,
+              "commonPrefixRatio": 0.999950037471896,
+              "firstChangedByte": 20014
+            }
+          ],
+          "averageStablePrefixRatio": 0.9998882905803741,
+          "finalCommonPrefixBytes": 20014
+        },
+        "counters": {
+          "modelVisibleToolCalls": 6,
+          "toolResultOriginalBytes": 16680,
+          "archives": 0,
+          "recalls": 0,
+          "compactions": 0,
+          "contextGenerations": 0
+        }
+      },
+      "B": {
+        "scenario": "B",
+        "description": "one 19,123-char read-only grep output archived to evidence and replaced",
+        "turns": 2,
+        "projections": [
+          {
+            "bytes": 21231,
+            "estimatedTokens": 5308
+          },
+          {
+            "bytes": 1507,
+            "estimatedTokens": 377
+          }
+        ],
+        "consecutive": {
+          "comparisons": [
+            {
+              "commonPrefixBytes": 821,
+              "commonPrefixRatio": 0.5447909754479098,
+              "firstChangedByte": 821
+            }
+          ],
+          "averageStablePrefixRatio": 0.5447909754479098,
+          "finalCommonPrefixBytes": 821
+        },
+        "counters": {
+          "modelVisibleToolCalls": 1,
+          "toolResultOriginalBytes": 19189,
+          "toolResultModelVisibleBytes": 220,
+          "archives": 1,
+          "recalls": 1,
+          "compactions": 0,
+          "contextGenerations": 1
+        },
+        "extra": {
+          "evidenceRetainedBytes": 19189,
+          "recallExactMatch": true,
+          "markerParses": true,
+          "markerFormat": "[Archived grep output · 19189 chars · ref ev_00000000000000000000000000000000]",
+          "markerHeadPreviewBytes": 139
+        }
+      },
+      "C": {
+        "scenario": "C",
+        "description": "four turns re-reading identical state; only the new turn should differ (appended)",
+        "turns": 4,
+        "projections": [
+          {
+            "bytes": 5526,
+            "estimatedTokens": 1382
+          },
+          {
+            "bytes": 10857,
+            "estimatedTokens": 2715
+          },
+          {
+            "bytes": 16188,
+            "estimatedTokens": 4047
+          },
+          {
+            "bytes": 21519,
+            "estimatedTokens": 5380
+          }
+        ],
+        "consecutive": {
+          "comparisons": [
+            {
+              "commonPrefixBytes": 5525,
+              "commonPrefixRatio": 0.9998190372783207,
+              "firstChangedByte": 5525
+            },
+            {
+              "commonPrefixBytes": 10856,
+              "commonPrefixRatio": 0.9999078935249148,
+              "firstChangedByte": 10856
+            },
+            {
+              "commonPrefixBytes": 16187,
+              "commonPrefixRatio": 0.9999382258463059,
+              "firstChangedByte": 16187
+            }
+          ],
+          "averageStablePrefixRatio": 0.9998883855498472,
+          "finalCommonPrefixBytes": 16187
+        },
+        "counters": {
+          "modelVisibleToolCalls": 4,
+          "toolResultOriginalBytes": 16560,
+          "archives": 0,
+          "recalls": 0,
+          "compactions": 0,
+          "contextGenerations": 0
+        }
+      }
+    },
+    "toolSchema": {
+      "tools": [
+        {
+          "name": "pinx_recall",
+          "exposure": "direct",
+          "defaultActive": false,
+          "activationCondition": "evidence refs exist (session_start restore or first archive commit)",
+          "schemaBytes": 289,
+          "descriptionBytes": 135,
+          "totalBytes": 424
+        }
+      ],
+      "totalSchemaBytes": 289,
+      "activeToolCount": 0,
+      "activeToolCountWithEvidence": 1
+    },
+    "jobMechanism": {
+      "codeJobStatusPollsRequired": 0,
+      "codeJobWaitCalls": 1,
+      "note": "event-driven wait; status is not needed to await completion (measured in pi-code-runtime-next bench)"
+    }
+  },
+  "codeRuntime": {
+    "bench": "pi-code-runtime-next tool-schema footprint (Scenario D)",
+    "tools": [
+      {
+        "name": "code",
+        "exposure": "direct",
+        "defaultActive": true,
+        "schemaBytes": 216,
+        "descriptionBytes": 91,
+        "totalBytes": 307
+      },
+      {
+        "name": "node",
+        "exposure": "direct",
+        "defaultActive": true,
+        "schemaBytes": 216,
+        "descriptionBytes": 82,
+        "totalBytes": 298
+      },
+      {
+        "name": "python",
+        "exposure": "direct",
+        "defaultActive": true,
+        "schemaBytes": 216,
+        "descriptionBytes": 81,
+        "totalBytes": 297
+      },
+      {
+        "name": "bash",
+        "exposure": "direct",
+        "defaultActive": true,
+        "schemaBytes": 216,
+        "descriptionBytes": 94,
+        "totalBytes": 310
+      },
+      {
+        "name": "code_job",
+        "exposure": "direct",
+        "defaultActive": true,
+        "schemaBytes": 855,
+        "descriptionBytes": 488,
+        "totalBytes": 1343
+      },
+      {
+        "name": "code_buffer",
+        "exposure": "direct",
+        "defaultActive": true,
+        "schemaBytes": 1408,
+        "descriptionBytes": 463,
+        "totalBytes": 1871
+      }
+    ],
+    "totalSchemaBytes": 3127,
+    "totalDescriptionBytes": 1299,
+    "totalBytes": 4426,
+    "activeToolCount": 6,
+    "jobMechanism": {
+      "statusPollsRequired": 0,
+      "waitCalls": 1,
+      "observedJobState": "completed",
+      "note": "event-driven wait() reaches terminal state without any status polling"
+    }
+  }
+}

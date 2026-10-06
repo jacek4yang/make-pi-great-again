@@ -42,9 +42,21 @@ ev = evaluate({
 assert.equal(ev.results.C1.status, "SUITE-RED");
 assert.equal(ev.overallExit, 1, "suite-red must exit 1");
 
-// 4. explicit invariant failure => exit 1
+// 4. explicit invariant failure => SUITE-RED (a red suite is never narrowed
+//    to a single-invariant FAIL) and exit 1
 ev = evaluate({
   "pi-context-manager": suite("s1", [failC1]),
+  "pi-code-runtime-next": suite("s2", [pass2]),
+  "pi-generation-recovery-next": suite("s3", []),
+  "pi-ui-next": suite("s4", []),
+}, { strict: true });
+assert.equal(ev.results.C1.status, "SUITE-RED");
+assert.equal(ev.overallExit, 1);
+
+// 4b. defensive FAIL branch: inconsistent input (no failed count, but a
+//     tagged not-ok test) still attributes the failure to the invariant
+ev = evaluate({
+  "pi-context-manager": { sha: "s1", tests: [failC1], failed: 0, total: 1, exitCode: 0 },
   "pi-code-runtime-next": suite("s2", [pass2]),
   "pi-generation-recovery-next": suite("s3", []),
   "pi-ui-next": suite("s4", []),
@@ -71,4 +83,4 @@ ev = evaluate({
 assert.equal(ev.results.C4.status, "PASS");
 assert.equal(ev.results.C14.status, "PASS");
 
-console.log("CONFORMANCE SELF-TESTS OK (6 checks)");
+console.log("CONFORMANCE SELF-TESTS OK (7 checks)");

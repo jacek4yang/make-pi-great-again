@@ -10,16 +10,16 @@
   "repositories": [
     {
       "repo": "pi-context-manager",
-      "branch": "feat/provider-native-engine",
+      "branch": "feat/cacheability-baseline",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "24f0d86e90c3a0ab714e6f800c78746f845c2411",
+      "sha": "a56cf073bb4e343cf7e3c4a31e4f4f7b628329d0",
       "contractVersion": 1
     },
     {
       "repo": "pi-code-runtime-next",
-      "branch": "feat/job-notification-backpressure",
+      "branch": "feat/tool-schema-bench",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "7299764b3d1731acd531ff0867a1d2c157d15092",
+      "sha": "cacf5860467f8a0d6170b831b06899c64d672ebe",
       "contractVersion": 1
     },
     {
