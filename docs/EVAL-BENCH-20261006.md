@@ -126,3 +126,10 @@ semantics, `ToolExposure` docs. No private APIs.
 - Runtime tool schemas were measured but not reduced: every remaining tool
   is a discovery entry point whose absence would break first-turn
   capability. Documented rather than forced.
+
+## Next phase
+
+NEXT PHASE: pi-policy-next (first new productization repository per
+docs/ROADMAP-PRODUCTIZATION.md). Do not start it before the owner reviews
+these branches; the reliability stage (recovery/runtime/context/UI) is
+treated as stable from here on.
