@@ -85,6 +85,16 @@ Enforced by: context invariant tests (below).
 | U5 | ASCII/Unicode/Nerd Font modes all render coherently | icon-mode golden set |
 | U6 | Estimated tokens never presented as provider-reported | telemetry labels golden |
 
+## Policy invariants (pi-policy-next)
+
+| # | Invariant | Test |
+|---|---|---|
+| P1 | A policy-sensitive side effect cannot execute before a valid policy decision | gate tests: sensitive tool_call blocked pre-execution; unknown tool blocked; no-UI fail-closed; user_bash replaced by denial |
+| P2 | A material action identity change invalidates an existing approval | digest tests: path/recursive/head/method/repo/command changes produce new digests; gate test: changed action requires fresh decision |
+| P3 | Approval expiry/denial/cancel cannot be interpreted as allow | expired grant -> require-approval; deny is never stored; session-class grants are class-exact; ledger consume semantics |
+| P4 | Unknown high-impact action fails toward approval, never silent allow | unknown class -> require-approval; uncertain shell classification escalates; escalation on doubt |
+| P5 | Approval state/events never expose protected-resource contents | event payload audit; notifications carry paths/identity only, never contents |
+
 ## Testing rules
 
 - Tests never read the user's real `~/.pi/agent`; they construct disposable homes.

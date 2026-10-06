@@ -127,9 +127,24 @@ semantics, `ToolExposure` docs. No private APIs.
   is a discovery entry point whose absence would break first-turn
   capability. Documented rather than forced.
 
+## After pi-policy-next integration (2026-10-06)
+
+The same deterministic benchmark was rerun after adding pi-policy-next to the
+stack (`--compare after after-policy`): **every metric is unchanged** —
+stable-prefix ratios, projected context bytes, tool schema bytes, tool
+counts, hygiene behavior. Policy contributes zero steady-state prompt
+overhead by construction: it registers no tools, injects nothing into model
+context, and communicates only via `pinx.policy.*` EventBus events plus a
+tool error when a call is actually blocked. Measured per-call policy cost
+(`pi-policy-next/bench/policy-overhead.ts`): allow decision ≈ 0.06 µs, shell
+classification ≈ 0.9 µs, intent digest ≈ 3 µs — no LLM anywhere on the
+policy path.
+
+`benchmark/results/after-policy.json` records the run (pinned at cm a56cf07 /
+rt cacf586 / policy f43e3b3a…).
+
 ## Next phase
 
-NEXT PHASE: pi-policy-next (first new productization repository per
+NEXT PHASE: pi-task-next (second productization repository per
 docs/ROADMAP-PRODUCTIZATION.md). Do not start it before the owner reviews
-these branches; the reliability stage (recovery/runtime/context/UI) is
-treated as stable from here on.
+these branches; policy is the only productization plugin so far.

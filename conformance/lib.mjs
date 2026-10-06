@@ -24,6 +24,8 @@ const OWNERSHIP = {
   V13: "pi-generation-recovery-next",
   U1: "pi-ui-next", U2: "pi-ui-next", U3: "pi-ui-next",
   U4: "pi-ui-next", U5: "pi-ui-next", U6: "pi-ui-next",
+  P1: "pi-policy-next", P2: "pi-policy-next", P3: "pi-policy-next",
+  P4: "pi-policy-next", P5: "pi-policy-next",
 };
 
 /**

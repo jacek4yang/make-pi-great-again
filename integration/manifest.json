@@ -37,6 +37,13 @@
       "integrationBranch": "integration/agent-body-v2",
       "sha": "c9134b6fa561cdedcd62a07e632d4970fedfed54",
       "contractVersion": 1
+    },
+    {
+      "repo": "pi-policy-next",
+      "branch": "feat/policy-core",
+      "integrationBranch": "integration/agent-body-v2",
+      "sha": "f43e3b3a31765091d147a3872ed5a41a379d92f7",
+      "contractVersion": 1
     }
   ]
 }

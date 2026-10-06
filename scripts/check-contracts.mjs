@@ -20,6 +20,8 @@ const requiredTopLevel = {
   "pinx.checkpoint": ["v", "checkpointId", "atEntryId", "goal", "constraints", "evidenceRefs"],
   "pinx.exec-details": ["v", "shape"],
   "pinx.recovery-status": ["v", "state"],
+  "pinx.policy.request": ["v", "digest", "actionClass", "op"],
+  "pinx.policy.decision": ["v", "digest", "decision", "reason"],
   "pinx.telemetry": ["v", "metric", "value", "source", "unit", "ts"],
 };
 

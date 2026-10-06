@@ -14,7 +14,7 @@ import { fileURLToPath } from "node:url";
 
 const metaRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const workspace = process.env.PINX_WORKSPACE ?? resolve(metaRoot, "..");
-const KNOWN_REPOS = ["pi-context-manager", "pi-code-runtime-next", "pi-generation-recovery-next", "pi-ui-next"];
+const KNOWN_REPOS = ["pi-context-manager", "pi-code-runtime-next", "pi-generation-recovery-next", "pi-ui-next", "pi-policy-next"];
 
 function validateManifest(manifest) {
   const errors = [];
@@ -120,6 +120,7 @@ try {
     PINX_CM_ROOT: roots["pi-context-manager"],
     PINX_RT_ROOT: roots["pi-code-runtime-next"],
     PINX_REC_ROOT: roots["pi-generation-recovery-next"],
+    PINX_POLICY_ROOT: roots["pi-policy-next"],
   };
   const res = spawnSync(process.execPath, [tsxCli, "--test", join(metaRoot, "integration", "tests", "integration-stack.test.ts")], {
     cwd: cm, encoding: "utf8", timeout: 600000, env,
