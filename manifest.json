@@ -6,7 +6,7 @@
     "version": "1.0.4",
     "npmPackage": "@earendil-works/pi-coding-agent@1.0.4"
   },
-  "requiredInvariantSet": "C1-C16, R1-R16, V1-V13, U1-U6 (all 51 executable, all PASS)",
+  "requiredInvariantSet": "C1-C16, R1-R16, V1-V13, U1-U6, P1-P5 (all 56 executable, all PASS)",
   "repositories": [
     {
       "repo": "pi-context-manager",

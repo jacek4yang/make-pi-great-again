@@ -13,9 +13,10 @@
 //
 // Usage: node run-conformance.mjs [--strict] [invariant-id ...]
 import { spawnSync } from "node:child_process";
-import { existsSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { OWNERSHIP, canonicalInvariantSetName } from "./lib.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const metaRoot = resolve(here, "..");
@@ -29,31 +30,8 @@ function workspaceRoot() {
 }
 const workspace = workspaceRoot();
 
-const OWNERSHIP = {
-  C1: "pi-context-manager", C2: "pi-context-manager", C3: "pi-context-manager",
-  C4: "pi-context-manager", C5: "pi-context-manager", C6: "pi-context-manager",
-  C7: "pi-context-manager", C8: "pi-context-manager", C9: "pi-context-manager",
-  C10: "pi-context-manager", C11: "pi-context-manager", C12: "pi-context-manager",
-  C13: "pi-context-manager", C14: "pi-context-manager", C15: "pi-context-manager",
-  C16: "pi-context-manager",
-  R1: "pi-code-runtime-next", R2: "pi-code-runtime-next", R3: "pi-code-runtime-next",
-  R4: "pi-code-runtime-next", R5: "pi-code-runtime-next", R6: "pi-code-runtime-next",
-  R7: "pi-code-runtime-next", R8: "pi-code-runtime-next", R9: "pi-code-runtime-next",
-  R10: "pi-code-runtime-next", R11: "pi-code-runtime-next", R12: "pi-code-runtime-next",
-  R13: "pi-code-runtime-next", R14: "pi-code-runtime-next", R15: "pi-code-runtime-next",
-  R16: "pi-code-runtime-next",
-  V1: "pi-generation-recovery-next", V2: "pi-generation-recovery-next",
-  V3: "pi-generation-recovery-next", V4: "pi-generation-recovery-next",
-  V5: "pi-generation-recovery-next", V6: "pi-generation-recovery-next",
-  V7: "pi-generation-recovery-next", V8: "pi-generation-recovery-next",
-  V9: "pi-generation-recovery-next", V10: "pi-generation-recovery-next",
-  V11: "pi-generation-recovery-next", V12: "pi-generation-recovery-next",
-  V13: "pi-generation-recovery-next",
-  U1: "pi-ui-next", U2: "pi-ui-next", U3: "pi-ui-next",
-  U4: "pi-ui-next", U5: "pi-ui-next", U6: "pi-ui-next",
-  P1: "pi-policy-next", P2: "pi-policy-next", P3: "pi-policy-next",
-  P4: "pi-policy-next", P5: "pi-policy-next",
-};
+// OWNERSHIP is imported from lib.mjs — the single canonical invariant map.
+// (The former inline duplicate here was a release-truth hazard.)
 
 const REPOS = [...new Set(Object.values(OWNERSHIP))];
 
@@ -165,6 +143,21 @@ for (const [repo, info] of Object.entries(repoTests)) {
 const reportPath = join(here, "conformance-report.json");
 writeFileSync(reportPath, JSON.stringify({ generatedAt: new Date().toISOString(), workspace, results, perRepo: repoTests }, null, 2));
 console.log("report:", reportPath);
+
+// Release-truth enforcement: both manifests must describe the canonical
+// invariant set derived from source. Stale counts fail the gate (exit 4).
+const derivedSetName = canonicalInvariantSetName();
+let manifestStale = false;
+for (const file of ["manifest.json", "integration/manifest.json"]) {
+  const path = join(metaRoot, file);
+  if (!existsSync(path)) continue;
+  const declared = JSON.parse(readFileSync(path, "utf8")).requiredInvariantSet;
+  if (declared !== derivedSetName) {
+    console.error(`STALE METADATA: ${file} requiredInvariantSet "${declared}" != canonical "${derivedSetName}"`);
+    manifestStale = true;
+  }
+}
+if (manifestStale) process.exit(4);
 
 if (suiteFailures > 0 || fail > 0) process.exit(1);
 if (strict && missing > 0) process.exit(2);

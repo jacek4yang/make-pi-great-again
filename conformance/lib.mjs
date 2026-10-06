@@ -75,4 +75,26 @@ export function evaluate(repoSuites, opts = {}) {
   return { results, summary, overallExit };
 }
 
+
+/** Canonical invariant ids derived from OWNERSHIP (single source of truth). */
+export function canonicalInvariantIds() {
+  return Object.keys(OWNERSHIP);
+}
+
+/**
+ * Canonical invariant-set name, e.g.
+ * "C1-C16, R1-R16, V1-V13, U1-U6, P1-P5 (all 56 executable, all PASS)".
+ * Consumers must derive from this instead of hardcoding counts.
+ */
+export function canonicalInvariantSetName() {
+  const ids = canonicalInvariantIds();
+  const groups = [];
+  for (const prefix of ["C", "R", "V", "U", "P"]) {
+    const nums = ids.filter((id) => id.startsWith(prefix)).map((id) => Number(id.slice(1))).sort((a, b) => a - b);
+    if (nums.length === 0) continue;
+    groups.push(`${prefix}${nums[0]}-${prefix}${nums[nums.length - 1]}`);
+  }
+  return `${groups.join(", ")} (all ${ids.length} executable, all PASS)`;
+}
+
 export { OWNERSHIP };
