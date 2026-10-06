@@ -30,7 +30,9 @@ Reasoning resumes only when meaningful new information exists.
 - **I** Tool result deduplication: unchanged resources return concise confirmation
 - **J** Implement pi-policy-next (allow/deny/require-approval, normalized
   approval intent bound to material action identity, scopes: once/exact-target/
-  explicit session-class)
+  explicit session-class) — IMPLEMENTED 2026-10-06 (`feat/policy-core`,
+  P1-P5 invariants, contracts `pinx.policy.request`/`pinx.policy.decision`,
+  see `docs/RESEARCH-POLICY-20261006.md`)
 - **K** Implement pi-task-next (durable task lifecycle, bounded projection,
   issue candidates distinct from tasks)
 - **L** Task checkpoints (operational state, not chain-of-thought)

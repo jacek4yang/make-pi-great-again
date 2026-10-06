@@ -164,6 +164,38 @@ interface PinxTelemetrySample {
 
 UI labels every figure with `source` (U6). Unknown metrics are ignored.
 
+## 8. Policy events (policy -> UI/audit, buses `pinx.policy.request` / `pinx.policy.decision`)
+
+Emitted for every policy-evaluated action. **Never** injected into model
+context; routine ALLOW decisions stay below model reasoning (cacheability).
+Payloads carry material identity only — never protected-resource contents.
+
+```ts
+interface PinxPolicyRequest {
+  v: 1;
+  digest: string;            // SHA-256 over the canonical ApprovalIntent
+  actionClass: string;       // taxonomy class, e.g. "recursive-delete"
+  op: string;                // operation verb
+  tool: string;              // originating tool name
+  source: "tool" | "user-bash";
+  paths: string[];           // canonical, sorted
+  recursive: boolean;
+}
+
+interface PinxPolicyDecision {
+  v: 1;
+  digest: string;            // same digest as the request
+  decision: "allow" | "deny" | "require-approval";
+  reason: string;            // shown to human on approval, to model on block
+  actionClass: string;
+  tool: string;
+}
+```
+
+The `digest` is the approval identity (P2): any material change (path set,
+recursive flag, git/GitHub ref, command) yields a different digest and a new
+decision. Denials are never persisted as grants (P3).
+
 ## Channel mechanics
 
 Producers publish via `pi.events.emit(channel, payload)`; the UI subscribes on
