@@ -28,7 +28,7 @@ Before starting work in any implementation repository:
    document and `manifest.json`, rerun the full test matrix on the new baseline,
    and land that as a dedicated compatibility PR before any feature work.
 
-## Required public API surface (v1.0.2)
+## Required public API surface (v1.0.4)
 
 The stack depends only on these public surfaces. Anything else is off-limits
 without an ADR.
