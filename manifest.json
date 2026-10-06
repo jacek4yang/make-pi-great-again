@@ -49,7 +49,7 @@
       "repo": "pi-task-next",
       "branch": "feat/task-core",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "6354442e0f1e20212d1a2d4e576ba7627f6a7bd6",
+      "sha": "06a5fd57814e69d93acdd7160be9ee66b62973c5",
       "contractVersion": 1
     }
   ]
