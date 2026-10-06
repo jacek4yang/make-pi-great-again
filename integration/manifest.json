@@ -3,8 +3,8 @@
   "created": "2026-10-05",
   "contractVersion": 1,
   "pi": {
-    "version": "1.0.3",
-    "npmPackage": "@earendil-works/pi-coding-agent@1.0.3"
+    "version": "1.0.4",
+    "npmPackage": "@earendil-works/pi-coding-agent@1.0.4"
   },
   "requiredInvariantSet": "C1-C16, R1-R15, V1-V13, U1-U6 (all 50 executable, all PASS)",
   "repositories": [
@@ -12,21 +12,21 @@
       "repo": "pi-context-manager",
       "branch": "feat/provider-native-engine",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "f00aeb451fa23bc0d0d1b5399bf7690b821750b9",
+      "sha": "24f0d86e90c3a0ab714e6f800c78746f845c2411",
       "contractVersion": 1
     },
     {
       "repo": "pi-code-runtime-next",
       "branch": "feat/job-notification-backpressure",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "f29f17f38f3f97fa5cc0f72258a14010e2fde4ad",
+      "sha": "7299764b3d1731acd531ff0867a1d2c157d15092",
       "contractVersion": 1
     },
     {
       "repo": "pi-generation-recovery-next",
       "branch": "feat/recovery-core",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "610dea4881856c69858ddddd72f8c32ff403b91c",
+      "sha": "f1c3230909423aaca7cc230df2c74364a9d673e5",
       "contractVersion": 1,
       "sourceBranch": "feat/integrity-hardening",
       "sourceBranchNote": "informational only; integrationBranch + sha are authoritative"
@@ -35,7 +35,7 @@
       "repo": "pi-ui-next",
       "branch": "feat/theme-deep-polish",
       "integrationBranch": "integration/2026-10-05",
-      "sha": "a9b28307d2b00eb1af9a630f996488bc54535a86",
+      "sha": "c9134b6fa561cdedcd62a07e632d4970fedfed54",
       "contractVersion": 1
     }
   ]

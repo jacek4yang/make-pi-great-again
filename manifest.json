@@ -1,265 +1,42 @@
 {
-  "$schema": "./scripts/manifest.schema.json",
-  "stack": "pi-enhancement-next",
-  "updated": "2026-10-04",
+  "integrationLine": "integration/2026-10-05",
+  "created": "2026-10-05",
+  "contractVersion": 1,
   "pi": {
-    "pinnedVersion": "1.0.2",
-    "verifiedLatestStable": "1.0.2",
-    "verifiedAt": "2026-10-05",
-    "tagCommit": "cd32f7725fdbddbaecdff5b1e68491563394e0ca",
-    "npmPackage": "@earendil-works/pi-coding-agent@1.0.2",
-    "upstreamRepo": "https://github.com/earendil-works/pi",
-    "notes": "Old npm scope @mariozechner/pi-coding-agent is stale (0.73.1); do not use.",
-    "agentInstall": "Owner agent upgraded to Pi 1.0.2 on 2026-10-05; experimental stack installed as local packages"
+    "version": "1.0.4",
+    "npmPackage": "@earendil-works/pi-coding-agent@1.0.4"
   },
+  "requiredInvariantSet": "C1-C16, R1-R15, V1-V13, U1-U6 (all 50 executable, all PASS)",
   "repositories": [
     {
-      "repo": "make-pi-great-again",
-      "purpose": "Control/meta repository: architecture, contracts, compatibility, migration",
-      "localPath": "D:\\Workspace\\make-pi-great-again",
-      "remoteUrl": "https://github.com/jacek4yang/make-pi-great-again",
-      "currentExperimentalVersion": "0.0.3",
-      "testedPiVersion": "n/a",
-      "requiredPublicPiApis": [],
-      "status": "active"
-    },
-    {
-      "repo": "pi-ui-next",
-      "purpose": "Human-facing TUI enhancement layer: activity timeline, tool renderers, theme system, telemetry presentation",
-      "localPath": "D:\\Workspace\\pi-ui-next",
-      "remoteUrl": "https://github.com/jacek4yang/pi-ui-next",
-      "currentExperimentalVersion": "0.1.0",
-      "testedPiVersion": "1.0.2",
-      "requiredPublicPiApis": [
-        "@earendil-works/pi-coding-agent: ExtensionAPI.registerToolRenderer",
-        "@earendil-works/pi-coding-agent: ExtensionAPI.on(tool_execution_start|update|end)",
-        "@earendil-works/pi-coding-agent: ExtensionAPI.on(turn_start|session_start)",
-        "@earendil-works/pi-coding-agent: ctx.ui.notify",
-        "@earendil-works/pi-coding-agent: ToolRenderContext/renderCall/renderResult",
-        "@earendil-works/pi-tui: Text component",
-        "@earendil-works/pi-coding-agent: Theme semantic tokens (unused until theme branch)"
-      ],
-      "branches": [
-        {
-          "branch": "feat/activity-timeline",
-          "commit": "64b7d93",
-          "checks": "37 tests + pi-load-smoke OK",
-          "status": "review-ready"
-        },
-        {
-          "branch": "feat/nested-code-renderer",
-          "commit": "1d37fd5",
-          "checks": "48 tests + smokes + themed renderers/widget + real-agent verify",
-          "status": "review-ready"
-        }
-      ],
-      "status": "experimental"
-    },
-    {
       "repo": "pi-context-manager",
-      "purpose": "Context management and session continuity: observability, hygiene, evidence, semantic reduction, checkpoints, compaction engines, recall",
-      "localPath": "D:\\Workspace\\pi-context-manager",
-      "remoteUrl": "https://github.com/jacek4yang/pi-context-manager",
-      "currentExperimentalVersion": "0.1.0",
-      "testedPiVersion": "1.0.2",
-      "requiredPublicPiApis": [
-        "@earendil-works/pi-coding-agent: ExtensionAPI.on(session_before_compact) -> custom compaction",
-        "@earendil-works/pi-coding-agent: turn_end BoundaryResult drafts (context_edit)",
-        "@earendil-works/pi-coding-agent: ReadonlySessionManager.getBranch/buildSessionProjection/getSessionId/getLeafId",
-        "@earendil-works/pi-coding-agent: pi.appendEntry/pi.registerTool",
-        "@earendil-works/pi-coding-agent: ctx.getContextUsage",
-        "@earendil-works/pi-coding-agent: getAgentDir"
-      ],
-      "branches": [
-        {
-          "branch": "feat/core-contract",
-          "commit": "512cc7a",
-          "checks": "15 tests + pi-load-smoke OK",
-          "status": "review-ready"
-        },
-        {
-          "branch": "feat/hygiene-recall",
-          "commit": "d4c47b8",
-          "checks": "27 tests + pi-load-smoke OK (incl. pinx_recall)",
-          "status": "review-ready"
-        },
-        {
-          "branch": "feat/provider-native-engine",
-          "commit": "3c5098b",
-          "checks": "35 tests + pi-load-smoke OK + live archive/compaction verification (EVAL-LIVE-20261005.md)",
-          "status": "review-ready"
-        }
-      ],
-      "status": "experimental"
+      "branch": "feat/provider-native-engine",
+      "integrationBranch": "integration/2026-10-05",
+      "sha": "24f0d86e90c3a0ab714e6f800c78746f845c2411",
+      "contractVersion": 1
     },
     {
       "repo": "pi-code-runtime-next",
-      "purpose": "LLM-first compositional code execution: source retention, repair, Edit IR, bounded execution, background jobs",
-      "localPath": "D:\\Workspace\\pi-code-runtime-next",
-      "remoteUrl": "https://github.com/jacek4yang/pi-code-runtime-next",
-      "currentExperimentalVersion": "0.2.0",
-      "testedPiVersion": "1.0.2",
-      "requiredPublicPiApis": [
-        "@earendil-works/pi-coding-agent: ExtensionAPI.registerTool",
-        "@earendil-works/pi-coding-agent: pi.appendEntry (revision/job records)",
-        "@earendil-works/pi-coding-agent: pi.getSettings (shellPath)",
-        "@earendil-works/pi-coding-agent: ReadonlySessionManager.getBranch (rebuild)"
-      ],
-      "branches": [
-        {
-          "branch": "feat/runtime-core",
-          "commit": "45 tests incl. utf8",
-          "checks": "12 tests + smokes",
-          "status": "review-ready"
-        },
-        {
-          "branch": "feat/edit-ir",
-          "commit": "HEAD",
-          "checks": "22 tests (stacked)",
-          "status": "review-ready"
-        },
-        {
-          "branch": "feat/source-retention",
-          "commit": "HEAD",
-          "checks": "37 tests (stacked)",
-          "status": "review-ready"
-        },
-        {
-          "branch": "feat/job-runtime",
-          "commit": "HEAD",
-          "checks": "43 tests (stacked)",
-          "status": "review-ready"
-        },
-        {
-          "branch": "feat/utf8-runtime-env",
-          "commit": "HEAD",
-          "checks": "45 tests (stacked)",
-          "status": "review-ready"
-        },
-        {
-          "branch": "feat/job-notification-backpressure",
-          "commit": "HEAD",
-          "checks": "49 tests (stacked), R15 regression encoded",
-          "status": "review-ready"
-        }
-      ],
-      "status": "experimental"
+      "branch": "feat/job-notification-backpressure",
+      "integrationBranch": "integration/2026-10-05",
+      "sha": "7299764b3d1731acd531ff0867a1d2c157d15092",
+      "contractVersion": 1
     },
     {
       "repo": "pi-generation-recovery-next",
-      "purpose": "Provider-neutral generation-interruption recovery with narrowly scoped provider replay adapters",
-      "localPath": "D:\\Workspace\\pi-generation-recovery-next",
-      "remoteUrl": "https://github.com/jacek4yang/pi-generation-recovery-next",
-      "currentExperimentalVersion": "0.1.0",
-      "testedPiVersion": "1.0.2",
-      "requiredPublicPiApis": [
-        "@earendil-works/pi-coding-agent: ExtensionAPI.on(provider_stream_event)",
-        "@earendil-works/pi-coding-agent: ExtensionAPI.on(message_end/message_update)",
-        "@earendil-works/pi-coding-agent: turn_end/agent_before_settle BoundaryResult drafts",
-        "@earendil-works/pi-coding-agent: ReadonlySessionManager.getBranch/getEntry",
-        "@earendil-works/pi-coding-agent: pi.appendEntry (recovery journal)"
-      ],
-      "branches": [],
-      "status": "bootstrap"
+      "branch": "feat/recovery-core",
+      "integrationBranch": "integration/2026-10-05",
+      "sha": "f1c3230909423aaca7cc230df2c74364a9d673e5",
+      "contractVersion": 1,
+      "sourceBranch": "feat/integrity-hardening",
+      "sourceBranchNote": "informational only; integrationBranch + sha are authoritative"
+    },
+    {
+      "repo": "pi-ui-next",
+      "branch": "feat/theme-deep-polish",
+      "integrationBranch": "integration/2026-10-05",
+      "sha": "c9134b6fa561cdedcd62a07e632d4970fedfed54",
+      "contractVersion": 1
     }
-  ],
-  "stableBaselinesReadOnly": [
-    {
-      "repo": "jacek4yang/pi-codebuffer",
-      "localClone": "D:\\Workspace\\make-pi-great-again\\pi-codebuffer"
-    },
-    {
-      "repo": "jacek4yang/pi-context-prune",
-      "localClone": "D:\\Workspace\\make-pi-great-again\\pi-context-prune"
-    },
-    {
-      "repo": "jacek4yang/pi-codex-native-compaction",
-      "localClone": "D:\\Workspace\\make-pi-great-again\\pi-codex-native-compaction"
-    },
-    {
-      "repo": "jacek4yang/pi-generation-recovery",
-      "localClone": "D:\\Workspace\\make-pi-great-again\\pi-generation-recovery"
-    },
-    {
-      "repo": "jacek4yang/pi-agent-profile",
-      "localClone": "D:\\Workspace\\make-pi-great-again\\pi-agent-profile"
-    }
-  ],
-  "branchPlan": {
-    "firstFive": [
-      {
-        "repo": "pi-ui-next",
-        "branch": "feat/activity-timeline"
-      },
-      {
-        "repo": "pi-ui-next",
-        "branch": "feat/nested-code-renderer"
-      },
-      {
-        "repo": "pi-context-manager",
-        "branch": "feat/core-contract"
-      },
-      {
-        "repo": "pi-context-manager",
-        "branch": "feat/hygiene-recall"
-      },
-      {
-        "repo": "pi-context-manager",
-        "branch": "feat/provider-native-engine"
-      }
-    ]
-  },
-  "agentConfiguration": {
-    "updated": "2026-10-05",
-    "piVersion": "1.0.2",
-    "providersLive": [
-      "intern (direct, glm-5.3)"
-    ],
-    "providersBlocked": [
-      "kimi-coding (403 subscription lacks Kimi Code)"
-    ],
-    "providersOptionalProxy": [
-      "sensenova",
-      "lobsterai-proxy-deespeek"
-    ],
-    "optionalRestoreFiles": [
-      "~/.pi/agent/models.optional-proxies.json",
-      "~/.pi/agent/packages.optional.json"
-    ],
-    "backups": [
-      "models.json.20261005-before-cleanup.bak",
-      "settings.json.20261005-before-pinx.bak"
-    ],
-    "evaluation": "docs/EVAL-LIVE-20261005.md + docs/EVAL-ABLATION-20261005.md",
-    "providerNote": "intern gateway quota exhausted mid-study (429); long-session phase pending quota reset",
-    "replacement": "2026-10-05: old stack fully replaced; codebuffer surface now covered by pi-code-runtime-next (bounded runtimes + retained buffers + Edit IR + background jobs)",
-    "livePackages": [
-      "npm:@ff-labs/pi-fff",
-      "npm:@narumitw/pi-lsp",
-      "D:\\Workspace\\pi-ui-next",
-      "D:\\Workspace\\pi-context-manager",
-      "D:\\Workspace\\pi-code-runtime-next",
-      "D:\\Workspace\\pi-generation-recovery-next"
-    ],
-    "replacedOldPackages": [
-      "npm:pi-context-prune",
-      "git:github.com/championswimmer/pi-context-usage",
-      "git:github.com/jacek4yang/pi-engineering-kit@v0.2.0"
-    ],
-    "loadVerification": "7 extensions, 0 errors, 0 warnings (pi-ui-next/scripts/verify-agent-load.mjs)"
-  },
-  "sync": {
-    "verifiedAt": "2026-10-05 (RC-hardening phase)",
-    "state": "integration/2026-10-05 pushed in all repos at final SHAs; strict conformance 50/50; exact-SHA worktree integration gate green; 30s deterministic soak green",
-    "ciTriggers": "all-branch push + pull_request in all 4 implementation repos"
-  },
-  "integrationManifest": "integration/manifest.json",
-  "rcGates": {
-    "standaloneCi": "green locally in isolated exact-revision checkouts; remote Actions evidence pending/in-progress",
-    "strictConformance": "50 PASS / 0 FAIL / 0 MISSING (C16 implemented; C16+U6 real)",
-    "integrationGate": "worktrees materialized at pinned SHAs; cross-layer suite green; self-test wrong-SHA fails",
-    "soak": "30s deterministic event-path soak: 18,623 cycles, 100% recovered, 0 storms, journal bounded (134 KB)",
-    "liveProvider": "intern quota 429; kimi-coding 403 subscription — deterministic adapter coverage only, live validation pending quota",
-    "syntheticBenchmark": "projected-context microbenchmark only — chars/4 estimates, never provider billing tokens"
-  }
+  ]
 }

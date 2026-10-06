@@ -6,12 +6,12 @@ Status: normative. Verified 2026-10-04.
 
 | Field | Value |
 |---|---|
-| Latest stable release | **v1.0.3** (non-prerelease; supersedes v1.0.2 published 2026-10-04) |
-| Released | 2026-10-05 |
+| Latest stable release | **v1.0.4** (non-prerelease; supersedes v1.0.3 published 2026-10-05) |
+| Released | 2026-10-06 |
 | Upstream repository | https://github.com/earendil-works/pi |
-| Tag commit | v1.0.3 tag (verified 2026-10-05 against npm `@earendil-works/pi-coding-agent@1.0.3`) |
-| npm package | `@earendil-works/pi-coding-agent@1.0.3` |
-| TUI package | `@earendil-works/pi-tui@1.0.3` (lockstep release) |
+| Tag commit | v1.0.3 tag (verified 2026-10-05 against npm `@earendil-works/pi-coding-agent@1.0.4`) |
+| npm package | `@earendil-works/pi-coding-agent@1.0.4` |
+| TUI package | `@earendil-works/pi-tui@1.0.4` (lockstep release) |
 | Node requirement | ≥ 22.19 (per upstream) |
 
 The old npm scope `@mariozechner/pi-coding-agent` is stale at 0.73.1 (last
@@ -149,5 +149,5 @@ Audited upstream changes and their impact on this stack:
 | Terminal read-EIO/setRawMode EIO fix | pi-ui-next wraps no terminal lifecycle | None |
 
 Extension-level event-flow and component suites were re-run against the
-published `@earendil-works/pi-coding-agent@1.0.3`; no public API used by this
+published `@earendil-works/pi-coding-agent@1.0.4`; no public API used by this
 stack changed (verified by compile + 292 component tests).
