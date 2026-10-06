@@ -22,6 +22,8 @@ const requiredTopLevel = {
   "pinx.recovery-status": ["v", "state"],
   "pinx.policy.request": ["v", "digest", "actionClass", "op"],
   "pinx.policy.decision": ["v", "digest", "decision", "reason"],
+  "pinx.runtime.job": ["v", "jobId", "state"],
+  "pinx.task.changed": ["v", "taskId", "state", "revision"],
   "pinx.telemetry": ["v", "metric", "value", "source", "unit", "ts"],
 };
 

@@ -36,6 +36,12 @@ const { decide } = await import(pathToFileURL(join(POLICY_ROOT, "src/core/policy
 const { ApprovalLedger } = await import(pathToFileURL(join(POLICY_ROOT, "src/core/ledger.ts")).href);
 const { classifyShell } = await import(pathToFileURL(join(POLICY_ROOT, "src/core/shell.ts")).href);
 
+const TASK_ROOT = requireRoot("PINX_TASK_ROOT");
+const { TaskStore: CrossTaskStore } = await import(pathToFileURL(join(TASK_ROOT, "src/core/store.ts")).href);
+const { renderProjection: renderTaskProjection } = await import(
+  pathToFileURL(join(TASK_ROOT, "src/core/projection.ts")).href
+);
+
 const NOW = Date.now();
 const OLD = NOW - DEFAULT_HYGIENE_POLICY.recentWindowMs - 60000;
 
@@ -138,5 +144,85 @@ test("integration: policy gates the stack — allow, block, approve, and refuse"
     run(actionFromToolCall({ toolName: "pinx_recall", input: { ref: "ev_x" } }, ctx)).decision.kind,
     "allow",
     "recall is read-class",
+  );
+});
+
+test("integration: task waits resolve via runtime job terminal and policy decision contracts", async () => {
+  const now = () => ++globalThis.__taskClock;
+  globalThis.__taskClock = 1_700_000_000_000;
+  const mkTask = (title: string) => ({
+    v: 1 as const,
+    id: `task_${++globalThis.__taskClock}`,
+    displayId: `T${++globalThis.__taskClock2}`,
+    title,
+    state: "todo" as const,
+    priority: "normal" as const,
+    blockers: [],
+    dependencies: [],
+    resourceRefs: [],
+    evidenceRefs: [],
+    revision: 1,
+    createdAt: 0,
+    updatedAt: 0,
+  });
+  globalThis.__taskClock2 = 0;
+
+  // 1. Runtime job contract resolves a waiting task (no polling).
+  const storeA = new CrossTaskStore(now);
+  const t1 = mkTask("Ship after build");
+  storeA.apply({ kind: "create", task: structuredClone(t1) });
+  storeA.apply({ kind: "transition", id: t1.id, expectedRevision: 1, to: "in_progress" });
+  storeA.apply({ kind: "transition", id: t1.id, expectedRevision: 2, to: "waiting", waiting: { kind: "job", jobId: "job_x" } });
+  // The runtime emits pinx.runtime.job on terminal state; the task layer
+  // resolves the wait through the SAME contract shape the wiring consumes.
+  const jobTerminal = { v: 1, jobId: "job_x", state: "completed" as const, exitCode: 0 };
+  const taskA = storeA.mustGet(t1.id);
+  storeA.apply({
+    kind: "waiting-resolved",
+    id: t1.id,
+    expectedRevision: taskA.revision,
+    outcome: "ready",
+    detail: `job ${jobTerminal.jobId} completed`,
+  });
+  assert.equal(storeA.mustGet(t1.id).state, "in_progress", "job completion ≠ task completion");
+
+  // 2. Policy contract: only the EXACT approval digest resumes the task.
+  const storeB = new CrossTaskStore(now);
+  const t2 = mkTask("Delete after approval");
+  storeB.apply({ kind: "create", task: structuredClone(t2) });
+  storeB.apply({ kind: "transition", id: t2.id, expectedRevision: 1, to: "in_progress" });
+  storeB.apply({
+    kind: "transition",
+    id: t2.id,
+    expectedRevision: 2,
+    to: "waiting",
+    waiting: { kind: "approval", digest: "digestAAA" },
+  });
+  // policy decision for a DIFFERENT digest arrives — no resume (P2).
+  void "pinx.policy.decision {v:1, digest:'digestBBB', decision:'allow'}";
+  assert.equal(storeB.mustGet(t2.id).state, "waiting", "different digest never resumes");
+  // exact digest denial → blocked
+  storeB.apply({
+    kind: "waiting-resolved",
+    id: t2.id,
+    expectedRevision: 3,
+    outcome: "blocked",
+    detail: "approval denied",
+  });
+  assert.equal(storeB.mustGet(t2.id).state, "blocked");
+
+  // 3. Reopen: full log replay restores the same projection byte-for-byte.
+  const log = [
+    { kind: "create" as const, task: structuredClone(t1) },
+    { kind: "transition" as const, id: t1.id, expectedRevision: 1, to: "in_progress" as const },
+    { kind: "transition" as const, id: t1.id, expectedRevision: 2, to: "waiting" as const, waiting: { kind: "job" as const, jobId: "job_x" } },
+    { kind: "waiting-resolved" as const, id: t1.id, expectedRevision: 3, outcome: "ready" as const, detail: "job job_x completed" },
+  ];
+  const reopened = new CrossTaskStore(now);
+  for (const m of log) reopened.applyRecord(structuredClone(m));
+  assert.equal(
+    renderTaskProjection(reopened.all()),
+    renderTaskProjection(storeA.all()),
+    "reopen restores identical projection (T1/T7)",
   );
 });

@@ -95,6 +95,18 @@ Enforced by: context invariant tests (below).
 | P4 | Unknown high-impact action fails toward approval, never silent allow | unknown class -> require-approval; uncertain shell classification escalates; escalation on doubt |
 | P5 | Approval state/events never expose protected-resource contents | event payload audit; notifications carry paths/identity only, never contents |
 
+## Task invariants (pi-task-next)
+
+| # | Invariant | Test |
+|---|---|---|
+| T1 | Active task state survives session reopen (bounded replay, no transcript reread) | reopen gate: branch log replay restores active state |
+| T2 | Task mutation is revision-safe; stale writes never overwrite newer state; replay never aliases the log | stale-revision + log-alias regression tests |
+| T3 | Waiting on a job/approval requires no model-driven polling; resolution is event-driven and exact-identity | pinx.runtime.job / pinx.policy.decision gate tests; stale digest never resumes |
+| T4 | Completed/cancelled task history cannot grow hot model context unboundedly | terminal GC bound + projection exclusion tests |
+| T5 | A task checkpoint never claims operational state that was not durably committed | checkpoint-after-mutation ordering + reference validation |
+| T6 | Corrupt task state fails closed without crashing normal Pi callbacks | corrupt records -> degraded health, never a throw through Pi |
+| T7 | Task projection is deterministic when task state is unchanged | byte-identical projection across calls; no timestamps/counters |
+
 ## Testing rules
 
 - Tests never read the user's real `~/.pi/agent`; they construct disposable homes.

@@ -6,7 +6,7 @@
     "version": "1.0.4",
     "npmPackage": "@earendil-works/pi-coding-agent@1.0.4"
   },
-  "requiredInvariantSet": "C1-C16, R1-R16, V1-V13, U1-U6, P1-P5 (all 56 executable, all PASS)",
+  "requiredInvariantSet": "C1-C16, R1-R16, V1-V13, U1-U6, P1-P5, T1-T7 (all 63 executable, all PASS)",
   "repositories": [
     {
       "repo": "pi-context-manager",
@@ -17,9 +17,9 @@
     },
     {
       "repo": "pi-code-runtime-next",
-      "branch": "feat/tool-schema-bench",
+      "branch": "feat/task-job-contract",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "cacf5860467f8a0d6170b831b06899c64d672ebe",
+      "sha": "ffd6f83578bbbf2e7ae81e6f5fb9bbade599f1df",
       "contractVersion": 1
     },
     {
@@ -43,6 +43,13 @@
       "branch": "feat/policy-core",
       "integrationBranch": "integration/agent-body-v2",
       "sha": "aa795dc789db18615a1a4a5c9a424893b642271f",
+      "contractVersion": 1
+    },
+    {
+      "repo": "pi-task-next",
+      "branch": "feat/task-core",
+      "integrationBranch": "integration/agent-body-v2",
+      "sha": "6354442e0f1e20212d1a2d4e576ba7627f6a7bd6",
       "contractVersion": 1
     }
   ]

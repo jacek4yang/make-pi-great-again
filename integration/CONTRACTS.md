@@ -196,6 +196,43 @@ The `digest` is the approval identity (P2): any material change (path set,
 recursive flag, git/GitHub ref, command) yields a different digest and a new
 decision. Denials are never persisted as grants (P3).
 
+## 9. Job terminal state (code-runtime -> consumers, bus `pinx.runtime.job`)
+
+Emitted exactly once per background job when it reaches a terminal state.
+Consumed by pi-task-next to resolve waiting tasks without polling.
+
+```ts
+interface PinxRuntimeJobTerminal {
+  v: 1;
+  jobId: string;
+  label: string;
+  runtime: "node" | "python" | "bash";
+  state: "completed" | "failed" | "cancelled" | "timeout";
+  exitCode: number | null;
+}
+```
+
+## 10. Task events (task -> UI/audit, bus `pinx.task.changed`)
+
+Emitted for every committed task mutation. **Never** injected into model
+context; the model sees task state only through the bounded `context`-event
+projection and task tool results.
+
+```ts
+interface PinxTaskChanged {
+  v: 1;
+  taskId: string;
+  displayId: string;         // short id used in projection (T3, ...)
+  revision: number;
+  state: "todo" | "in_progress" | "waiting" | "blocked" | "done" | "cancelled";
+  waitingKind?: "job" | "approval" | "ci" | "external";
+  reason?: string;           // bounded operational reason
+}
+```
+
+Task waiting identity binds to the policy action digest (`approval`) or the
+runtime jobId (`job`) — resolution requires an exact match (P2/T3).
+
 ## Channel mechanics
 
 Producers publish via `pi.events.emit(channel, payload)`; the UI subscribes on

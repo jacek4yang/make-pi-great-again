@@ -143,8 +143,30 @@ policy path.
 `benchmark/results/after-policy.json` records the run (pinned at cm a56cf07 /
 rt cacf586 / policy f43e3b3a…).
 
+## After pi-task-next integration (2026-10-06)
+
+Rerun after adding pi-task-next and the `pinx.runtime.job` contract
+(`--compare after-policy after-task`): **every core-stack metric unchanged**
+— the task layer injects its bounded projection transiently via the Pi
+`context` event and registers its tools separately, so the deterministic
+core benchmark is untouched. Task-layer costs, measured in
+`pi-task-next/bench/task-projection.ts` (`benchmark/results/after-task.json`
+records the core rerun):
+
+- no tasks: 0 model-visible bytes injected;
+- stable active task: 59 bytes, byte-identical across turns;
+- state change: first diff at the task-block boundary (injected tail);
+- completed task: leaves hot projection (50 → 0 bytes);
+- waiting task: 71 bytes with typed reason;
+- reopen restore: identical projection, ~20 µs per full log replay;
+- tool schemas: task 1,675 B + issue_candidate 518 B (default-active by
+  design — long-horizon discoverability from turn 0);
+- long-horizon soak: 630 transitions, 6 reopen cycles, terminal GC bounded
+  at 50, checkpoints bounded at 8, zero stuck waiting tasks, replay-safe
+  mutation log (a store aliasing bug was caught and fixed by this soak).
+
 ## Next phase
 
-NEXT PHASE: pi-task-next (second productization repository per
+NEXT PHASE: pi-github-next (third productization repository per
 docs/ROADMAP-PRODUCTIZATION.md). Do not start it before the owner reviews
-these branches; policy is the only productization plugin so far.
+these branches; policy and task are the productization plugins so far.

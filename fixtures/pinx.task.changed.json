@@ -1,0 +1,9 @@
+{
+  "v": 1,
+  "taskId": "task_1",
+  "displayId": "T1",
+  "revision": 3,
+  "state": "waiting",
+  "waitingKind": "job",
+  "reason": "awaiting build"
+}

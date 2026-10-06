@@ -224,7 +224,35 @@
     "P5": {
       "repo": "pi-policy-next",
       "test": "exact [P5] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "T1": {
+      "repo": "pi-task-next",
+      "test": "exact [T1] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "T2": {
+      "repo": "pi-task-next",
+      "test": "exact [T2] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "T3": {
+      "repo": "pi-task-next",
+      "test": "exact [T3] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "T4": {
+      "repo": "pi-task-next",
+      "test": "exact [T4] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "T5": {
+      "repo": "pi-task-next",
+      "test": "exact [T5] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "T6": {
+      "repo": "pi-task-next",
+      "test": "exact [T6] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "T7": {
+      "repo": "pi-task-next",
+      "test": "exact [T7] bracket tag (enforced by run-conformance.mjs)"
     }
   },
-  "canonicalSet": "C1-C16, R1-R16, V1-V13, U1-U6, P1-P5 (all 56 executable, all PASS)"
+  "canonicalSet": "C1-C16, R1-R16, V1-V13, U1-U6, P1-P5, T1-T7 (all 63 executable, all PASS)"
 }

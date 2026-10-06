@@ -34,7 +34,9 @@ Reasoning resumes only when meaningful new information exists.
   P1-P5 invariants, contracts `pinx.policy.request`/`pinx.policy.decision`,
   see `docs/RESEARCH-POLICY-20261006.md`)
 - **K** Implement pi-task-next (durable task lifecycle, bounded projection,
-  issue candidates distinct from tasks)
+  issue candidates distinct from tasks) — IMPLEMENTED 2026-10-06 (`feat/task-core`, T1-T7 invariants,
+  `pinx.task.changed` + consumption of `pinx.runtime.job`/`pinx.policy.decision`,
+  see `docs/RESEARCH-TASK-20261006.md`)
 - **L** Task checkpoints (operational state, not chain-of-thought)
 - **M** Implement pi-github-next (resource cache, ETag/conditional, singleflight,
   immutable commit caching, rate limits, durable mutation outcomes)

@@ -1,0 +1,8 @@
+{
+  "v": 1,
+  "jobId": "job_0001",
+  "label": "build",
+  "runtime": "node",
+  "state": "completed",
+  "exitCode": 0
+}
