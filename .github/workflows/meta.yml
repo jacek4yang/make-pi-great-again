@@ -1,0 +1,39 @@
+name: meta
+# Public meta CI: validates the whole Agent Body v2 stack from a clean
+# hosted runner against the manifest's EXACT pinned SHAs. No PAT (public
+# read-only clone), no secrets, least-privilege permissions.
+#
+# Gates: manifest truth -> canonical invariants -> strict conformance ->
+# exact-SHA cross-layer integration -> self-tests -> benchmark determinism.
+on:
+  pull_request:
+  push:
+    branches: [main, "feat/**", "integration/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  stack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Prepare clean workspace from manifest (exact SHAs, public clones)
+        id: prep
+        run: node scripts/meta-ci-prepare.mjs
+      - name: Strict conformance (derived canonical invariant set, release-truth enforced)
+        run: node conformance/run-conformance.mjs --strict
+      - name: Conformance self-tests
+        run: node conformance/self-test.mjs
+      - name: Exact-SHA cross-layer integration
+        run: node integration/run-integration.mjs
+      - name: Integration self-tests
+        run: node integration/self-test.mjs
+      - name: Contract fixtures
+        run: node scripts/check-contracts.mjs
+      - name: Benchmark determinism
+        run: node benchmark/run-benchmarks.mjs --check-determinism
