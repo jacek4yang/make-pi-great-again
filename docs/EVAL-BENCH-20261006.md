@@ -165,8 +165,31 @@ records the core rerun):
   at 50, checkpoints bounded at 8, zero stuck waiting tasks, replay-safe
   mutation log (a store aliasing bug was caught and fixed by this soak).
 
+## After pi-github-next integration (2026-10-07)
+
+Core-stack benchmark rerun (`--compare after-task after-github`): **every
+metric unchanged** — the GitHub layer registers one tool, injects nothing
+into model context, and its cache/health state is UI-only. GitHub-specific
+measurements (`pi-github-next/bench/workload.ts`, `bench/soak.ts`):
+
+- Scenario A — 10 identical logical PR reads → **2 underlying API calls**
+  (8 full transfers avoided); 9 compact `unchanged` results (224 B → 58 B);
+- Scenario B — 3 concurrent consumers → **2 API calls** (4 naive requests
+  saved), single-agreed snapshot;
+- Scenario C — external change detected via TTL expiry → If-None-Match
+  revalidation → fresh data (no stale memory serve);
+- Scenario D — mutation invalidates affected cache; post-mutation read is a
+  network fetch, never a stale memory hit;
+- Scenario E — issue-candidate promotion: exactly one mutation, durable
+  journal record, task layer receives only the `gh:issue:*` ref;
+- Scenario F — uncertain outcome reconciled: one dropped send + one
+  proven-safe retry = **zero duplicate mutations**, journal survives reopen;
+- Soak — 800 reads + 400 burst callers + 33 mutations: cache bounded
+  (11 entries / 724 B), journal bounded (31 records), singleflight leak-free,
+  zero unhandled rejections.
+
 ## Next phase
 
-NEXT PHASE: pi-github-next (third productization repository per
-docs/ROADMAP-PRODUCTIZATION.md). Do not start it before the owner reviews
-these branches; policy and task are the productization plugins so far.
+NEXT PHASE: pi-ci-next (fourth productization repository per
+docs/ROADMAP-PRODUCTIZATION.md; consumes GitHub resource primitives from
+pi-github-next). Do not start it before the owner reviews these branches.

@@ -107,6 +107,18 @@ Enforced by: context invariant tests (below).
 | T6 | Corrupt task state fails closed without crashing normal Pi callbacks | corrupt records -> degraded health, never a throw through Pi |
 | T7 | Task projection is deterministic when task state is unchanged | byte-identical projection across calls; no timestamps/counters |
 
+## GitHub invariants (pi-github-next)
+
+| # | Invariant | Test |
+|---|---|---|
+| G1 | A known completed GitHub mutation is never implicitly executed again | journal reuse across reopen; identical intent re-execution returns the recorded result |
+| G2 | An unknown GitHub mutation outcome is reconciled or fails closed, never blindly retried | network-drop tests: reconciled-committed / proven-safe single retry / inconclusive -> unknown fail-closed |
+| G3 | Material GitHub mutation identity changes invalidate prior authorization/outcome reuse | intent-digest tests: head SHA, method, body changes produce new digests |
+| G4 | Concurrent identical reads are coalesced without changing semantic result | 10-caller singleflight; failure/cancel release keys with no leaks |
+| G5 | Cache optimization cannot return known stale post-mutation resource state as current | mutation invalidation tests + post-mutation read outcomes |
+| G6 | Large GitHub responses are explicitly bounded; truncation is never silent | truncation envelope tests for bodies/patches |
+| G7 | Credentials never enter model-visible or durable non-secret state | token redaction; no-auth fail-fast; event payload audit |
+
 ## Testing rules
 
 - Tests never read the user's real `~/.pi/agent`; they construct disposable homes.

@@ -24,6 +24,7 @@ const requiredTopLevel = {
   "pinx.policy.decision": ["v", "digest", "decision", "reason"],
   "pinx.runtime.job": ["v", "jobId", "state"],
   "pinx.task.changed": ["v", "taskId", "state", "revision"],
+  "pinx.github.mutation": ["v", "operationId", "state"],
   "pinx.telemetry": ["v", "metric", "value", "source", "unit", "ts"],
 };
 

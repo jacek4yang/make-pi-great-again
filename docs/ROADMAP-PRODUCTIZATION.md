@@ -39,7 +39,9 @@ Reasoning resumes only when meaningful new information exists.
   see `docs/RESEARCH-TASK-20261006.md`)
 - **L** Task checkpoints (operational state, not chain-of-thought)
 - **M** Implement pi-github-next (resource cache, ETag/conditional, singleflight,
-  immutable commit caching, rate limits, durable mutation outcomes)
+  immutable commit caching, rate limits, durable mutation outcomes) — IMPLEMENTED 2026-10-07 (`feat/github-core`, G1-G7 invariants,
+  `pinx.github.mutation`/`pinx.github.resource.changed` contracts,
+  see `docs/RESEARCH-GITHUB-20261006.md`)
 - **N** Implement pi-ci-next (GitHub Actions wait/wait_all/failure digest,
   internal adaptive polling, immutable SHA binding)
 - **O** GitHub cache + model context co-design (delta for unchanged resources)

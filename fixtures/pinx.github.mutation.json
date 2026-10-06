@@ -1,0 +1,9 @@
+{
+  "v": 1,
+  "operationId": "op_abc123",
+  "operation": "create_issue",
+  "repository": "o/r",
+  "state": "completed",
+  "resultRef": "gh:issue:o/r#73",
+  "issueCandidateId": "issue_x1"
+}

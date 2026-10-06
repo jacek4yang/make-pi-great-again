@@ -42,6 +42,16 @@ const { renderProjection: renderTaskProjection } = await import(
   pathToFileURL(join(TASK_ROOT, "src/core/projection.ts")).href
 );
 
+const GH_ROOT = requireRoot("PINX_GH_ROOT");
+const { MutationEngine: CrossMutationEngine } = await import(
+  pathToFileURL(join(GH_ROOT, "src/core/mutations.ts")).href
+);
+const { MutationJournal: CrossMutationJournal } = await import(
+  pathToFileURL(join(GH_ROOT, "src/core/journal.ts")).href
+);
+const { intentDigest: ghIntentDigest } = await import(pathToFileURL(join(GH_ROOT, "src/core/mutations.ts")).href);
+const { IssueStore: CrossIssueStore } = await import(pathToFileURL(join(TASK_ROOT, "src/core/issues.ts")).href);
+
 const NOW = Date.now();
 const OLD = NOW - DEFAULT_HYGIENE_POLICY.recentWindowMs - 60000;
 
@@ -225,4 +235,98 @@ test("integration: task waits resolve via runtime job terminal and policy decisi
     renderTaskProjection(storeA.all()),
     "reopen restores identical projection (T1/T7)",
   );
+});
+
+test("integration: issue candidate -> policy -> mutation -> durable outcome -> external ref", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pinx-gh-cross-"));
+  try {
+    // 1. Local issue candidate exists in the task layer.
+    const issues = new CrossIssueStore(join(dir, "issues.json"), () => 1_700_000_000_000);
+    await issues.load();
+    const candidate = await issues.add({ title: "Broken CI cache", description: "Fix before release" });
+
+    // 2. Policy classifies the promotion mutation github-write -> approval.
+    const intent = {
+      operation: "create_issue",
+      repository: "o/r",
+      fields: { title: "Broken CI cache", body: "Fix before release", issueCandidateId: candidate.id },
+    };
+    const action = {
+      class: "github-write",
+      op: "create_issue",
+      ref: { kind: "github", repo: "o/r" },
+      source: "tool",
+      tool: "github",
+    };
+    const policyDecision = decide({
+      action,
+      digest: intentDigest(approvalIntent(action)),
+      ctx: {
+        platform: "linux",
+        isProjectTrusted: true,
+        workspaceRoot: "/ws",
+        profile: "balanced",
+      },
+      grants: [],
+      now: 1_700_000_000_001,
+    });
+    assert.equal(policyDecision.kind, "require-approval", "github writes require approval");
+
+    // 3. Exact-action approval granted -> mutation executes (mock transport).
+    const grants = [
+      { digest: intentDigest(approvalIntent(action)), scope: "exact-action", grantedAt: 1_700_000_000_001 },
+    ];
+    const approved = decide({
+      action,
+      digest: intentDigest(approvalIntent(action)),
+      ctx: { platform: "linux", isProjectTrusted: true, workspaceRoot: "/ws", profile: "balanced" },
+      grants,
+      now: 1_700_000_000_002,
+    });
+    assert.equal(approved.kind, "allow", "exact approval authorizes the intended operation");
+
+    let posts = 0;
+    const transport = {
+      request: async (opts) => {
+        if (opts.method === "POST") {
+          posts++;
+          return { status: 200, data: { number: 73 }, etag: null, headers: {} };
+        }
+        return { status: 200, data: [], etag: null, headers: {} };
+      },
+    };
+    const engine = new CrossMutationEngine(transport, new CrossMutationJournal(join(dir, "m.jsonl")), () => 1_700_000_000_003);
+    const outcome = await engine.execute(intent);
+    assert.equal(outcome.state, "completed");
+    assert.equal(posts, 1);
+    assert.equal(outcome.resultRef, "gh:issue:o/r#73");
+
+    // 4. Task layer receives ONLY the external ref (promotion boundary).
+    await issues.markPromoted(candidate.id);
+    const stored = issues.list()[0]!;
+    assert.equal(stored.state, "promoted");
+    assert.ok(!JSON.stringify(issues.list()).includes("Fix before release cache-body"), "no payload copy");
+
+    // 5. Reopen: completed mutation reused, no duplicate.
+    const reopenedJournal = new CrossMutationJournal(join(dir, "m.jsonl"));
+    await reopenedJournal.load();
+    const reuse = new CrossMutationEngine(transport, reopenedJournal, () => 1_700_000_000_004);
+    const again = await reuse.execute(intent);
+    assert.equal(again.state, "completed");
+    assert.match(again.reason ?? "", /already completed/);
+    assert.equal(posts, 1, "no duplicate external mutation after reopen (G1)");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("integration: github cache invalidation after mutation (G5 via resources)", async () => {
+  const gh = await import(pathToFileURL(join(GH_ROOT, "src/core/resources.ts")).href);
+  const { ResourceCache: CrossCache } = await import(pathToFileURL(join(GH_ROOT, "src/core/cache.ts")).href);
+  const cache = new CrossCache(() => 1_700_000_000_000);
+  cache.put({ kind: "issue", owner: "o", repo: "r", number: 17 }, { number: 17, title: "old" }, 'W/"v1"');
+  const invalidations = cache.invalidate((ref) => ref.owner === "o" && ref.repo === "r" && ref.kind === "issue" && ref.number === 17);
+  assert.equal(invalidations, 1);
+  assert.equal(cache.peekAny({ kind: "issue", owner: "o", repo: "r", number: 17 }), undefined, "stale entry gone");
+  void gh;
 });

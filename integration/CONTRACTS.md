@@ -233,6 +233,27 @@ interface PinxTaskChanged {
 Task waiting identity binds to the policy action digest (`approval`) or the
 runtime jobId (`job`) — resolution requires an exact match (P2/T3).
 
+## 11. GitHub events (github -> UI/task, buses `pinx.github.resource.changed` / `pinx.github.mutation`)
+
+`pinx.github.resource.changed` reports cache outcome semantics (memory-hit /
+conditional-hit / network-fetch + snapshot id) for diagnostics — never model
+context. `pinx.github.mutation` carries durable side-effect truth consumed
+by pi-task-next for explicit issue-candidate promotion.
+
+```ts
+interface PinxGithubMutation {
+  v: 1;
+  operationId: string;       // journal operation id (reconciliation handle)
+  operation: string;         // create_issue | comment | merge_pr | ...
+  repository: string;        // owner/name
+  state: "started" | "completed" | "failed" | "cancelled" | "unknown";
+  resultRef?: string;        // gh:* ref once known
+  issueCandidateId?: string; // promotion boundary: local candidate to mark promoted
+}
+```
+
+Bounded identity only — no bodies, no credentials (G7).
+
 ## Channel mechanics
 
 Producers publish via `pi.events.emit(channel, payload)`; the UI subscribes on
