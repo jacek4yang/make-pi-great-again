@@ -63,7 +63,7 @@
       "repo": "pi-ci-next",
       "branch": "feat/ci-core",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "ca7cb42a2d9580ac555ac436609dcba97ec5af82",
+      "sha": "e594da141edd5aca59bda9ae75bb3c9d0621f382",
       "contractVersion": 1
     }
   ]
