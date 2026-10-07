@@ -27,13 +27,19 @@ jobs:
         run: node scripts/meta-ci-prepare.mjs
       - name: Strict conformance (derived canonical invariant set, release-truth enforced)
         run: node conformance/run-conformance.mjs --strict
+        env:
+          PINX_WORKSPACE: ${{ steps.prep.outputs.workspace }}
       - name: Conformance self-tests
         run: node conformance/self-test.mjs
       - name: Exact-SHA cross-layer integration
         run: node integration/run-integration.mjs
+        env:
+          PINX_WORKSPACE: ${{ steps.prep.outputs.workspace }}
       - name: Integration self-tests
         run: node integration/self-test.mjs
       - name: Contract fixtures
         run: node scripts/check-contracts.mjs
       - name: Benchmark determinism
         run: node benchmark/run-benchmarks.mjs --check-determinism
+        env:
+          PINX_WORKSPACE: ${{ steps.prep.outputs.workspace }}
