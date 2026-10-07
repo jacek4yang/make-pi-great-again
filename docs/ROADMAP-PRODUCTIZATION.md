@@ -43,7 +43,8 @@ Reasoning resumes only when meaningful new information exists.
   `pinx.github.mutation`/`pinx.github.resource.changed` contracts,
   see `docs/RESEARCH-GITHUB-20261006.md`)
 - **N** Implement pi-ci-next (GitHub Actions wait/wait_all/failure digest,
-  internal adaptive polling, immutable SHA binding)
+  internal adaptive polling, immutable SHA binding) — IMPLEMENTED 2026-10-07 (`feat/ci-core`, I1-I10 invariants,
+  `pinx.ci.terminal` contract, consumes pi-github-next service per CONTRACTS §12-§13)
 - **O** GitHub cache + model context co-design (delta for unchanged resources)
 - **P** Implement pi-fs-next (stat/list/tree/usage/safe delete, no du/find)
 - **Q** Resource snapshots + change detection (path+hash, resourceID+etag)

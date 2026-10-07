@@ -188,8 +188,31 @@ measurements (`pi-github-next/bench/workload.ts`, `bench/soak.ts`):
   (11 entries / 724 B), journal bounded (31 records), singleflight leak-free,
   zero unhandled rejections.
 
+## After pi-ci-next integration (2026-10-07)
+
+Core-stack benchmark (`--compare after-github after-ci`): **unchanged** —
+CI progress never enters model context (I10); the ci tool injects nothing
+into hot state. CI-layer measurements (`pi-ci-next/bench/orchestration.ts`,
+`bench/soak.ts`):
+
+- single long CI run: **5 model calls → 1** (internal adaptive polls: 5);
+- 8-repo release barrier: **24 model calls → 1** (wait_all collect-all;
+  10 underlying API requests);
+- failure diagnosis: **6,428 → 212 model-visible bytes** (marker-selected
+  excerpts, 2 API calls instead of whole-log injection);
+- soak: 890 watches (300 sequential + 400 barrier callers + 100 supersede
+  storms + 40 timeouts + 100 fault waits) + 20 failure digests — bounded
+  registry (79 watches), no stuck waits, no duplicate terminal events,
+  transient-fault waits surfaced as bounded errors, zero unhandled
+  rejections.
+
+Publication note (§8): all eight Agent Body repositories are PUBLIC as of
+this session (audit: docs/PUBLICATION-AUDIT-20261007.md); the Actions
+billing blocker persisted post-publication and requires owner action —
+docs/CI-BLOCKER-20261007.md.
+
 ## Next phase
 
-NEXT PHASE: pi-ci-next (fourth productization repository per
-docs/ROADMAP-PRODUCTIZATION.md; consumes GitHub resource primitives from
-pi-github-next). Do not start it before the owner reviews these branches.
+NEXT PHASE: pi-fs-next (final productization repository per
+docs/ROADMAP-PRODUCTIZATION.md). Do not start it before the owner reviews
+these branches.

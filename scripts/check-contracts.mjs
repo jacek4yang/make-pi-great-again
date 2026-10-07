@@ -25,6 +25,7 @@ const requiredTopLevel = {
   "pinx.runtime.job": ["v", "jobId", "state"],
   "pinx.task.changed": ["v", "taskId", "state", "revision"],
   "pinx.github.mutation": ["v", "operationId", "state"],
+  "pinx.ci.terminal": ["v", "watchId", "state"],
   "pinx.telemetry": ["v", "metric", "value", "source", "unit", "ts"],
 };
 

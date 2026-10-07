@@ -254,6 +254,24 @@ interface PinxGithubMutation {
 
 Bounded identity only — no bodies, no credentials (G7).
 
+## 13. CI events (ci -> UI/task, buses `pinx.ci.watch` / `pinx.ci.progress` / `pinx.ci.terminal`)
+
+Versioned, structured, no human-text parsing. Progress is coalesced
+(state/job-count changes only) and belongs to the UI — never model context.
+`pinx.ci.terminal` resolves pi-task-next waiting(kind=ci) tasks.
+
+```ts
+interface PinxCiTerminal {
+  v: 1;
+  watchId: string;
+  state: "success" | "failure" | "cancelled" | "skipped" | "neutral" | "superseded";
+  resultRef?: string; // gh:run:<id> or watch failure-digest ref
+}
+```
+
+Watch persistence is bounded (16 active / 64 terminal) and never trusted
+over remote truth after reopen.
+
 ## Channel mechanics
 
 Producers publish via `pi.events.emit(channel, payload)`; the UI subscribes on

@@ -52,6 +52,9 @@ const { MutationJournal: CrossMutationJournal } = await import(
 const { intentDigest: ghIntentDigest } = await import(pathToFileURL(join(GH_ROOT, "src/core/mutations.ts")).href);
 const { IssueStore: CrossIssueStore } = await import(pathToFileURL(join(TASK_ROOT, "src/core/issues.ts")).href);
 
+const CI_ROOT = requireRoot("PINX_CI_ROOT");
+const { WatchRegistry: CrossWatchRegistry } = await import(pathToFileURL(join(CI_ROOT, "src/core/watches.ts")).href);
+
 const NOW = Date.now();
 const OLD = NOW - DEFAULT_HYGIENE_POLICY.recentWindowMs - 60000;
 
@@ -329,4 +332,60 @@ test("integration: github cache invalidation after mutation (G5 via resources)",
   assert.equal(invalidations, 1);
   assert.equal(cache.peekAny({ kind: "issue", owner: "o", repo: "r", number: 17 }), undefined, "stale entry gone");
   void gh;
+});
+
+test("integration: task waits on CI watch; terminal event resolves; supersede protects validation truth", async () => {
+  // 1. CI watch bound to an immutable repo+SHA (I2).
+  const registry = new CrossWatchRegistry(() => 1_700_000_000_000);
+  const watch = registry.create(
+    { repository: "o/r", sha: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", prNumber: 9 },
+    {},
+  );
+  assert.equal(watch.target.sha, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+  // 2. Supersede: the PR head moved → the watch is superseded and can
+  //    never claim success for the new head (I3).
+  registry.supersede(watch.watchId, "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+  const superseded = registry.mustGet(watch.watchId);
+  assert.equal(superseded.state, "superseded");
+  assert.notEqual(superseded.terminalResult?.state, "success");
+
+  // 3. Task integration: a task waiting(kind=ci, watchId) is resolved by
+  //    the pinx.ci.terminal contract exactly as the wiring consumes it.
+  const store = new CrossTaskStore(() => 1_700_000_000_000);
+  const task = {
+    v: 1,
+    id: "task_ci_1",
+    displayId: "TC1",
+    title: "Merge after CI",
+    state: "waiting",
+    priority: "normal",
+    blockers: [],
+    dependencies: [],
+    waiting: { kind: "ci", watchId: watch.watchId },
+    resourceRefs: [],
+    evidenceRefs: [],
+    revision: 1,
+    createdAt: 1,
+    updatedAt: 1,
+  };
+  store.apply({ kind: "create", task: { ...task, state: "todo", waiting: undefined } });
+  store.apply({ kind: "transition", id: task.id, expectedRevision: 1, to: "in_progress" });
+  store.apply({
+    kind: "transition",
+    id: task.id,
+    expectedRevision: 2,
+    to: "waiting",
+    waiting: { kind: "ci", watchId: watch.watchId },
+  });
+  // pinx.ci.terminal {v:1, watchId, state:"success"} arrives:
+  const resolved = store.mustGet(task.id);
+  store.apply({
+    kind: "waiting-resolved",
+    id: task.id,
+    expectedRevision: resolved.revision,
+    outcome: "ready",
+    detail: "ci success (gh:run:9001)",
+  });
+  assert.equal(store.mustGet(task.id).state, "in_progress", "CI success makes the task actionable, not done");
 });

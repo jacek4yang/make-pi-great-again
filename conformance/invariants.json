@@ -280,7 +280,47 @@
     "G7": {
       "repo": "pi-github-next",
       "test": "exact [G7] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "I1": {
+      "repo": "pi-ci-next",
+      "test": "exact [I1] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "I2": {
+      "repo": "pi-ci-next",
+      "test": "exact [I2] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "I3": {
+      "repo": "pi-ci-next",
+      "test": "exact [I3] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "I4": {
+      "repo": "pi-ci-next",
+      "test": "exact [I4] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "I5": {
+      "repo": "pi-ci-next",
+      "test": "exact [I5] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "I6": {
+      "repo": "pi-ci-next",
+      "test": "exact [I6] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "I7": {
+      "repo": "pi-ci-next",
+      "test": "exact [I7] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "I8": {
+      "repo": "pi-ci-next",
+      "test": "exact [I8] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "I9": {
+      "repo": "pi-ci-next",
+      "test": "exact [I9] bracket tag (enforced by run-conformance.mjs)"
+    },
+    "I10": {
+      "repo": "pi-ci-next",
+      "test": "exact [I10] bracket tag (enforced by run-conformance.mjs)"
     }
   },
-  "canonicalSet": "C1-C16, R1-R16, V1-V13, U1-U6, P1-P5, T1-T7, G1-G7 (all 70 executable, all PASS)"
+  "canonicalSet": "C1-C16, R1-R16, V1-V13, U1-U6, P1-P5, T1-T7, G1-G7, I1-I10 (all 80 executable, all PASS)"
 }

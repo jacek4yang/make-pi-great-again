@@ -119,6 +119,21 @@ Enforced by: context invariant tests (below).
 | G6 | Large GitHub responses are explicitly bounded; truncation is never silent | truncation envelope tests for bodies/patches |
 | G7 | Credentials never enter model-visible or durable non-secret state | token redaction; no-auth fail-fast; event payload audit |
 
+## CI invariants (pi-ci-next)
+
+| # | Invariant | Test |
+|---|---|---|
+| I1 | CI completion waiting does not require model-driven polling | queued→in_progress→success in ONE wait call over several internal polls |
+| I2 | CI watch binds to immutable repo + commit SHA | SHA validation; binding unchanged through waits |
+| I3 | PR head change supersedes the existing watch | head-moved probe → superseded; never claims validated |
+| I4 | Wait cancellation does not cancel the underlying workflow | local abort → watch pending; no cancel request sent |
+| I5 | Wait timeout does not cancel the underlying workflow | deadline → running+waitTimedOut; later wait completes |
+| I6 | wait_all handles multiple targets without per-target model polling | 8-target barrier terminal in one call |
+| I7 | CI mutations cannot bypass policy | ci-control class requires approval (policy suite) |
+| I8 | Reopen validates remote CI truth rather than trusting persisted running | restore → provisional; remote re-query returns terminal |
+| I9 | CI/log truncation is always explicit | head+tail fallback marks truncated + original counts |
+| I10 | Progress polling does not become repeated LLM context | coalesced bus events only; no context injection |
+
 ## Testing rules
 
 - Tests never read the user's real `~/.pi/agent`; they construct disposable homes.

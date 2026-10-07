@@ -32,6 +32,9 @@ const OWNERSHIP = {
   G1: "pi-github-next", G2: "pi-github-next", G3: "pi-github-next",
   G4: "pi-github-next", G5: "pi-github-next", G6: "pi-github-next",
   G7: "pi-github-next",
+  I1: "pi-ci-next", I2: "pi-ci-next", I3: "pi-ci-next", I4: "pi-ci-next",
+  I5: "pi-ci-next", I6: "pi-ci-next", I7: "pi-ci-next", I8: "pi-ci-next",
+  I9: "pi-ci-next", I10: "pi-ci-next",
 };
 
 /**
@@ -95,7 +98,7 @@ export function canonicalInvariantIds() {
 export function canonicalInvariantSetName() {
   const ids = canonicalInvariantIds();
   const groups = [];
-  for (const prefix of ["C", "R", "V", "U", "P", "T", "G"]) {
+  for (const prefix of ["C", "R", "V", "U", "P", "T", "G", "I"]) {
     const nums = ids.filter((id) => id.startsWith(prefix)).map((id) => Number(id.slice(1))).sort((a, b) => a - b);
     if (nums.length === 0) continue;
     groups.push(`${prefix}${nums[0]}-${prefix}${nums[nums.length - 1]}`);
