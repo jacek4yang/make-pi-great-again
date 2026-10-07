@@ -56,7 +56,7 @@
       "repo": "pi-github-next",
       "branch": "feat/github-core",
       "integrationBranch": "integration/agent-body-v2",
-      "sha": "100c12ed402281a2ad3310c61c381f436739f894",
+      "sha": "0a1b0f82db86e3777fac5c6a36a70e6f6330c0c8",
       "contractVersion": 1
     },
     {
