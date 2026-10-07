@@ -54,7 +54,7 @@ if (manifest.integrationLine !== "integration/agent-body-v2") {
 }
 if (!/^\d+\.\d+\.\d+$/.test(manifest.pi?.version ?? "")) throw new Error("pi.version invalid");
 const seen = new Set();
-const KNOWN = ["pi-context-manager", "pi-code-runtime-next", "pi-generation-recovery-next", "pi-ui-next", "pi-policy-next", "pi-task-next", "pi-github-next"];
+const KNOWN = ["pi-context-manager", "pi-code-runtime-next", "pi-generation-recovery-next", "pi-ui-next", "pi-policy-next", "pi-task-next", "pi-github-next", "pi-ci-next"];
 for (const r of manifest.repositories) {
   if (!KNOWN.includes(r.repo)) throw new Error(`unknown repo in manifest: ${r.repo}`);
   if (seen.has(r.repo)) throw new Error(`duplicate repo: ${r.repo}`);
